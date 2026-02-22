@@ -8,18 +8,23 @@ const benefits = [
 ];
 
 const PercheSceglierciSection = () => (
-  <section className="section-padding bg-coffee-warm" id="perche">
+  <section className="section-padding bg-primary" id="perche">
     <div className="max-w-3xl mx-auto">
-      <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-8 text-center font-display">
-        Perché scegliere un Personal Shopper del Caffè
-      </h2>
+      <div className="text-center mb-10">
+        <span className="inline-block bg-primary-foreground/20 text-primary-foreground text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+          Vantaggi
+        </span>
+        <h2 className="text-3xl md:text-5xl font-display text-primary-foreground">
+          Perché scegliere un Personal Shopper del Caffè
+        </h2>
+      </div>
       <ul className="space-y-4">
         {benefits.map((b) => (
-          <li key={b} className="flex items-start gap-3 bg-card rounded-lg p-4 shadow-sm">
-            <div className="w-6 h-6 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <Check className="w-4 h-4 text-accent" />
+          <li key={b} className="flex items-start gap-4 bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-5">
+            <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center flex-shrink-0 mt-0.5">
+              <Check className="w-5 h-5 text-primary" />
             </div>
-            <span className="text-foreground text-sm md:text-base">{b}</span>
+            <span className="text-primary-foreground text-sm md:text-base font-medium">{b}</span>
           </li>
         ))}
       </ul>

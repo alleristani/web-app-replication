@@ -34,16 +34,21 @@ const reviews = [
 ];
 
 const RecensioniSection = () => (
-  <section className="section-padding bg-card" id="recensioni">
+  <section className="section-padding bg-secondary" id="recensioni">
     <div className="max-w-5xl mx-auto">
-      <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-10 text-center font-display">
-        Cosa dicono i clienti
-      </h2>
+      <div className="text-center mb-12">
+        <span className="inline-block bg-vibrant/10 text-vibrant text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+          Recensioni
+        </span>
+        <h2 className="text-3xl md:text-5xl font-display text-foreground">
+          Cosa dicono i clienti
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviews.map((r) => (
           <div
             key={r.author}
-            className="bg-muted rounded-lg p-6 flex flex-col justify-between"
+            className="bg-card rounded-2xl p-6 flex flex-col justify-between shadow-soft hover:shadow-vibrant transition-shadow duration-300"
           >
             <div>
               <div className="flex gap-1 mb-3">
@@ -51,13 +56,13 @@ const RecensioniSection = () => (
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-foreground/85 text-sm leading-relaxed italic mb-4">
+              <p className="text-foreground/80 text-sm leading-relaxed italic mb-4">
                 "{r.text}"
               </p>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-foreground font-semibold text-sm">{r.author}</span>
-              <span className="text-muted-foreground text-xs">{r.category}</span>
+            <div className="flex items-center justify-between pt-3 border-t border-border">
+              <span className="text-foreground font-bold text-sm">{r.author}</span>
+              <span className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full">{r.category}</span>
             </div>
           </div>
         ))}
