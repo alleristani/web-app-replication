@@ -18,7 +18,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
         <span className="inline-block bg-foreground/10 backdrop-blur-sm text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full mb-6 animate-fade-up border border-primary-foreground/20">
-          ☕ Puglia & Basilicata
+          ☕ In tutta Italia
         </span>
         <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-5 animate-fade-up">
           Il tuo Personal Shopper del Caffè
