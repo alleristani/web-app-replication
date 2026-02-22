@@ -13,7 +13,6 @@ const ContattiSection = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate submission
     setTimeout(() => {
       setLoading(false);
       toast({
@@ -28,14 +27,14 @@ const ContattiSection = () => {
     <section className="section-padding bg-background" id="contatti">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <span className="inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
             Contatti
           </span>
           <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
             Parliamone!
           </h2>
           <p className="text-muted-foreground text-sm md:text-base">
-            Compila il modulo e ti richiamerò per una consulenza gratuita e senza impegno.
+            Compila in meno di 1 minuto per essere ricontattato.
           </p>
         </div>
 
@@ -52,7 +51,7 @@ const ContattiSection = () => {
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Numero di telefono *</label>
-            <Input required type="tel" inputMode="numeric" placeholder="Es. 333 1234567" className="h-12 rounded-xl" />
+            <Input required type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-xl" />
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Indirizzo *</label>
@@ -69,6 +68,9 @@ const ContattiSection = () => {
             <Send className="w-5 h-5" />
             {loading ? "Invio in corso..." : "Invia richiesta e fatti richiamare"}
           </Button>
+          <p className="text-xs text-muted-foreground text-center">
+            Di solito rispondo entro la giornata lavorativa.
+          </p>
         </form>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
@@ -81,7 +83,7 @@ const ContattiSection = () => {
             </a>
           </Button>
           <span className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="w-4 h-4" /> Tutta Italia
+            <MapPin className="w-4 h-4" /> Massafra (TA) – Tutta Italia
           </span>
         </div>
       </div>

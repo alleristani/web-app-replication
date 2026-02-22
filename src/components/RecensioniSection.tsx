@@ -4,32 +4,32 @@ const reviews = [
   {
     text: "La nuova macchina Lavazza in Black che mi ha consigliato Alessio è fantastica: veloce, silenziosa e il caffè esce sempre cremoso come al bar.",
     author: "Marta R.",
-    category: "Macchina e Servizio",
+    category: "Cliente domestico",
   },
   {
     text: "Il caffè 100% Arabica che mi ha suggerito Alessio è profumato e morbido, ma allo stesso tempo con un gusto deciso che rimane piacevole in bocca.",
     author: "Elena G.",
-    category: "Caffè e Miscele",
+    category: "Cliente domestico",
   },
   {
     text: "Con Alessio è stato tutto semplice: è venuto a casa, ci ha fatto assaggiare vari caffè e ci ha aiutato a scegliere macchina e miscela più adatte a noi.",
     author: "Valentina S.",
-    category: "Personal Shopper",
+    category: "Cliente domestico",
   },
   {
     text: "Con la nuova macchina Barista preparo cappuccini, cioccolata e americano con un solo tocco. È intuitiva e ha rivoluzionato la pausa caffè in ufficio.",
     author: "Giovanni P.",
-    category: "Macchina e Servizio",
+    category: "Cliente ufficio",
   },
   {
     text: "Apprezzo molto avere un referente diretto: per ordini, dubbi o assistenza scrivo ad Alessio su WhatsApp e mi risponde sempre in tempi rapidi.",
     author: "Davide R.",
-    category: "Personal Shopper",
+    category: "Cliente ufficio",
   },
   {
     text: "Le capsule dal gusto più intenso sono diventate le preferite di tutta la famiglia: caffè cremoso, dal sapore pieno ma mai troppo amaro.",
     author: "Marco D.",
-    category: "Caffè e Miscele",
+    category: "Cliente domestico",
   },
 ];
 
@@ -37,7 +37,7 @@ const RecensioniSection = () => (
   <section className="section-padding bg-secondary" id="recensioni">
     <div className="max-w-5xl mx-auto">
       <div className="text-center mb-12">
-        <span className="inline-block bg-vibrant/10 text-vibrant text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+        <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
           Recensioni
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground">
@@ -56,13 +56,12 @@ const RecensioniSection = () => (
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-foreground/80 text-sm leading-relaxed italic mb-4">
-                "{r.text}"
+              <p className="text-foreground/80 text-sm leading-relaxed mb-4">
+                {r.text}
               </p>
             </div>
-            <div className="flex items-center justify-between pt-3 border-t border-border">
-              <span className="text-foreground font-bold text-sm">{r.author}</span>
-              <span className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full">{r.category}</span>
+            <div className="pt-3 border-t border-border">
+              <span className="text-foreground font-bold text-sm">{r.author} – {r.category}</span>
             </div>
           </div>
         ))}

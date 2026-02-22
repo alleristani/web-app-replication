@@ -17,8 +17,8 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
-        <span className="inline-block bg-foreground/10 backdrop-blur-sm text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full mb-6 animate-fade-up border border-primary-foreground/20">
-          ☕ In tutta Italia
+        <span className="inline-block bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full mb-6 animate-fade-up border border-primary-foreground/20">
+          ☕ Consulenza sul caffè Lavazza in tutta Italia
         </span>
         <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-5 animate-fade-up">
           Il tuo Personal Shopper del Caffè
@@ -26,8 +26,8 @@ const HeroSection = () => {
         <p className="text-base md:text-lg text-primary-foreground/90 mb-4 animate-fade-up max-w-xl mx-auto" style={{ animationDelay: "0.15s" }}>
           Sono <strong>Alessio Ristani</strong>, ti porto a casa e in ufficio la qualità del caffè Lavazza e i servizi Nims.
         </p>
-        <p className="text-sm md:text-base text-primary-foreground/70 mb-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          Consulenza personalizzata · Rapporto diretto · Zero complicazioni
+        <p className="text-sm md:text-base text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          Scrivimi su WhatsApp o compila il modulo: ti ricontatto il prima possibile.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.45s" }}>
           <Button variant="hero" size="lg" onClick={scrollToForm} className="gap-2 h-14 px-8 text-base rounded-full">
