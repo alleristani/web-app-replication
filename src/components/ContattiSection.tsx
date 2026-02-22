@@ -81,7 +81,7 @@ const ContattiSection = () => {
             </a>
           </Button>
           <span className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="w-4 h-4" /> Massafra (TA) – Puglia e Basilicata
+            <MapPin className="w-4 h-4" /> Tutta Italia
           </span>
         </div>
       </div>

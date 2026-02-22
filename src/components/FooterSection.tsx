@@ -7,7 +7,7 @@ const FooterSection = () => (
         Alessio Ristani
       </p>
       <p className="text-background/60 text-sm">
-        Personal Shopper del Caffè Nims, Gruppo Lavazza · Puglia e Basilicata
+        Personal Shopper del Caffè Nims, Gruppo Lavazza · Tutta Italia
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
         <a href="tel:+393491063216" className="flex items-center gap-2 text-background/80 hover:text-background transition-colors">
