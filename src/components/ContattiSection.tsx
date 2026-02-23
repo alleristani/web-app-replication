@@ -4,23 +4,49 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MessageCircle, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContattiSection = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = {
+      nome: formData.get("nome") as string,
+      cognome: formData.get("cognome") as string,
+      telefono: formData.get("telefono") as string,
+      indirizzo: formData.get("indirizzo") as string,
+      note: (formData.get("note") as string) || null,
+    };
+
+    try {
+      // Save to database
+      const { error: dbError } = await supabase.from("contacts").insert(data);
+      if (dbError) throw dbError;
+
+      // Send email notification
+      await supabase.functions.invoke("send-contact-email", { body: data });
+
       toast({
         title: "Richiesta inviata!",
         description: "Ti ricontatterò il prima possibile. Grazie!",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 800);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Errore",
+        description: "Si è verificato un errore. Riprova o contattami su WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,24 +68,24 @@ const ContattiSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Nome *</label>
-              <Input required placeholder="Il tuo nome" className="h-12 rounded-xl" />
+              <Input required name="nome" placeholder="Il tuo nome" className="h-12 rounded-xl" />
             </div>
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Cognome *</label>
-              <Input required placeholder="Il tuo cognome" className="h-12 rounded-xl" />
+              <Input required name="cognome" placeholder="Il tuo cognome" className="h-12 rounded-xl" />
             </div>
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Numero di telefono *</label>
-            <Input required type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-xl" />
+            <Input required name="telefono" type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-xl" />
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Indirizzo *</label>
-            <Input required placeholder="Via, città, provincia" className="h-12 rounded-xl" />
+            <Input required name="indirizzo" placeholder="Via, città, provincia" className="h-12 rounded-xl" />
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Note (facoltativo)</label>
-            <Textarea placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={3} className="rounded-xl" />
+            <Textarea name="note" placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={3} className="rounded-xl" />
           </div>
           <p className="text-xs text-muted-foreground">
             I tuoi dati saranno utilizzati solo per ricontattarti. Nessuna comunicazione indesiderata.
