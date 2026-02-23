@@ -4,7 +4,7 @@ const benefits = [
   "Esperienza di acquisto personalizzata, non una semplice transazione.",
   "Consigli di un esperto del caffè che conosce prodotti e servizi Nims Lavazza.",
   "Risparmio di tempo: ti aiuto a scegliere subito la soluzione giusta.",
-  "Un consulente di fiducia, sempre raggiungibile ovunque tu sia in Italia.",
+  "Un consulente di fiducia, raggiungibile rapidamente via telefono o WhatsApp ovunque tu sia in Italia.",
 ];
 
 const PercheSceglierciSection = () => (
