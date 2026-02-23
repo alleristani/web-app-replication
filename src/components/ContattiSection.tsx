@@ -20,7 +20,7 @@ const ContattiSection = () => {
       nome: formData.get("nome") as string,
       cognome: formData.get("cognome") as string,
       telefono: formData.get("telefono") as string,
-      indirizzo: formData.get("indirizzo") as string,
+      indirizzo: `${formData.get("indirizzo")}, ${formData.get("paese")} (${formData.get("provincia")})`,
       note: (formData.get("note") as string) || null,
     };
 
@@ -81,7 +81,17 @@ const ContattiSection = () => {
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Indirizzo *</label>
-            <Input required name="indirizzo" placeholder="Via, città, provincia" className="h-12 rounded-xl" />
+            <Input required name="indirizzo" placeholder="Via e numero civico" className="h-12 rounded-xl" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-bold text-foreground mb-1.5 block">Paese / Città *</label>
+              <Input required name="paese" placeholder="Es. Massafra" className="h-12 rounded-xl" />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-foreground mb-1.5 block">Provincia *</label>
+              <Input required name="provincia" placeholder="Es. TA" className="h-12 rounded-xl" />
+            </div>
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Note (facoltativo)</label>

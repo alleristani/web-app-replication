@@ -4,19 +4,19 @@ const services = [
   {
     icon: Home,
     title: "Per la casa",
-    text: "Ti aiuto a scegliere la macchina e le capsule Lavazza più adatte al tuo gusto, ti spiego le formule Nims e seguo i riordini e le promozioni dedicate.",
+    text: "Ti aiuto a scegliere la macchina e le capsule Lavazza più adatte al tuo gusto, ti spiego le formule Nims e seguo i riordini e le promozioni dedicate. Ti seguo anche nei riordini e nelle promozioni dedicate, così non resti mai senza caffè.",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: Briefcase,
     title: "Per uffici e attività",
-    text: "Soluzioni per uffici, studi professionali, negozi e piccoli business, con attenzione a comodità, immagine e costi chiari.",
+    text: "Soluzioni per uffici, studi professionali, negozi e piccoli business, con attenzione a comodità, immagine e costi chiari. Ideale per offrire una pausa caffè di qualità a colleghi e clienti, con costi chiari fin da subito.",
     color: "bg-accent/10 text-accent",
   },
   {
     icon: Droplets,
     title: "Acqua microfiltrata",
-    text: "Soluzioni per acqua microfiltrata Nims (Star Tap), ideali per famiglie e uffici che vogliono ridurre plastica e avere acqua di qualità.",
+    text: "Soluzioni per acqua microfiltrata Nims (Star Tap), ideali per famiglie e uffici che vogliono ridurre plastica e avere acqua di qualità. Una soluzione pensata per ridurre le bottiglie di plastica e avere sempre acqua fresca di qualità.",
     color: "bg-vibrant/10 text-vibrant",
   },
 ];
