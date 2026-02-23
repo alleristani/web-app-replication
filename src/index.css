@@ -106,3 +106,12 @@
     @apply rounded-full;
   }
 }
+
+/* Hide Lovable badge */
+body > a[href*="lovable.dev"],
+body > div[class*="lovable"],
+#lovable-badge,
+a[aria-label*="Lovable"],
+body > a:last-child[target="_blank"][rel="noopener noreferrer"] {
+  display: none !important;
+}

@@ -78,7 +78,7 @@ const ContattiSection = () => {
             <Phone className="w-4 h-4" /> 349 106 3216
           </a>
           <Button variant="whatsapp" size="sm" asChild className="gap-2 rounded-full">
-            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20vorrei%20informazioni%20sui%20servizi%20Nims%20Lavazza." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza%20per%20il%20caffe" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-4 h-4" /> Scrivimi su WhatsApp
             </a>
           </Button>

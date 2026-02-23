@@ -4,7 +4,7 @@ const steps = [
   { icon: PhoneCall, title: "Mi contatti", text: "Mi chiami, mi scrivi su WhatsApp o compili il form: ti rispondo il prima possibile.", num: "01" },
   { icon: HelpCircle, title: "Ti faccio qualche domanda", text: "Capisco quante persone usano la macchina, quante pause caffè fate al giorno, se si tratta di casa, ufficio o attività.", num: "02" },
   { icon: CheckCircle, title: "Soluzione su misura", text: "Ti suggerisco macchina, capsule e servizi più adatti a te, con spiegazione chiara di costi e condizioni.", num: "03" },
-  { icon: HeartHandshake, title: "Resto il tuo riferimento", text: "Per ordini, assistenza e promozioni hai sempre un contatto diretto: niente call center impersonali. In ogni fase hai sempre me come referente diretto, non un call center.", num: "04" },
+  { icon: HeartHandshake, title: "Resto il tuo riferimento", text: "Per ordini, assistenza e promozioni hai sempre un contatto diretto: niente call center impersonali.", num: "04" },
 ];
 
 const ComeFunzionaSection = () => (
