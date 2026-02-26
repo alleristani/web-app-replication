@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Play, Send, Check } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Play, Send, Check, X } from "lucide-react";
 
-import lavazzaBluetooth from "@/assets/lavazza-bluetooth.webp";
-import lavazzaMilk from "@/assets/lavazza-milk.webp";
-import lavazzaBarista from "@/assets/lavazza-barista.webp";
+import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
+import lavazzaMilk from "@/assets/lavazza-milk.png";
+import lavazzaBarista from "@/assets/lavazza-barista.png";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
@@ -19,6 +21,11 @@ interface ProductCard {
   badge?: string;
   videoUrl?: string;
 }
+
+const toEmbedUrl = (driveUrl: string) => {
+  const match = driveUrl.match(/\/d\/([^/]+)\//);
+  return match ? `https://drive.google.com/file/d/${match[1]}/preview` : driveUrl;
+};
 
 const coffeeProducts: ProductCard[] = [
   {
@@ -86,7 +93,7 @@ const scrollToContatti = () => {
   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
 };
 
-const ProductCardComponent = ({ product }: { product: ProductCard }) => (
+const ProductCardComponent = ({ product, onPlayVideo }: { product: ProductCard; onPlayVideo: (url: string) => void }) => (
   <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
     {product.badge && (
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
@@ -117,10 +124,8 @@ const ProductCardComponent = ({ product }: { product: ProductCard }) => (
           <Send className="w-4 h-4" /> Richiedi info su questo prodotto
         </Button>
         {product.videoUrl && (
-          <Button variant="outline" size="sm" asChild className="w-full gap-2">
-            <a href={product.videoUrl} target="_blank" rel="noopener noreferrer">
-              <Play className="w-4 h-4" /> Guarda il video ufficiale
-            </a>
+          <Button variant="outline" size="sm" className="w-full gap-2" onClick={() => onPlayVideo(product.videoUrl!)}>
+            <Play className="w-4 h-4" /> Guarda il video ufficiale
           </Button>
         )}
       </div>
@@ -128,52 +133,82 @@ const ProductCardComponent = ({ product }: { product: ProductCard }) => (
   </div>
 );
 
-const MacchineSection = () => (
-  <section className="section-padding bg-background" id="macchine">
-    <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <span className="inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
-          Le Macchine
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          Le soluzioni che posso proporti
-        </h2>
-      </div>
+const MacchineSection = () => {
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
-      {/* Caffè */}
-      <div className="mb-16">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per il Caffè</h3>
-          <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule, in comodato d'uso gratuito</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {coffeeProducts.map((p) => (
-            <ProductCardComponent key={p.name} product={p} />
-          ))}
-        </div>
-      </div>
+  return (
+    <>
+      <section className="section-padding bg-background" id="macchine">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+              Le Macchine
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display text-foreground">
+              Le soluzioni che posso proporti
+            </h2>
+          </div>
 
-      {/* Separatore */}
-      <div className="flex items-center gap-4 mb-16">
-        <div className="flex-1 h-px bg-border" />
-        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata</span>
-        <div className="flex-1 h-px bg-border" />
-      </div>
+          {/* Caffè */}
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per il Caffè</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule, in comodato d'uso gratuito</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {coffeeProducts.map((p) => (
+                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} />
+              ))}
+            </div>
+          </div>
 
-      {/* Acqua */}
-      <div>
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per l'Acqua</h3>
-          <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata, fredda e frizzante direttamente dal tuo rubinetto</p>
+          {/* Separatore */}
+          <div className="flex items-center gap-4 mb-16">
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata</span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+
+          {/* Acqua */}
+          <div>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per l'Acqua</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata, fredda e frizzante direttamente dal tuo rubinetto</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {waterProducts.map((p) => (
+                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} />
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {waterProducts.map((p) => (
-            <ProductCardComponent key={p.name} product={p} />
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
+      </section>
+
+      {/* Video Modal */}
+      <Dialog open={!!videoUrl} onOpenChange={(open) => !open && setVideoUrl(null)}>
+        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-black border-none">
+          <button
+            onClick={() => setVideoUrl(null)}
+            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            aria-label="Chiudi video"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          {videoUrl && (
+            <div className="aspect-video w-full">
+              <iframe
+                src={videoUrl}
+                className="w-full h-full"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="Video prodotto"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
 
 export default MacchineSection;
