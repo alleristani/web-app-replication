@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MessageCircle, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const ContattiSection = () => {
   const { toast } = useToast();
@@ -15,23 +14,8 @@ const ContattiSection = () => {
     setLoading(true);
 
     const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const data = {
-      nome: formData.get("nome") as string,
-      cognome: formData.get("cognome") as string,
-      telefono: formData.get("telefono") as string,
-      indirizzo: `${formData.get("indirizzo")}, ${formData.get("paese")} (${formData.get("provincia")})`,
-      note: (formData.get("note") as string) || null,
-    };
 
     try {
-      // Save to database
-      const { error: dbError } = await supabase.from("contacts").insert(data);
-      if (dbError) throw dbError;
-
-      // Send email notification
-      await supabase.functions.invoke("send-contact-email", { body: data });
-
       toast({
         title: "Richiesta inviata!",
         description: "Ti ricontatterò il prima possibile. Grazie!",
