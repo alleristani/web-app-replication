@@ -116,6 +116,13 @@
     display: none !important;
   }
 
+  /* Hide Lovable close button */
+  button[class*="fixed"][class*="bottom-"][class*="right-"],
+  div.fixed.bottom-4.right-4 button,
+  [data-sonner-toaster] [data-close-button] {
+    display: none !important;
+  }
+
   .bg-navy {
     background-color: hsl(var(--navy));
   }
