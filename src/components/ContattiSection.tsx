@@ -15,8 +15,23 @@ const ContattiSection = () => {
     setLoading(true);
 
     const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          nome: formData.get("nome"),
+          cognome: formData.get("cognome"),
+          telefono: formData.get("telefono"),
+          indirizzo: formData.get("indirizzo"),
+          paese: formData.get("paese"),
+          provincia: formData.get("provincia"),
+          note: formData.get("note"),
+        },
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Richiesta inviata!",
         description: "Ti ricontatterò il prima possibile. Grazie!",
