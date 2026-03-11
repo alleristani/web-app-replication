@@ -53,14 +53,14 @@ const ContattiSection = () => {
     <section className="section-padding bg-background" id="contatti">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
             Contatti
           </span>
           <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
-            Parliamone!
+            Parliamo del tuo caffè
           </h2>
           <p className="text-muted-foreground text-sm md:text-base">
-            Compila in meno di 1 minuto per essere ricontattato.
+            Compila il modulo e ti ricontatto entro la giornata lavorativa.
           </p>
         </div>
 

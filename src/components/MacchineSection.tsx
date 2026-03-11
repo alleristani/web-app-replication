@@ -140,12 +140,12 @@ const MacchineSection = () => {
     <>
       <section className="section-padding bg-background" id="macchine">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
               Le Macchine
             </span>
             <h2 className="text-3xl md:text-5xl font-display text-foreground">
-              Le soluzioni che posso proporti
+              Le soluzioni disponibili
             </h2>
           </div>
 
