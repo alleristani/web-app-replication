@@ -17,17 +17,17 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
-        <span className="inline-block bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full mb-6 animate-fade-up border border-primary-foreground/20">
-          ☕ Consulenza sul caffè Lavazza in tutta Italia
+        <span className="inline-block bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-6 animate-fade-up border border-primary-foreground/15">
+          Consulente Nims · Gruppo Lavazza
         </span>
-        <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-5 animate-fade-up">
-          Il tuo Personal Shopper del Caffè
+        <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-6 animate-fade-up">
+          Il tuo caffè perfetto,<br className="hidden md:block" /> a portata di mano
         </h1>
-        <p className="text-base md:text-lg text-primary-foreground/90 mb-4 animate-fade-up max-w-xl mx-auto" style={{ animationDelay: "0.15s" }}>
-          Sono <strong>Alessio Ristani</strong>, ti porto a casa e in ufficio la qualità del caffè Lavazza e i servizi Nims.
+        <p className="text-base md:text-lg text-primary-foreground/85 mb-4 animate-fade-up max-w-xl mx-auto leading-relaxed" style={{ animationDelay: "0.15s" }}>
+          Mi chiamo <strong>Alessio Ristani</strong> e ti aiuto a scegliere la soluzione ideale per il caffè Lavazza e l'acqua microfiltrata — a casa, in ufficio o nella tua attività.
         </p>
-        <p className="text-sm md:text-base text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          Scrivimi su WhatsApp o compila il modulo: ti ricontatto il prima possibile.
+        <p className="text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          Contattami senza impegno: ti richiamo il prima possibile.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.45s" }}>
           <Button variant="hero" size="lg" onClick={scrollToForm} className="gap-2 h-14 px-8 text-base rounded-full">
@@ -35,7 +35,7 @@ const HeroSection = () => {
             Richiedi informazioni
           </Button>
           <Button variant="whatsapp" size="lg" asChild className="gap-2 h-14 px-8 text-base rounded-full">
-            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza%20per%20il%20caffe" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-5 h-5" />
               Scrivimi su WhatsApp
             </a>
