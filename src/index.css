@@ -111,15 +111,9 @@
     @apply rounded-full;
   }
 
-  /* Hide Lovable badge */
-  a[href*="lovable.dev"][target="_blank"] {
-    display: none !important;
-  }
-
-  /* Hide Lovable close button */
-  button[class*="fixed"][class*="bottom-"][class*="right-"],
-  div.fixed.bottom-4.right-4 button,
-  [data-sonner-toaster] [data-close-button] {
+  /* Hide Lovable badge and close button */
+  #lovable-badge,
+  #lovable-badge-close {
     display: none !important;
   }
 
