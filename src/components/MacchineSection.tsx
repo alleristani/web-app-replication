@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play, Send, Check, X } from "lucide-react";
 
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
-import lavazzaMilk from "@/assets/lavazza-milk.png";
+import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
 import lavazzaBarista from "@/assets/lavazza-barista.png";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
