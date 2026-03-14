@@ -81,7 +81,7 @@ const LavoraConNoiSection = () => (
 
         {/* Partner logos */}
         <div className="border-t border-primary-foreground/[0.08] pt-10 md:pt-14">
-          <p className="text-primary-foreground/20 text-[11px] uppercase tracking-[0.3em] text-center mb-8">
+          <p className="text-primary-foreground/70 text-[11px] uppercase tracking-[0.3em] text-center mb-8">
             In collaborazione con
           </p>
           <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20">
