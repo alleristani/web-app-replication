@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, TrendingUp, Award, ChevronRight } from "lucide-react";
-import logoLavazza from "@/assets/logo-lavazza-transparent.png";
-import logoNims from "@/assets/logo-nims-transparent.png";
+import logoLavazza from "@/assets/logo-lavazza-bianco.png";
+import logoNims from "@/assets/logo-nims-bianco.png";
 
 const benefits = [
   {
