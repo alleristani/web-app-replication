@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 interface CapsuleCard {
   name: string;
   image: string;
+  alt: string;
   badge?: string;
   description: string;
   info: string;
@@ -16,6 +17,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Top Selection Deciso",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10083.webp",
+    alt: "Capsula caffè Lavazza in Black Top Selection Deciso – intensità 10/11",
     badge: "Intensità 10/11",
     description: "Una miscela di caffè intensa, perfetta per assaporare un buon espresso tutte le volte che vuoi. 100% Arabica naturali brasiliane e asiatiche per un espresso aromatico con un finale di cacao e spezie.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -25,6 +27,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Top Selection Deciso x2",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10086.webp",
+    alt: "Capsula caffè Lavazza in Black Top Selection Deciso x2 – intensità 10/11",
     badge: "Intensità 10/11",
     description: "L'aroma intenso della miscela Top Selection Deciso nella pratica capsula bidose: due caffè in un solo gesto. 100% Arabica brasiliane e asiatiche, finale di cacao e spezie.",
     info: "Capsule bidose · atmosfera protettiva",
@@ -34,6 +37,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Top Selection Bilanciato",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10510.webp",
+    alt: "Capsula caffè Lavazza in Black Top Selection Bilanciato – intensità 8/11",
     badge: "Intensità 8/11",
     description: "Un caffè pieno, corposo e persistente. Una raffinata miscela di dolci Arabica naturali brasiliane per un espresso dal gusto rotondo e con note di nocciola e cioccolato.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -43,6 +47,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Top Selection Bilanciato x2",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10513.webp",
+    alt: "Capsula caffè Lavazza in Black Top Selection Bilanciato x2 – intensità 8/11",
     badge: "Intensità 8/11",
     description: "La miscela Bilanciato nella versione bidose: due ottimi caffè in un solo gesto. Arabica brasiliane, note di nocciola e cioccolato.",
     info: "Capsule bidose · atmosfera protettiva",
@@ -52,6 +57,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Top Selection Corposo",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10516.webp",
+    alt: "Capsula caffè Lavazza in Black Top Selection Corposo – intensità 9/11",
     badge: "Intensità 9/11",
     description: "Una raffinata miscela di dolci Arabica naturali brasiliane e asiatiche, per un espresso aromatico con un finale di cacao e spezie. Gusto ricco e avvolgente.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -61,6 +67,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Single Origin Brasile",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10519.webp",
+    alt: "Capsula caffè Lavazza in Black Single Origin Brasile – intensità 8/11",
     badge: "Intensità 8/11 · 100% Arabica",
     description: "Una miscela pregiata che sprigiona il profumo di terre lontane. Un single-origin eccezionale: ciliegie 100% Arabica lasciate appassire sui rami per esprimere al massimo la dolcezza e le note mielose e cioccolatate.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -70,6 +77,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Intense Aroma",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10522.webp",
+    alt: "Capsula caffè Lavazza in Black Intense Aroma – intensità 11/11",
     badge: "Intensità 11/11 · Il più intenso",
     description: "Una sapiente miscela dal gusto intenso, cremoso e bilanciato. Arabica del Centro e Sud America e Robusta africane e asiatiche per un caffè con sentori di legno e dall'amabile retrogusto di cacao amaro, persistente e bilanciato.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -79,6 +87,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Intense Aroma x2",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10525.webp",
+    alt: "Capsula caffè Lavazza in Black Intense Aroma x2 – intensità 11/11",
     badge: "Intensità 11/11 · Bidose",
     description: "L'intensità di Intense Aroma nella capsula bidose. Arabica e Robusta per un caffè con sentori di legno e retrogusto di cacao amaro, persistente e bilanciato: due tazze in un solo gesto.",
     info: "Capsule bidose · atmosfera protettiva",
@@ -88,6 +97,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Decaffeinato",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10528.webp",
+    alt: "Capsula caffè Lavazza in Black Decaffeinato – intensità 7/11",
     badge: "Intensità 7/11 · Senza caffeina",
     description: "Un caffè dolce e vellutato. Miscela di 100% Arabica dolci per un espresso decaffeinato dalla crema vellutata e persistente, con note di frutta secca e cereali. Caffeina non superiore allo 0,10%.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -97,6 +107,7 @@ const coffeCapsules: CapsuleCard[] = [
   {
     name: "Intense Americano",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-100130.webp",
+    alt: "Capsula caffè Lavazza in Black Intense Americano – intensità 10/11",
     badge: "Intensità 10/11 · 240 ml",
     description: "Miscela elegante, ricca e corposa. Arabica del Centro e Sud America e Robusta africane si uniscono per creare un caffè dai sentori di cacao e frutta secca. Da degustare in ogni momento della giornata, con erogazione da 240 ml.",
     info: "Capsule monodose · atmosfera protettiva",
@@ -109,6 +120,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Orzo",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-10090.webp",
+    alt: "Capsula Lavazza in Black Orzo solubile",
     description: "Delicato orzo solubile dal gusto fragrante e ricco. Ottimo in ogni momento della giornata, dal mattino alla sera. Una pausa caffè tutta nuova.",
     info: "Orzo solubile. Può contenere tracce di LATTE. · Capsule monodose.",
     buttonLabel: "Chiedi info sull'Orzo",
@@ -117,6 +129,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Tè al Limone",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-14503.webp",
+    alt: "Capsula Lavazza in Black Tè al Limone",
     description: "Gustoso e rotondo con note agrumate. Un piacevole momento di relax pomeridiano o una colazione leggera, sempre pronto in capsula.",
     info: "Preparato in polvere per the solubile al gusto limone. Può contenere tracce di GLUTINE e LATTE. · Capsule monodose.",
     buttonLabel: "Chiedi info sul Tè al Limone",
@@ -125,6 +138,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Caffè al Ginseng",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-24709.webp",
+    alt: "Capsula Lavazza in Black Caffè al Ginseng",
     description: "Crema dorata e profumo intenso per godere della speziata carica del ginseng. Una pausa caffè alternativa, energizzante e aromatica.",
     info: "Preparato in polvere per bevanda al caffè con ginseng. Può contenere tracce di GLUTINE. · Capsule monodose.",
     buttonLabel: "Chiedi info sul Ginseng",
@@ -133,6 +147,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Cioccolata Fondente",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-92304.webp",
+    alt: "Capsula Lavazza in Black Cioccolata Fondente",
     description: "Deliziosa bevanda al gusto di cioccolato fondente. Perfetta in ogni momento della giornata per chi vuole una pausa golosa e appagante, dall'aroma intenso.",
     info: "Preparato in polvere per bevanda al gusto cioccolata. Può contenere tracce di GLUTINE. · Capsule monodose.",
     buttonLabel: "Chiedi info sulla Cioccolata",
@@ -141,6 +156,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Camomilla",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-86752.webp",
+    alt: "Capsula Lavazza in Black Camomilla",
     description: "Delicata, floreale e naturale. La camomilla è la quintessenza delle infusioni di erbe, ideale per una pausa rilassante in qualsiasi momento della giornata.",
     info: "Preparato in polvere per camomilla solubile. Può contenere tracce di GLUTINE e LATTE. · Capsule monodose.",
     buttonLabel: "Chiedi info sulla Camomilla",
@@ -149,6 +165,7 @@ const extraCapsules: CapsuleCard[] = [
   {
     name: "Bevanda Bianca",
     image: "https://www.nims.it/nims2.xtro.it/repository/webp/ita-86755.webp",
+    alt: "Capsula Lavazza in Black Bevanda Bianca al latte",
     description: "Una deliziosa bevanda al latte, delicata e appagante. Ideale per preparare gustose bevande al cioccolato, caffè macchiato o un perfetto tè all'inglese con latte.",
     info: "Preparato in polvere per bevanda al gusto latte. Può contenere tracce di GLUTINE. · Capsule monodose.",
     buttonLabel: "Chiedi info sulla Bevanda Bianca",
@@ -166,9 +183,11 @@ const CapsuleCardComponent = ({ capsule }: { capsule: CapsuleCard }) => (
     <div className="flex items-center justify-center p-6 bg-secondary/30">
       <img
         src={capsule.image}
-        alt={capsule.name}
+        alt={capsule.alt}
         className="h-48 w-auto object-contain"
         loading="lazy"
+        width={300}
+        height={192}
       />
     </div>
     <div className="p-6 flex flex-col flex-1">
@@ -195,10 +214,10 @@ const CapsuleSection = () => (
           Le Capsule
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
-          Le capsule Lavazza in Black
+          Capsule Lavazza in Black: 7 Miscele Esclusive per Ogni Gusto
         </h2>
         <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le capsule Lavazza in Black sono disponibili in esclusiva per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina — dal più delicato al più intenso.
+          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le capsule Lavazza in Black esclusive sono disponibili solo per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina — dal più delicato al più intenso.
         </p>
       </div>
 

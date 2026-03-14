@@ -11,9 +11,12 @@ const HeroSection = () => {
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <img
         src={heroCoffee}
-        alt="Caffè espresso Lavazza"
+        alt="Caffè espresso Lavazza in Black – consulente Nims Massafra Taranto"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
+        fetchPriority="high"
+        width={1920}
+        height={1080}
       />
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
@@ -21,10 +24,10 @@ const HeroSection = () => {
           Consulente Nims · Gruppo Lavazza
         </span>
         <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-6 animate-fade-up">
-          Il tuo caffè perfetto,<br className="hidden md:block" /> a portata di mano
+          Il tuo caffè Lavazza perfetto,<br className="hidden md:block" /> a portata di mano
         </h1>
         <p className="text-base md:text-lg text-primary-foreground/85 mb-4 animate-fade-up max-w-xl mx-auto leading-relaxed" style={{ animationDelay: "0.15s" }}>
-          Mi chiamo <strong>Alessio Ristani</strong> e ti aiuto a scegliere la soluzione ideale per il caffè Lavazza e l'acqua microfiltrata — a casa, in ufficio o nella tua attività.
+          Mi chiamo <strong>Alessio Ristani</strong>, consulente Nims Lavazza a Massafra (TA), e ti aiuto a scegliere la soluzione ideale per il caffè Lavazza in capsule e l'acqua microfiltrata Star Tap — a casa, in ufficio o nella tua attività. Servizio disponibile in tutta Italia.
         </p>
         <p className="text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           Contattami senza impegno: ti richiamo il prima possibile.

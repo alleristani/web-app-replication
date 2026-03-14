@@ -8,6 +8,7 @@ import PercheSceglierciSection from "@/components/PercheSceglierciSection";
 import RecensioniSection from "@/components/RecensioniSection";
 import LavoraConNoiSection from "@/components/LavoraConNoiSection";
 import ContattiSection from "@/components/ContattiSection";
+import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
@@ -22,6 +23,7 @@ const Index = () => (
     <RecensioniSection />
     <LavoraConNoiSection />
     <ContattiSection />
+    <FAQSection />
     <FooterSection />
   </main>
 );
