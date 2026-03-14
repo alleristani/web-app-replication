@@ -88,7 +88,7 @@ const LavoraConNoiSection = () => (
             <img
               src={logoLavazza}
               alt="Lavazza – Torino, Italia, 1895 – Gruppo Lavazza"
-              className="h-8 md:h-10 lg:h-12 object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
+              className="h-8 md:h-10 lg:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
               width={120}
               height={48}
