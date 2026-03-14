@@ -41,7 +41,7 @@ const RecensioniSection = () => (
           Testimonianze
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          La soddisfazione dei nostri clienti
+          Recensioni Clienti: Cosa Dicono di Nims Lavazza
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

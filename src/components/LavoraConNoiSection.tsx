@@ -87,14 +87,20 @@ const LavoraConNoiSection = () => (
           <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20">
             <img
               src={logoLavazza}
-              alt="Lavazza — Torino, Italia, 1895"
+              alt="Lavazza – Torino, Italia, 1895 – Gruppo Lavazza"
               className="h-8 md:h-10 lg:h-12 object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
+              loading="lazy"
+              width={120}
+              height={48}
             />
             <div className="w-px h-8 bg-primary-foreground/10" />
             <img
               src={logoNims}
-              alt="Nims"
+              alt="Nims Srl – azienda del Gruppo Lavazza"
               className="h-8 md:h-10 lg:h-12 object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
+              loading="lazy"
+              width={120}
+              height={48}
             />
           </div>
         </div>

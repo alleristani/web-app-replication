@@ -4,16 +4,16 @@ const services = [
   {
     icon: Home,
     title: "Per la tua casa",
-    text: "Ti guido nella scelta della macchina e delle capsule più adatte al tuo gusto, con formule trasparenti e un servizio di riordino semplice e puntuale.",
+    text: "Ti guido nella scelta della macchina caffè Lavazza in Black e delle capsule più adatte al tuo gusto, con formule trasparenti e un servizio di riordino semplice e puntuale.",
   },
   {
     icon: Briefcase,
     title: "Per il tuo ufficio",
-    text: "Soluzioni pensate per uffici, studi professionali e attività commerciali. Una pausa caffè di qualità per il tuo team e i tuoi clienti, con costi chiari.",
+    text: "Soluzioni pensate per uffici, studi professionali e attività commerciali. Una pausa caffè di qualità per il tuo team e i tuoi clienti, con macchine in comodato d'uso gratuito e costi chiari.",
   },
   {
     icon: Droplets,
-    title: "Acqua microfiltrata",
+    title: "Acqua microfiltrata Star Tap",
     text: "Sistemi di acqua microfiltrata Star Tap: liscia, fredda o frizzante direttamente dal rubinetto. Meno plastica, più qualità ogni giorno.",
   },
 ];
@@ -26,7 +26,7 @@ const ServiziSection = () => (
           Servizi
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          Le nostre soluzioni
+          Soluzioni Lavazza per casa, ufficio e attività commerciali
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

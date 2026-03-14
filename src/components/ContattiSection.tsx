@@ -57,10 +57,10 @@ const ContattiSection = () => {
             Contatti
           </span>
           <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
-            Parliamo del tuo caffè
+            Contattami: Consulenza Gratuita Nims Lavazza
           </h2>
           <p className="text-muted-foreground text-sm md:text-base">
-            Compila il modulo e ti ricontatto entro la giornata lavorativa.
+            Compila il modulo e ti ricontatto entro la giornata lavorativa. Servizio disponibile in tutta Italia.
           </p>
         </div>
 

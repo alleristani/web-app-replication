@@ -16,6 +16,7 @@ import startapPro from "@/assets/startap-pro.webp";
 interface ProductCard {
   name: string;
   image: string;
+  alt: string;
   description: string;
   bullets: string[];
   badge?: string;
@@ -31,21 +32,24 @@ const coffeeProducts: ProductCard[] = [
   {
     name: "Lavazza in Black Elogy Bluetooth",
     image: lavazzaBluetooth,
-    description: "La macchina da caffè compatta con interfaccia touch, Bluetooth e doppio beccuccio. Elegante e premiata con l'iF Design Award.",
+    alt: "Macchina caffè Lavazza in Black Elogy Bluetooth in comodato d'uso gratuito",
+    description: "La macchina da caffè in capsule compatta con interfaccia touch, Bluetooth e doppio beccuccio. Elegante e premiata con l'iF Design Award. Disponibile in comodato d'uso gratuito.",
     bullets: ["Touch intuitivo", "Bluetooth e App", "Bidose (2 caffè insieme)"],
     videoUrl: "https://drive.google.com/file/d/1fpuLirnPZbMVN5glge6neTUATpdOnyvo/view?usp=sharing",
   },
   {
     name: "Lavazza in Black Elogy Milk",
     image: lavazzaMilk,
-    description: "Espresso, cappuccino, latte macchiato e molto altro. Il cappuccinatore integrato ti apre un mondo di preparazioni a base di latte.",
+    alt: "Macchina caffè Lavazza in Black Elogy Milk con cappuccinatore integrato",
+    description: "Espresso, cappuccino, latte macchiato e molto altro. Il cappuccinatore integrato ti apre un mondo di preparazioni a base di latte. Macchina caffè in capsule in comodato d'uso gratuito.",
     bullets: ["Cappuccinatore integrato", "Touch intuitivo", "Bluetooth e App"],
     videoUrl: "https://drive.google.com/file/d/1UU1mcNXyTFCW1mAcA4-ZNz8Xe69p_u7p/view?usp=sharing",
   },
   {
     name: "Lavazza in Black Elogy Barista",
     image: lavazzaBarista,
-    description: "La soluzione top di gamma per chi vuole la caffetteria italiana a casa. Oltre 30 ricette, accessorio BAR CUP incluso, Bluetooth e Wi-Fi.",
+    alt: "Macchina caffè Lavazza in Black Elogy Barista top di gamma multibeverage",
+    description: "La soluzione top di gamma per chi vuole la caffetteria italiana a casa. Oltre 30 ricette, accessorio BAR CUP incluso, Bluetooth e Wi-Fi. Macchina caffè in capsule in comodato d'uso gratuito.",
     bullets: ["Multibeverage", "Connettività Wi-Fi + Bluetooth", "Beccuccio bidose"],
     badge: "NOVITÀ",
     videoUrl: "https://drive.google.com/file/d/1O7Pfm0gi_iIPf4QM9_9Hz0RhRl_iB4W-/view?usp=sharing",
@@ -56,7 +60,8 @@ const waterProducts: ProductCard[] = [
   {
     name: "Star Tap Evolution",
     image: startapEvolution,
-    description: "Il frigogasatore sopra lavello con display touch a colori, lampada UVC anti-batterica, fino a 4 profili personalizzati e App My Nims.",
+    alt: "Sistema acqua microfiltrata Star Tap Evolution sopra lavello",
+    description: "Il frigogasatore sopra lavello con display touch a colori, lampada UVC anti-batterica, fino a 4 profili personalizzati e App My Nims. Acqua microfiltrata Star Tap di alta qualità.",
     bullets: ["Acqua fredda, liscia e frizzante", "Lampada UVC (99,9% batteri)", "Display touch + App"],
     badge: "TOP DI GAMMA",
     videoUrl: "https://drive.google.com/file/d/1tL2VTgw5kAslnwf2TKoG9yK_7RpC7R6V/view?usp=sharing",
@@ -64,12 +69,14 @@ const waterProducts: ProductCard[] = [
   {
     name: "Star Tap Extra",
     image: startapExtra,
-    description: "Frigogasatore sopra lavello compatto, semplice e funzionale. Acqua pura fredda o frizzante con 5 tasti touch e Bluetooth.",
+    alt: "Frigogasatore acqua Star Tap Extra Bluetooth sopra lavello",
+    description: "Frigogasatore sopra lavello compatto, semplice e funzionale. Acqua microfiltrata Star Tap fredda o frizzante con 5 tasti touch e Bluetooth.",
     bullets: ["Acqua fredda, liscia e frizzante", "5 tasti touch", "Bluetooth"],
   },
   {
     name: "Star Tap Extra SL",
     image: startapExtraSl,
+    alt: "Star Tap Extra SL sotto lavello acqua microfiltrata frizzante",
     description: "Si installa sotto il lavello e non occupa spazio sul piano cucina. Stessi vantaggi dell'Extra, zero ingombro.",
     bullets: ["Sotto lavello", "Acqua fredda, liscia e frizzante", "Rubinetto dedicato in dotazione"],
     badge: "SOTTO LAVELLO",
@@ -77,6 +84,7 @@ const waterProducts: ProductCard[] = [
   {
     name: "Star Tap Essential",
     image: startapEssential,
+    alt: "Sistema filtrante acqua Star Tap Essential con lampada UVC",
     description: "Sistema filtrante sotto lavello con lampada UVC. Acqua microfiltrata dal rubinetto di casa, più pura e salubre ogni giorno.",
     bullets: ["Filtro multistrato 2500A", "Lampada UVC anti-batterica", "Compatto sotto lavello"],
     badge: "SOLO FILTRAZIONE",
@@ -84,6 +92,7 @@ const waterProducts: ProductCard[] = [
   {
     name: "Star Tap Pro",
     image: startapPro,
+    alt: "Star Tap Pro frigogasatore per uffici acqua fredda e frizzante",
     description: "Il frigogasatore stand-alone pensato per uffici e ambienti di lavoro. Alta capacità, design professionale, Bluetooth e App My Nims.",
     bullets: ["Acqua fredda, liscia e frizzante", "Lampada UVC", "Ideale per uffici e studi"],
     badge: "PER UFFICIO",
@@ -104,9 +113,11 @@ const ProductCardComponent = ({ product, onPlayVideo }: { product: ProductCard; 
     <div className="flex items-center justify-center p-6 bg-secondary/30">
       <img
         src={product.image}
-        alt={product.name}
+        alt={product.alt}
         className="h-48 w-auto object-contain"
         loading="lazy"
+        width={300}
+        height={192}
       />
     </div>
     <div className="p-6 flex flex-col flex-1">
@@ -146,15 +157,15 @@ const MacchineSection = () => {
               Le Macchine
             </span>
             <h2 className="text-3xl md:text-5xl font-display text-foreground">
-              Le soluzioni disponibili
+              Macchine Caffè Lavazza in Black in Comodato d'Uso Gratuito
             </h2>
           </div>
 
           {/* Caffè */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per il Caffè</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule, in comodato d'uso gratuito</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per il Caffè in Capsule</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule, macchina caffè in comodato d'uso gratuito</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
@@ -166,15 +177,15 @@ const MacchineSection = () => {
           {/* Separatore */}
           <div className="flex items-center gap-4 mb-16">
             <div className="flex-1 h-px bg-border" />
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata Star Tap</span>
             <div className="flex-1 h-px bg-border" />
           </div>
 
           {/* Acqua */}
           <div>
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per l'Acqua</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata, fredda e frizzante direttamente dal tuo rubinetto</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Sistemi Acqua Microfiltrata Star Tap</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata Star Tap, fredda e frizzante direttamente dal tuo rubinetto</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {waterProducts.map((p) => (
