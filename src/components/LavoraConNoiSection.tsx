@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, TrendingUp, Award, ChevronRight } from "lucide-react";
-import logoLavazza from "@/assets/logo-lavazza-transparent.png";
-import logoNims from "@/assets/logo-nims-transparent.png";
+import logoLavazza from "@/assets/logo-lavazza-bianco.png";
+import logoNims from "@/assets/logo-nims-bianco.png";
 
 const benefits = [
   {
@@ -81,14 +81,14 @@ const LavoraConNoiSection = () => (
 
         {/* Partner logos */}
         <div className="border-t border-primary-foreground/[0.08] pt-10 md:pt-14">
-          <p className="text-primary-foreground/20 text-[11px] uppercase tracking-[0.3em] text-center mb-8">
+          <p className="text-primary-foreground/70 text-[11px] uppercase tracking-[0.3em] text-center mb-8">
             In collaborazione con
           </p>
           <div className="flex items-center justify-center gap-10 md:gap-16 lg:gap-20">
             <img
               src={logoLavazza}
               alt="Lavazza – Torino, Italia, 1895 – Gruppo Lavazza"
-              className="h-8 md:h-10 lg:h-12 object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
+              className="h-8 md:h-10 lg:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
               width={120}
               height={48}
@@ -97,7 +97,7 @@ const LavoraConNoiSection = () => (
             <img
               src={logoNims}
               alt="Nims Srl – azienda del Gruppo Lavazza"
-              className="h-8 md:h-10 lg:h-12 object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
+              className="h-8 md:h-10 lg:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
               width={120}
               height={48}
