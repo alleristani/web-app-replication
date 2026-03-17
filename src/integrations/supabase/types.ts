@@ -14,16 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contacts: {
+        Row: {
+          cognome: string
+          created_at: string | null
+          id: string
+          nome: string
+          note: string | null
+          numero_scelto: number
+          pr_user_id: string
+          stato: Database["public"]["Enums"]["contact_status"]
+          telefono: string
+        }
+        Insert: {
+          cognome: string
+          created_at?: string | null
+          id?: string
+          nome: string
+          note?: string | null
+          numero_scelto: number
+          pr_user_id: string
+          stato?: Database["public"]["Enums"]["contact_status"]
+          telefono: string
+        }
+        Update: {
+          cognome?: string
+          created_at?: string | null
+          id?: string
+          nome?: string
+          note?: string | null
+          numero_scelto?: number
+          pr_user_id?: string
+          stato?: Database["public"]["Enums"]["contact_status"]
+          telefono?: string
+        }
+        Relationships: []
+      }
+      extractions: {
+        Row: {
+          created_at: string | null
+          data_estrazione: string
+          id: string
+          numero_vincente: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_estrazione: string
+          id?: string
+          numero_vincente?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          data_estrazione?: string
+          id?: string
+          numero_vincente?: number | null
+        }
+        Relationships: []
+      }
+      pr_profiles: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          display_name: string
+          id: string
+          user_id: string
+          username: string
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          display_name: string
+          id?: string
+          user_id: string
+          username: string
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          display_name?: string
+          id?: string
+          user_id?: string
+          username?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_taken_numbers: { Args: never; Returns: number[] }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "pr"
+      contact_status:
+        | "nuovo"
+        | "da_chiamare"
+        | "contattato"
+        | "appuntamento_fissato"
+        | "non_interessato"
+        | "venduto"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +265,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "pr"],
+      contact_status: [
+        "nuovo",
+        "da_chiamare",
+        "contattato",
+        "appuntamento_fissato",
+        "non_interessato",
+        "venduto",
+      ],
+    },
   },
 } as const

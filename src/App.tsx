@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Calcola from "./pages/Calcola";
+import Estrazione from "./pages/Estrazione";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/calcola" element={<Calcola />} />
+            <Route path="/estrazione" element={<Estrazione />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
