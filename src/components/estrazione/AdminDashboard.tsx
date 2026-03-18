@@ -303,11 +303,11 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                           <TableCell className="whitespace-nowrap">
                             {c.telefono}
                           </TableCell>
-                          <TableCell>
-                            <span className="font-bold text-primary">
-                              {c.numero_scelto}
-                            </span>
-                          </TableCell>
+                           <TableCell>
+                             <span className="font-bold text-primary">
+                               {c.numero_scelto ?? "—"}
+                             </span>
+                           </TableCell>
                           <TableCell className="text-xs max-w-[120px] truncate hidden md:table-cell">
                             {c.note || "-"}
                           </TableCell>
