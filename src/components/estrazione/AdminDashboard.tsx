@@ -286,8 +286,8 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                         <TableHead className="hidden sm:table-cell">
                           Data
                         </TableHead>
-                        <TableHead>Stato</TableHead>
-                      </TableRow>
+                         <TableHead>Stato</TableHead>
+                         <TableHead>Azioni</TableHead>
                     </TableHeader>
                     <TableBody>
                       {contacts.map((c) => (
