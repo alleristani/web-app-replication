@@ -232,6 +232,24 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
       </header>
 
       <div className="max-w-6xl mx-auto p-4">
+        {extraction?.data_estrazione && (
+          <Card className="mb-4 border-primary/30 bg-primary/5">
+            <CardContent className="p-3 flex items-center gap-2 text-sm">
+              <span className="text-lg">🎯</span>
+              <span>
+                Prossima estrazione:{" "}
+                <strong>
+                  {new Date(extraction.data_estrazione).toLocaleDateString("it-IT", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </strong>
+              </span>
+            </CardContent>
+          </Card>
+        )}
         <Tabs defaultValue="contatti" className="w-full">
           <TabsList className="w-full grid grid-cols-4">
             <TabsTrigger value="contatti" className="text-xs sm:text-sm">

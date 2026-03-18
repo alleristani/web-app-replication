@@ -112,6 +112,24 @@ const PRDashboard = ({ onLogout, userId }: PRDashboardProps) => {
       </header>
 
       <div className="max-w-2xl mx-auto p-4">
+        {extractionDate && (
+          <Card className="mb-4 border-primary/30 bg-primary/5">
+            <CardContent className="p-3 flex items-center gap-2 text-sm">
+              <span className="text-lg">🎯</span>
+              <span>
+                Prossima estrazione:{" "}
+                <strong>
+                  {new Date(extractionDate).toLocaleDateString("it-IT", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </strong>
+              </span>
+            </CardContent>
+          </Card>
+        )}
         <Tabs defaultValue="nuovo" className="w-full">
           <TabsList className="w-full grid grid-cols-2">
             <TabsTrigger value="nuovo">
