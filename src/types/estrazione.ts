@@ -17,6 +17,7 @@ export type ContactStatus =
   | "contattato"
   | "appuntamento_fissato"
   | "non_interessato"
+  | "non_disponibile_degustazione"
   | "venduto";
 
 export const statusLabels: Record<ContactStatus, string> = {
@@ -25,6 +26,7 @@ export const statusLabels: Record<ContactStatus, string> = {
   contattato: "Contattato",
   appuntamento_fissato: "Appuntamento fissato",
   non_interessato: "Non interessato",
+  non_disponibile_degustazione: "Non disponibile degustazione",
   venduto: "Venduto",
 };
 
@@ -34,6 +36,7 @@ export const statusColors: Record<ContactStatus, string> = {
   contattato: "bg-purple-100 text-purple-800",
   appuntamento_fissato: "bg-emerald-100 text-emerald-800",
   non_interessato: "bg-red-100 text-red-800",
+  non_disponibile_degustazione: "bg-gray-100 text-gray-800",
   venduto: "bg-green-100 text-green-800",
 };
 
