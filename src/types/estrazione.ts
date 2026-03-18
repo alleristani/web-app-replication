@@ -4,7 +4,7 @@ export interface Contact {
   nome: string;
   cognome: string;
   telefono: string;
-  numero_scelto: number;
+  numero_scelto: number | null;
   note: string | null;
   pr_user_id: string;
   stato: ContactStatus;
