@@ -373,7 +373,7 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                       {contacts.length === 0 && (
                         <TableRow>
                           <TableCell
-                            colSpan={7}
+                            colSpan={9}
                             className="text-center text-muted-foreground py-8"
                           >
                             Nessun contatto inserito
