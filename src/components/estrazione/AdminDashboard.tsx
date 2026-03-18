@@ -105,6 +105,35 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
     );
   };
 
+  const freeNumber = async (contactId: string, numero: number | null) => {
+    if (!numero) return;
+    if (!confirm(`Liberare il numero ${numero}? Il contatto resterà nel database.`)) return;
+    const { error } = await supabase
+      .from("contacts" as any)
+      .update({ numero_scelto: null, stato: "non_disponibile_degustazione" })
+      .eq("id", contactId);
+    if (error) {
+      toast({ title: "Errore", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: `✅ Numero ${numero} liberato` });
+      fetchData();
+    }
+  };
+
+  const deleteContact = async (contactId: string, nome: string) => {
+    if (!confirm(`Eliminare definitivamente il contatto "${nome}"?`)) return;
+    const { error } = await supabase
+      .from("contacts" as any)
+      .delete()
+      .eq("id", contactId);
+    if (error) {
+      toast({ title: "Errore", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Contatto eliminato" });
+      fetchData();
+    }
+  };
+
   const createPR = async () => {
     if (!newPrUsername || !newPrPassword) return;
     setCreatingPr(true);
