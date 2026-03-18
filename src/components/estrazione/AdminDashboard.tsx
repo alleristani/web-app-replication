@@ -38,6 +38,7 @@ import {
   BarChart3,
   Trash2,
   ClipboardList,
+  Unlock,
 } from "lucide-react";
 
 interface AdminDashboardProps {
@@ -65,7 +66,7 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
       .order("created_at", { ascending: false });
     const contactsList = ((contactsData as any[]) || []) as Contact[];
     setContacts(contactsList);
-    setTakenNumbers(contactsList.map((c) => c.numero_scelto));
+    setTakenNumbers(contactsList.filter((c) => c.numero_scelto !== null).map((c) => c.numero_scelto as number));
 
     const { data: prData } = await supabase
       .from("pr_profiles" as any)
@@ -102,6 +103,35 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
     setContacts((prev) =>
       prev.map((c) => (c.id === contactId ? { ...c, stato: newStatus } : c))
     );
+  };
+
+  const freeNumber = async (contactId: string, numero: number | null) => {
+    if (!numero) return;
+    if (!confirm(`Liberare il numero ${numero}? Il contatto resterà nel database.`)) return;
+    const { error } = await supabase
+      .from("contacts" as any)
+      .update({ numero_scelto: null, stato: "non_disponibile_degustazione" })
+      .eq("id", contactId);
+    if (error) {
+      toast({ title: "Errore", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: `✅ Numero ${numero} liberato` });
+      fetchData();
+    }
+  };
+
+  const deleteContact = async (contactId: string, nome: string) => {
+    if (!confirm(`Eliminare definitivamente il contatto "${nome}"?`)) return;
+    const { error } = await supabase
+      .from("contacts" as any)
+      .delete()
+      .eq("id", contactId);
+    if (error) {
+      toast({ title: "Errore", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Contatto eliminato" });
+      fetchData();
+    }
   };
 
   const createPR = async () => {
@@ -256,8 +286,9 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                         <TableHead className="hidden sm:table-cell">
                           Data
                         </TableHead>
-                        <TableHead>Stato</TableHead>
-                      </TableRow>
+                         <TableHead>Stato</TableHead>
+                         <TableHead>Azioni</TableHead>
+                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {contacts.map((c) => (
@@ -273,11 +304,11 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                           <TableCell className="whitespace-nowrap">
                             {c.telefono}
                           </TableCell>
-                          <TableCell>
-                            <span className="font-bold text-primary">
-                              {c.numero_scelto}
-                            </span>
-                          </TableCell>
+                           <TableCell>
+                             <span className="font-bold text-primary">
+                               {c.numero_scelto ?? "—"}
+                             </span>
+                           </TableCell>
                           <TableCell className="text-xs max-w-[120px] truncate hidden md:table-cell">
                             {c.note || "-"}
                           </TableCell>
@@ -315,12 +346,34 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                               </SelectContent>
                             </Select>
                           </TableCell>
+                          <TableCell>
+                            <div className="flex gap-1">
+                              {c.numero_scelto && (
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  title="Libera numero"
+                                  onClick={() => freeNumber(c.id, c.numero_scelto)}
+                                >
+                                  <Unlock className="h-4 w-4 text-orange-500" />
+                                </Button>
+                              )}
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                title="Elimina contatto"
+                                onClick={() => deleteContact(c.id, `${c.nome} ${c.cognome}`)}
+                              >
+                                <Trash2 className="h-4 w-4 text-destructive" />
+                              </Button>
+                            </div>
+                          </TableCell>
                         </TableRow>
                       ))}
                       {contacts.length === 0 && (
                         <TableRow>
                           <TableCell
-                            colSpan={7}
+                            colSpan={9}
                             className="text-center text-muted-foreground py-8"
                           >
                             Nessun contatto inserito

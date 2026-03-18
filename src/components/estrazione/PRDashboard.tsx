@@ -208,7 +208,7 @@ const PRDashboard = ({ onLogout, userId }: PRDashboardProps) => {
                             <TableCell>{c.telefono}</TableCell>
                             <TableCell>
                               <span className="font-bold text-primary">
-                                {c.numero_scelto}
+                                {c.numero_scelto ?? "—"}
                               </span>
                             </TableCell>
                             <TableCell className="text-xs text-muted-foreground">
