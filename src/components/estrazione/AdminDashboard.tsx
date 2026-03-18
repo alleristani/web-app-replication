@@ -346,6 +346,28 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                               </SelectContent>
                             </Select>
                           </TableCell>
+                          <TableCell>
+                            <div className="flex gap-1">
+                              {c.numero_scelto && (
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  title="Libera numero"
+                                  onClick={() => freeNumber(c.id, c.numero_scelto)}
+                                >
+                                  <Unlock className="h-4 w-4 text-orange-500" />
+                                </Button>
+                              )}
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                title="Elimina contatto"
+                                onClick={() => deleteContact(c.id, `${c.nome} ${c.cognome}`)}
+                              >
+                                <Trash2 className="h-4 w-4 text-destructive" />
+                              </Button>
+                            </div>
+                          </TableCell>
                         </TableRow>
                       ))}
                       {contacts.length === 0 && (
