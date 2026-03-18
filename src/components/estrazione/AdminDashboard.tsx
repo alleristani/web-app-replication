@@ -38,6 +38,7 @@ import {
   BarChart3,
   Trash2,
   ClipboardList,
+  Unlock,
 } from "lucide-react";
 
 interface AdminDashboardProps {
