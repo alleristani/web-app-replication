@@ -35,6 +35,8 @@ const PRDashboard = ({ onLogout, userId }: PRDashboardProps) => {
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const [extractionDate, setExtractionDate] = useState<string | null>(null);
+
   const fetchData = useCallback(async () => {
     const { data: myContacts } = await supabase
       .from("contacts" as any)
@@ -47,6 +49,14 @@ const PRDashboard = ({ onLogout, userId }: PRDashboardProps) => {
       "get_taken_numbers" as any
     );
     setTakenNumbers((takenData as number[]) || []);
+
+    const { data: extData } = await supabase
+      .from("extractions" as any)
+      .select("data_estrazione")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    setExtractionDate((extData as any)?.data_estrazione || null);
   }, [userId]);
 
   useEffect(() => {
