@@ -66,7 +66,7 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
       .order("created_at", { ascending: false });
     const contactsList = ((contactsData as any[]) || []) as Contact[];
     setContacts(contactsList);
-    setTakenNumbers(contactsList.map((c) => c.numero_scelto));
+    setTakenNumbers(contactsList.filter((c) => c.numero_scelto !== null).map((c) => c.numero_scelto as number));
 
     const { data: prData } = await supabase
       .from("pr_profiles" as any)
