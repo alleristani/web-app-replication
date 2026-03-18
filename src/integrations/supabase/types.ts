@@ -21,7 +21,7 @@ export type Database = {
           id: string
           nome: string
           note: string | null
-          numero_scelto: number
+          numero_scelto: number | null
           pr_user_id: string
           stato: Database["public"]["Enums"]["contact_status"]
           telefono: string
@@ -32,7 +32,7 @@ export type Database = {
           id?: string
           nome: string
           note?: string | null
-          numero_scelto: number
+          numero_scelto?: number | null
           pr_user_id: string
           stato?: Database["public"]["Enums"]["contact_status"]
           telefono: string
@@ -43,7 +43,7 @@ export type Database = {
           id?: string
           nome?: string
           note?: string | null
-          numero_scelto?: number
+          numero_scelto?: number | null
           pr_user_id?: string
           stato?: Database["public"]["Enums"]["contact_status"]
           telefono?: string
@@ -139,6 +139,7 @@ export type Database = {
         | "appuntamento_fissato"
         | "non_interessato"
         | "venduto"
+        | "non_disponibile_degustazione"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -274,6 +275,7 @@ export const Constants = {
         "appuntamento_fissato",
         "non_interessato",
         "venduto",
+        "non_disponibile_degustazione",
       ],
     },
   },
