@@ -288,6 +288,7 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
                         </TableHead>
                          <TableHead>Stato</TableHead>
                          <TableHead>Azioni</TableHead>
+                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {contacts.map((c) => (
