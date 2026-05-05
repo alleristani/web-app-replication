@@ -241,7 +241,7 @@ const PrezzoAlMese = () => {
                       </div>
                     </div>
                   ) : (
-                    <p className="text-center text-destructive text-sm">{risInverso.messaggio}</p>
+                    <p className="text-center text-destructive text-sm">{(risInverso as { ok: false; messaggio: string }).messaggio}</p>
                   )}
                 </div>
               )}
