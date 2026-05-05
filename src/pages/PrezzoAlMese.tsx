@@ -37,8 +37,9 @@ const PrezzoAlMese = () => {
     }
     setErrImporto("");
 
-    // Mostra opzioni: 6, 12, 18, 24, 30, 36 mesi (solo se mensile >= MIN_MENSILE)
-    const opzioni = [6, 12, 18, 24, 30, 36];
+    // Tutti i mesi da 2 a 36 con mensile >= MIN_MENSILE
+    const opzioni: number[] = [];
+    for (let m = 2; m <= MAX_MESI; m++) opzioni.push(m);
     const r = opzioni
       .map((mesi) => ({ mesi, mensile: imp / mesi }))
       .filter((r) => r.mensile >= MIN_MENSILE);
