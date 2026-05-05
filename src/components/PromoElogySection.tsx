@@ -30,7 +30,7 @@ const PromoElogySection = () => {
             Elogy Bluetooth
           </h2>
           <p className="text-xl md:text-2xl text-primary-foreground/80 font-display">
-            in <span className="text-accent font-bold">comodato d'uso gratuito</span> + <span className="text-accent font-bold">136 capsule incluse</span>
+            in <span className="text-accent font-bold">comodato d'uso</span> + <span className="text-accent font-bold">136 capsule incluse</span>
           </p>
         </div>
 
@@ -46,10 +46,10 @@ const PromoElogySection = () => {
                 loading="lazy"
               />
               {/* Price tag */}
-              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-28 h-28 md:w-36 md:h-36 bg-accent rounded-full flex flex-col items-center justify-center shadow-vibrant rotate-[-8deg] border-4 border-primary-foreground">
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-accent-foreground">Prova</span>
-                <span className="text-2xl md:text-4xl font-display font-black text-accent-foreground leading-none">GRATIS</span>
-                <span className="text-[9px] md:text-[10px] font-bold uppercase text-accent-foreground/80 mt-1">senza impegno</span>
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-32 md:w-40 md:h-40 bg-accent rounded-full flex flex-col items-center justify-center shadow-vibrant rotate-[-8deg] border-4 border-primary-foreground">
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-accent-foreground">Solo</span>
+                <span className="text-3xl md:text-5xl font-display font-black text-accent-foreground leading-none">€44<span className="text-lg md:text-2xl align-top">,90</span></span>
+                <span className="text-[9px] md:text-[10px] font-bold uppercase text-accent-foreground/80 mt-1">prezzo trial</span>
               </div>
             </div>
             <div className="mt-4 bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-2xl p-4">
@@ -69,7 +69,7 @@ const PromoElogySection = () => {
                 Come funziona la prova?
               </h3>
               <p className="text-primary-foreground/75 text-base leading-relaxed">
-                Ti consegno la <strong className="text-primary-foreground">macchina Lavazza in Black Elogy Bluetooth</strong> insieme a <strong className="text-primary-foreground">136 capsule</strong>. La provi a casa o in ufficio con tutta calma. Alla fine ci rivediamo:
+                Con soli <strong className="text-accent">€44,90</strong> ti consegno la <strong className="text-primary-foreground">macchina Lavazza in Black Elogy Bluetooth</strong> insieme a <strong className="text-primary-foreground">136 capsule</strong>. La provi a casa o in ufficio con tutta calma. Alla fine ci rivediamo:
               </p>
             </div>
 
@@ -106,7 +106,7 @@ const PromoElogySection = () => {
             </div>
 
             <p className="text-xs text-primary-foreground/50 text-center sm:text-left">
-              ✓ Consegna inclusa · ✓ Nessun anticipo · ✓ Zero vincoli
+              ✓ Consegna inclusa · ✓ 136 capsule comprese nel prezzo · ✓ Zero vincoli post-prova
             </p>
           </div>
         </div>
