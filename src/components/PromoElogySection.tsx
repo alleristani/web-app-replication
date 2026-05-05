@@ -11,13 +11,13 @@ const PromoElogySection = () => {
   return (
     <section className="section-padding bg-gradient-to-br from-foreground via-foreground to-foreground/95 relative overflow-hidden" id="promo-elogy">
       {/* Decorative glows */}
-      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-accent/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
 
       <div className="relative max-w-6xl mx-auto">
         {/* Top badge */}
         <div className="text-center mb-8">
-          <span className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-black uppercase tracking-[0.25em] px-6 py-3 rounded-full shadow-vibrant">
+          <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-black uppercase tracking-[0.25em] px-6 py-3 rounded-full shadow-vibrant">
             <Sparkles className="w-4 h-4" />
             Novità · Offerta Esclusiva NIMS
           </span>
@@ -26,11 +26,11 @@ const PromoElogySection = () => {
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black text-primary-foreground leading-[1.05] mb-4">
-            Macchina <span className="text-primary">Lavazza in Black</span><br />
+            Macchina <span className="text-accent">Lavazza in Black</span><br />
             Elogy Bluetooth
           </h2>
           <p className="text-xl md:text-2xl text-primary-foreground/80 font-display">
-            in <span className="text-primary font-bold">comodato d'uso gratuito</span> + <span className="text-primary font-bold">136 capsule incluse</span>
+            in <span className="text-accent font-bold">comodato d'uso gratuito</span> + <span className="text-accent font-bold">136 capsule incluse</span>
           </p>
         </div>
 
@@ -46,10 +46,10 @@ const PromoElogySection = () => {
                 loading="lazy"
               />
               {/* Price tag */}
-              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-28 h-28 md:w-36 md:h-36 bg-primary rounded-full flex flex-col items-center justify-center shadow-vibrant rotate-[-8deg] border-4 border-foreground">
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-primary-foreground">Prova</span>
-                <span className="text-2xl md:text-4xl font-display font-black text-primary-foreground leading-none">GRATIS</span>
-                <span className="text-[9px] md:text-[10px] font-bold uppercase text-primary-foreground/80 mt-1">senza impegno</span>
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-28 h-28 md:w-36 md:h-36 bg-accent rounded-full flex flex-col items-center justify-center shadow-vibrant rotate-[-8deg] border-4 border-primary-foreground">
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-accent-foreground">Prova</span>
+                <span className="text-2xl md:text-4xl font-display font-black text-accent-foreground leading-none">GRATIS</span>
+                <span className="text-[9px] md:text-[10px] font-bold uppercase text-accent-foreground/80 mt-1">senza impegno</span>
               </div>
             </div>
             <div className="mt-4 bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-2xl p-4">
@@ -80,8 +80,8 @@ const PromoElogySection = () => {
                 { icon: Gift, text: "Se non fa per te, nessun impegno: ritiro io la macchina" },
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 bg-primary-foreground/5 rounded-xl p-3 border border-primary-foreground/10">
-                  <div className="flex-shrink-0 w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center">
-                    <item.icon className="w-4 h-4 text-primary" />
+                  <div className="flex-shrink-0 w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center">
+                    <item.icon className="w-4 h-4 text-accent" />
                   </div>
                   <span className="text-sm md:text-base text-primary-foreground/85 leading-relaxed pt-1">{item.text}</span>
                 </li>
@@ -89,7 +89,7 @@ const PromoElogySection = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 flex-1">
+              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 flex-1 bg-accent text-accent-foreground hover:bg-accent/90">
                 <Phone className="w-5 h-5" />
                 Prenota la prova
               </Button>
