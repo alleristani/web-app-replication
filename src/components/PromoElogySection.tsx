@@ -89,7 +89,7 @@ const PromoElogySection = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 flex-1">
+              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 flex-1 bg-accent text-accent-foreground hover:bg-accent/90">
                 <Phone className="w-5 h-5" />
                 Prenota la prova
               </Button>
