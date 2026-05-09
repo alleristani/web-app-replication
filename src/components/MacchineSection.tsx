@@ -103,23 +103,31 @@ const scrollToContatti = () => {
   document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
 };
 
-const ProductCardComponent = ({ product, onPlayVideo }: { product: ProductCard; onPlayVideo: (url: string) => void }) => (
+const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: ProductCard; onPlayVideo: (url: string) => void; onZoomImage: (img: { src: string; alt: string }) => void }) => (
   <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
     {product.badge && (
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
         {product.badge}
       </Badge>
     )}
-    <div className="flex items-center justify-center p-6 bg-secondary/30">
+    <button
+      type="button"
+      onClick={() => onZoomImage({ src: product.image, alt: product.alt })}
+      className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+      aria-label={`Ingrandisci immagine ${product.name}`}
+    >
       <img
         src={product.image}
         alt={product.alt}
-        className="h-48 w-auto object-contain"
+        className="h-48 w-auto object-contain transition-transform group-hover:scale-105"
         loading="lazy"
         width={300}
         height={192}
       />
-    </div>
+      <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+        <ZoomIn className="w-4 h-4 text-foreground" />
+      </span>
+    </button>
     <div className="p-6 flex flex-col flex-1">
       <h4 className="text-lg font-display font-bold text-foreground mb-2">{product.name}</h4>
       <p className="text-muted-foreground text-sm leading-relaxed mb-4">{product.description}</p>
