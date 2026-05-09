@@ -89,17 +89,17 @@ const PromoElogySection = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 flex-1 bg-accent text-accent-foreground hover:bg-accent/90">
-                <Phone className="w-5 h-5" />
+              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 w-full sm:flex-1 h-14 sm:h-12 text-base font-bold px-6 bg-accent text-accent-foreground hover:bg-accent/90 shadow-vibrant">
+                <Phone className="w-5 h-5 shrink-0" />
                 Prenota la prova
               </Button>
-              <Button variant="whatsapp" size="lg" asChild className="gap-2 flex-1">
+              <Button variant="whatsapp" size="lg" asChild className="gap-2 w-full sm:flex-1 h-14 sm:h-12 text-base font-bold px-6">
                 <a
                   href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20vorrei%20provare%20la%20macchina%20Lavazza%20in%20Black%20Elogy%20Bluetooth%20con%20le%20136%20capsule%20incluse"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5 shrink-0" />
                   Scrivimi su WhatsApp
                 </a>
               </Button>
