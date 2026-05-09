@@ -155,6 +155,7 @@ const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: 
 
 const MacchineSection = () => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <>
@@ -177,7 +178,7 @@ const MacchineSection = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
-                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} />
+                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
             </div>
           </div>
@@ -195,14 +196,87 @@ const MacchineSection = () => {
               <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Sistemi Acqua Microfiltrata Star Tap</h3>
               <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata Star Tap, fredda e frizzante direttamente dal tuo rubinetto</p>
             </div>
+
+            {/* Banner Acquisto / Noleggio */}
+            <div className="mb-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-8">
+              <div className="text-center mb-5">
+                <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
+                  Due formule disponibili
+                </span>
+                <h4 className="text-xl md:text-2xl font-display text-foreground">
+                  Acquisto o Noleggio (Rent) — scegli tu
+                </h4>
+                <p className="text-muted-foreground text-sm mt-2">
+                  Tutti i depuratori Star Tap sono disponibili sia in <strong>acquisto</strong> che in formula <strong>noleggio mensile</strong>.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+                    <ShoppingCart className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-foreground mb-1">Acquisto</div>
+                    <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Massima libertà, nessun canone mensile.</p>
+                  </div>
+                </div>
+                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center">
+                    <CalendarClock className="w-5 h-5 text-accent-foreground" />
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-foreground mb-1">Noleggio (Rent)</div>
+                    <p className="text-sm text-muted-foreground">Canone mensile fisso, assistenza e manutenzione incluse. Zero pensieri.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
+                  <Home className="w-4 h-4 text-primary shrink-0" />
+                  <span>Per <strong>famiglie e privati</strong></span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
+                  <Building2 className="w-4 h-4 text-primary shrink-0" />
+                  <span>Per <strong>Partite IVA, uffici e aziende</strong> (deducibile)</span>
+                </div>
+              </div>
+              <div className="text-center mt-5">
+                <Button variant="whatsapp" size="sm" className="gap-2" onClick={scrollToContatti}>
+                  <Send className="w-4 h-4" /> Richiedi un preventivo personalizzato
+                </Button>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {waterProducts.map((p) => (
-                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} />
+                <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Image Zoom Modal */}
+      <Dialog open={!!zoomImage} onOpenChange={(open) => !open && setZoomImage(null)}>
+        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-none">
+          <button
+            onClick={() => setZoomImage(null)}
+            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            aria-label="Chiudi immagine"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          {zoomImage && (
+            <div className="flex items-center justify-center bg-secondary/30 p-6 md:p-10">
+              <img
+                src={zoomImage.src}
+                alt={zoomImage.alt}
+                className="max-h-[80vh] w-auto object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Video Modal */}
       <Dialog open={!!videoUrl} onOpenChange={(open) => !open && setVideoUrl(null)}>
