@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Play, Send, Check, X } from "lucide-react";
+import { Play, Send, Check, X, ZoomIn, ShoppingCart, CalendarClock, Building2, Home } from "lucide-react";
 
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
 import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
