@@ -217,7 +217,7 @@ const MacchineSection = () => {
                   </div>
                   <div>
                     <div className="font-display font-bold text-foreground mb-1">Acquisto</div>
-                    <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Massima libertà, nessun canone mensile.</p>
+                    <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong>un'unica soluzione</strong> oppure a <strong>rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
                   </div>
                 </div>
                 <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
