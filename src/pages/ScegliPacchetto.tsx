@@ -18,6 +18,8 @@ import {
   X,
   ZoomIn,
   ArrowLeft,
+  Briefcase,
+  Leaf,
 } from "lucide-react";
 
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
@@ -251,21 +253,21 @@ const ScegliPacchetto = () => {
       <div className="min-h-screen bg-background">
         {/* HERO */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary/8 via-background to-accent/8 border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 py-8 md:py-16">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition mb-6"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition mb-4 md:mb-6"
             >
               <ArrowLeft className="w-4 h-4" /> Torna al sito
             </Link>
             <div className="text-center max-w-3xl mx-auto">
-              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-3 md:mb-4">
                 <Sparkles className="w-3.5 h-3.5" /> Promo clienti privati
               </span>
-              <h1 className="font-display text-3xl md:text-5xl text-foreground mb-4">
+              <h1 className="font-display text-2xl sm:text-3xl md:text-5xl text-foreground mb-3 md:mb-4">
                 Scegli il tuo pacchetto
               </h1>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed">
                 Trova la combinazione perfetta di macchina caffè <strong>Lavazza in Black Elogy</strong>{" "}
                 e capsule incluse. Tutte le promo includono <strong>garanzia, assistenza tecnica</strong>{" "}
                 e <strong>consegna gratuita</strong>.
@@ -273,11 +275,11 @@ const ScegliPacchetto = () => {
             </div>
 
             {/* Avviso stima consumo */}
-            <div className="mt-8 max-w-3xl mx-auto bg-card border border-border rounded-2xl p-5 flex items-start gap-3 shadow-soft">
-              <div className="shrink-0 w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center">
-                <Info className="w-5 h-5 text-accent-foreground" />
+            <div className="mt-6 md:mt-8 max-w-3xl mx-auto bg-card border border-border rounded-2xl p-4 md:p-5 flex items-start gap-3 shadow-soft">
+              <div className="shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full bg-accent/15 flex items-center justify-center">
+                <Info className="w-4 h-4 md:w-5 md:h-5 text-accent-foreground" />
               </div>
-              <p className="text-sm text-foreground leading-relaxed">
+              <p className="text-xs md:text-sm text-foreground leading-relaxed">
                 <strong>Nota sui consumi:</strong> i pacchetti sono stimati su un uso medio di{" "}
                 <strong>4–6 caffè al giorno</strong>. Per consumi più elevati possiamo valutare insieme
                 soluzioni dedicate a tua discrezione.
@@ -287,16 +289,16 @@ const ScegliPacchetto = () => {
         </section>
 
         {/* MACCHINE OVERVIEW */}
-        <section className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center mb-8">
-            <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+        <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground mb-2">
               Le macchine in promo
             </h2>
-            <p className="text-muted-foreground text-sm md:text-base">
-              Tre modelli Lavazza in Black Elogy. Clicca sull'immagine per ingrandirla.
+            <p className="text-muted-foreground text-xs md:text-base">
+              Tre modelli Lavazza in Black Elogy. Tocca l'immagine per ingrandirla.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {(Object.keys(macchine) as MacchinaKey[]).map((k) => {
               const m = macchine[k];
               return (
@@ -307,22 +309,22 @@ const ScegliPacchetto = () => {
                   <button
                     type="button"
                     onClick={() => setZoom({ src: m.image, alt: m.alt })}
-                    className="group relative bg-secondary/30 p-6 cursor-zoom-in transition hover:bg-secondary/50"
+                    className="group relative bg-secondary/30 p-4 md:p-6 cursor-zoom-in transition hover:bg-secondary/50"
                     aria-label={`Ingrandisci ${m.nome}`}
                   >
                     <img
                       src={m.image}
                       alt={m.alt}
-                      className="h-40 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
+                      className="h-32 md:h-40 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
                       loading="lazy"
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
                       <ZoomIn className="w-4 h-4 text-foreground" />
                     </span>
                   </button>
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.nome}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{m.short}</p>
+                  <div className="p-4 md:p-5 flex flex-col flex-1">
+                    <h3 className="font-display font-bold text-foreground text-base md:text-lg mb-2 leading-tight">{m.nome}</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3">{m.short}</p>
                     {(k === "barista" || k === "milk") && (
                       <p className="text-xs text-foreground/80 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-3">
                         <strong>Tante ricette pronte:</strong>{" "}
@@ -345,37 +347,41 @@ const ScegliPacchetto = () => {
           </div>
 
           {/* Garanzia / Assistenza */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <ShieldCheck className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Garanzia</strong> inclusa per tutta la durata del contratto
               </span>
             </div>
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <Wrench className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Assistenza tecnica</strong> sempre compresa
               </span>
             </div>
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <Package className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Consegna gratuita</strong> di macchina e capsule
               </span>
             </div>
           </div>
         </section>
 
-        {/* FILTRI */}
-        <section className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {/* FILTRI - sticky su mobile */}
+        <section className="max-w-6xl mx-auto px-4 sticky top-0 z-20 bg-background/95 backdrop-blur py-3 md:static md:py-0 md:bg-transparent md:backdrop-blur-none">
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 md:mb-3">
+            Filtra per macchina
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 mb-2 md:mb-8">
             {filtri.map((f) => (
               <Button
                 key={f.key}
                 variant={filtro === f.key ? "default" : "outline"}
                 size="sm"
                 onClick={() => setFiltro(f.key)}
+                className="text-xs md:text-sm"
               >
                 {f.label}
               </Button>
@@ -384,8 +390,8 @@ const ScegliPacchetto = () => {
         </section>
 
         {/* PACCHETTI */}
-        <section className="max-w-6xl mx-auto px-4 pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="max-w-6xl mx-auto px-4 pb-12 md:pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {lista.map((p) => {
               const m = macchine[p.macchina];
               const c = coffeeCatalog[p.caffe];
@@ -395,7 +401,7 @@ const ScegliPacchetto = () => {
                   className="relative bg-card rounded-2xl border border-border shadow-soft overflow-hidden flex flex-col"
                 >
                   {p.evidenza && (
-                    <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground text-[10px] font-black uppercase tracking-wider">
+                    <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground text-[10px] font-black uppercase tracking-wider shadow-md">
                       {p.evidenza}
                     </Badge>
                   )}
@@ -405,34 +411,36 @@ const ScegliPacchetto = () => {
                     <button
                       type="button"
                       onClick={() => setZoom({ src: m.image, alt: m.alt })}
-                      className="group relative p-4 flex items-center justify-center cursor-zoom-in transition hover:bg-secondary/40"
+                      className="group relative p-3 md:p-4 flex flex-col items-center justify-center cursor-zoom-in transition hover:bg-secondary/40"
                       aria-label={`Ingrandisci ${m.nome}`}
                     >
                       <img
                         src={m.image}
                         alt={m.alt}
-                        className="h-32 w-auto object-contain transition-transform group-hover:scale-105"
+                        className="h-24 md:h-32 w-auto object-contain transition-transform group-hover:scale-105"
                         loading="lazy"
                       />
+                      <span className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Macchina</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setZoom({ src: c.image, alt: c.name })}
-                      className="group relative p-4 flex items-center justify-center border-l border-border cursor-zoom-in transition hover:bg-secondary/40"
+                      className="group relative p-3 md:p-4 flex flex-col items-center justify-center border-l border-border cursor-zoom-in transition hover:bg-secondary/40"
                       aria-label={`Ingrandisci capsule ${c.name}`}
                     >
                       <img
                         src={c.image}
                         alt={`Capsula ${c.name}`}
-                        className="h-32 w-auto object-contain transition-transform group-hover:scale-105"
+                        className="h-24 md:h-32 w-auto object-contain transition-transform group-hover:scale-105"
                         loading="lazy"
                       />
+                      <span className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Capsule</span>
                     </button>
                   </div>
 
-                  <div className="p-5 flex flex-col flex-1">
+                  <div className="p-4 md:p-5 flex flex-col flex-1">
                     <div className="mb-3">
-                      <h3 className="font-display font-bold text-foreground text-lg leading-tight">
+                      <h3 className="font-display font-bold text-foreground text-base md:text-lg leading-tight">
                         {m.nome}
                       </h3>
                       <p className="text-sm text-primary font-semibold mt-1 flex items-center gap-1.5">
@@ -444,22 +452,26 @@ const ScegliPacchetto = () => {
                     </div>
 
                     {/* Prezzi */}
-                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-4 mb-4 border border-border">
-                      <div className="flex items-baseline gap-1 mb-1">
-                        <span className="font-display font-black text-3xl text-foreground">
+                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-3 md:p-4 mb-4 border border-border">
+                      <div className="flex items-baseline gap-1 mb-1.5">
+                        <span className="font-display font-black text-2xl md:text-3xl text-foreground">
                           € {fmt(p.mensile)}
                         </span>
                         <span className="text-sm text-muted-foreground">/mese</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Calendar className="w-3.5 h-3.5" /> per {p.mesi} mesi
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" /> {p.mesi} mesi
+                        </span>
                         <span className="text-border">•</span>
-                        <Wallet className="w-3.5 h-3.5" /> caparra €{p.caparra}
+                        <span className="inline-flex items-center gap-1">
+                          <Wallet className="w-3.5 h-3.5" /> caparra € {p.caparra}
+                        </span>
                       </div>
                     </div>
 
                     {/* Capsule */}
-                    <ul className="space-y-2 mb-5">
+                    <ul className="space-y-2 mb-4 md:mb-5">
                       <li className="flex items-start gap-2 text-sm text-foreground">
                         <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
                         <span>
@@ -480,7 +492,7 @@ const ScegliPacchetto = () => {
                     </ul>
 
                     <div className="mt-auto">
-                      <Button variant="whatsapp" className="w-full gap-2" asChild>
+                      <Button variant="whatsapp" className="w-full gap-2 h-12 text-base font-bold" asChild>
                         <a href={waLink(p)} target="_blank" rel="noopener noreferrer">
                           <Send className="w-4 h-4" /> Voglio questo pacchetto
                         </a>
@@ -491,9 +503,102 @@ const ScegliPacchetto = () => {
               );
             })}
           </div>
+        </section>
+
+        {/* BUONO A SAPERE */}
+        <section className="max-w-6xl mx-auto px-4 pb-12 md:pb-16">
+          <div className="text-center mb-6 md:mb-8">
+            <span className="inline-flex items-center gap-2 bg-accent/10 text-accent-foreground text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] px-3 py-1.5 rounded-full mb-3">
+              <Info className="w-3.5 h-3.5" /> Buono a sapere
+            </span>
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground">
+              Personalizza il tuo pacchetto
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            {/* Aziende / Partita IVA */}
+            <div className="bg-card rounded-2xl border border-border shadow-soft p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Briefcase className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-display font-bold text-foreground text-base md:text-lg">
+                  Aziende e Partite IVA
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Per <strong>aziende e partite IVA</strong> sono disponibili <strong>formule dedicate</strong>{" "}
+                che illustro in privato. Quelle in pagina sono le promo base per clienti privati.
+              </p>
+              <Button variant="outline" className="mt-auto h-11 gap-2" asChild>
+                <a
+                  href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20una%20Partita%20IVA%2Fazienda%20e%20vorrei%20conoscere%20le%20formule%20dedicate."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Send className="w-4 h-4" /> Richiedi info aziende
+                </a>
+              </Button>
+            </div>
+
+            {/* Swap capsule */}
+            <div className="bg-card rounded-2xl border border-border shadow-soft p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-fresh/10 flex items-center justify-center shrink-0">
+                  <Leaf className="w-5 h-5 text-fresh" />
+                </div>
+                <h3 className="font-display font-bold text-foreground text-base md:text-lg">
+                  Cambia le capsule a piacere
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Non vuoi tutte capsule dello stesso caffè? Nessun problema: puoi{" "}
+                <strong>sostituirle liberamente</strong> con altre bevande del catalogo,{" "}
+                <strong>senza variazione di prezzo</strong>.
+              </p>
+              <div className="flex flex-wrap gap-1.5 mt-auto">
+                {["Ginseng", "Cioccolata", "Tè al limone", "Camomilla", "Orzo", "Tisane"].map((t) => (
+                  <Badge key={t} variant="secondary" className="text-[10px] font-semibold">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Monodose vs Bidose */}
+            <div className="md:col-span-2 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl border border-border shadow-soft p-5 md:p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                  <Coffee className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <h3 className="font-display font-bold text-foreground text-base md:text-lg">
+                  Monodose o Bidose?
+                </h3>
+              </div>
+              <p className="text-sm text-foreground leading-relaxed mb-3">
+                Le promo in pagina sono tutte con <strong>capsule monodose</strong> — la soluzione che{" "}
+                <strong>consiglio</strong>: la nostra monodose contiene in media <strong>9,5 g</strong> di
+                caffè, ottimo rapporto qualità/prezzo, e ti permette di fare <strong>2 caffè per volta</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Preferisci le promo con capsule <strong>bidose</strong>? Contattami in privato e troviamo
+                la formula giusta per te.
+              </p>
+              <Button variant="whatsapp" className="h-11 gap-2 w-full sm:w-auto" asChild>
+                <a
+                  href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20vorrei%20info%20sulle%20promo%20con%20capsule%20bidose."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Send className="w-4 h-4" /> Chiedi promo bidose
+                </a>
+              </Button>
+            </div>
+          </div>
 
           {/* Footer note */}
-          <div className="mt-12 text-center max-w-2xl mx-auto">
+          <div className="mt-10 md:mt-12 text-center max-w-2xl mx-auto">
             <p className="text-sm text-muted-foreground">
               Non trovi la combinazione giusta?{" "}
               <a
