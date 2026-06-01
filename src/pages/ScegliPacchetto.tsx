@@ -253,21 +253,21 @@ const ScegliPacchetto = () => {
       <div className="min-h-screen bg-background">
         {/* HERO */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary/8 via-background to-accent/8 border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 py-8 md:py-16">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition mb-6"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition mb-4 md:mb-6"
             >
               <ArrowLeft className="w-4 h-4" /> Torna al sito
             </Link>
             <div className="text-center max-w-3xl mx-auto">
-              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 bg-primary/10 text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-3 md:mb-4">
                 <Sparkles className="w-3.5 h-3.5" /> Promo clienti privati
               </span>
-              <h1 className="font-display text-3xl md:text-5xl text-foreground mb-4">
+              <h1 className="font-display text-2xl sm:text-3xl md:text-5xl text-foreground mb-3 md:mb-4">
                 Scegli il tuo pacchetto
               </h1>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              <p className="text-muted-foreground text-sm md:text-lg leading-relaxed">
                 Trova la combinazione perfetta di macchina caffè <strong>Lavazza in Black Elogy</strong>{" "}
                 e capsule incluse. Tutte le promo includono <strong>garanzia, assistenza tecnica</strong>{" "}
                 e <strong>consegna gratuita</strong>.
@@ -275,11 +275,11 @@ const ScegliPacchetto = () => {
             </div>
 
             {/* Avviso stima consumo */}
-            <div className="mt-8 max-w-3xl mx-auto bg-card border border-border rounded-2xl p-5 flex items-start gap-3 shadow-soft">
-              <div className="shrink-0 w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center">
-                <Info className="w-5 h-5 text-accent-foreground" />
+            <div className="mt-6 md:mt-8 max-w-3xl mx-auto bg-card border border-border rounded-2xl p-4 md:p-5 flex items-start gap-3 shadow-soft">
+              <div className="shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full bg-accent/15 flex items-center justify-center">
+                <Info className="w-4 h-4 md:w-5 md:h-5 text-accent-foreground" />
               </div>
-              <p className="text-sm text-foreground leading-relaxed">
+              <p className="text-xs md:text-sm text-foreground leading-relaxed">
                 <strong>Nota sui consumi:</strong> i pacchetti sono stimati su un uso medio di{" "}
                 <strong>4–6 caffè al giorno</strong>. Per consumi più elevati possiamo valutare insieme
                 soluzioni dedicate a tua discrezione.
