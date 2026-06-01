@@ -289,16 +289,16 @@ const ScegliPacchetto = () => {
         </section>
 
         {/* MACCHINE OVERVIEW */}
-        <section className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center mb-8">
-            <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+        <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground mb-2">
               Le macchine in promo
             </h2>
-            <p className="text-muted-foreground text-sm md:text-base">
-              Tre modelli Lavazza in Black Elogy. Clicca sull'immagine per ingrandirla.
+            <p className="text-muted-foreground text-xs md:text-base">
+              Tre modelli Lavazza in Black Elogy. Tocca l'immagine per ingrandirla.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {(Object.keys(macchine) as MacchinaKey[]).map((k) => {
               const m = macchine[k];
               return (
@@ -309,22 +309,22 @@ const ScegliPacchetto = () => {
                   <button
                     type="button"
                     onClick={() => setZoom({ src: m.image, alt: m.alt })}
-                    className="group relative bg-secondary/30 p-6 cursor-zoom-in transition hover:bg-secondary/50"
+                    className="group relative bg-secondary/30 p-4 md:p-6 cursor-zoom-in transition hover:bg-secondary/50"
                     aria-label={`Ingrandisci ${m.nome}`}
                   >
                     <img
                       src={m.image}
                       alt={m.alt}
-                      className="h-40 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
+                      className="h-32 md:h-40 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
                       loading="lazy"
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
                       <ZoomIn className="w-4 h-4 text-foreground" />
                     </span>
                   </button>
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.nome}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{m.short}</p>
+                  <div className="p-4 md:p-5 flex flex-col flex-1">
+                    <h3 className="font-display font-bold text-foreground text-base md:text-lg mb-2 leading-tight">{m.nome}</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3">{m.short}</p>
                     {(k === "barista" || k === "milk") && (
                       <p className="text-xs text-foreground/80 bg-primary/5 border border-primary/15 rounded-lg px-3 py-2 mb-3">
                         <strong>Tante ricette pronte:</strong>{" "}
@@ -347,37 +347,41 @@ const ScegliPacchetto = () => {
           </div>
 
           {/* Garanzia / Assistenza */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <ShieldCheck className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Garanzia</strong> inclusa per tutta la durata del contratto
               </span>
             </div>
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <Wrench className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Assistenza tecnica</strong> sempre compresa
               </span>
             </div>
             <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
               <Package className="w-5 h-5 text-fresh shrink-0" />
-              <span className="text-sm text-foreground">
+              <span className="text-xs md:text-sm text-foreground">
                 <strong>Consegna gratuita</strong> di macchina e capsule
               </span>
             </div>
           </div>
         </section>
 
-        {/* FILTRI */}
-        <section className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {/* FILTRI - sticky su mobile */}
+        <section className="max-w-6xl mx-auto px-4 sticky top-0 z-20 bg-background/95 backdrop-blur py-3 md:static md:py-0 md:bg-transparent md:backdrop-blur-none">
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 md:mb-3">
+            Filtra per macchina
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 mb-2 md:mb-8">
             {filtri.map((f) => (
               <Button
                 key={f.key}
                 variant={filtro === f.key ? "default" : "outline"}
                 size="sm"
                 onClick={() => setFiltro(f.key)}
+                className="text-xs md:text-sm"
               >
                 {f.label}
               </Button>
