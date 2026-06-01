@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Calcola from "./pages/Calcola";
 import Estrazione from "./pages/Estrazione";
 import PrezzoAlMese from "./pages/PrezzoAlMese";
+import ScegliPacchetto from "./pages/ScegliPacchetto";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/calcola" element={<Calcola />} />
             <Route path="/prezzo-al-mese" element={<PrezzoAlMese />} />
+            <Route path="/scegli-pacchetto" element={<ScegliPacchetto />} />
             <Route path="/estrazione" element={<Estrazione />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
