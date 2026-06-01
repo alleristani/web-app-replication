@@ -18,6 +18,8 @@ import {
   X,
   ZoomIn,
   ArrowLeft,
+  Briefcase,
+  Leaf,
 } from "lucide-react";
 
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
