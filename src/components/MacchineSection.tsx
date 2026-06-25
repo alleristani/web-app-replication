@@ -166,15 +166,15 @@ const MacchineSection = () => {
               Le Macchine
             </span>
             <h2 className="text-3xl md:text-5xl font-display text-foreground">
-              Macchine Caffè Lavazza in Black in Comodato d'Uso Gratuito
+              Macchine caffè Lavazza in Black in comodato d'uso gratuito e depuratori acqua Star Tap
             </h2>
           </div>
 
           {/* Caffè */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine per il Caffè in Capsule</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule, macchina caffè in comodato d'uso gratuito</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule: macchina caffè Lavazza in Black in comodato d'uso gratuito, con garanzia e assistenza incluse.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
@@ -193,8 +193,8 @@ const MacchineSection = () => {
           {/* Acqua */}
           <div>
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Sistemi Acqua Microfiltrata Star Tap</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Acqua microfiltrata Star Tap, fredda e frizzante direttamente dal tuo rubinetto</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Depuratori acqua microfiltrata Star Tap</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Depuratori acqua Star Tap: acqua microfiltrata fredda, liscia e frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per casa, ufficio e aziende.</p>
             </div>
 
             {/* Banner Acquisto / Noleggio */}

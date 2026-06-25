@@ -3,18 +3,18 @@ import { Home, Briefcase, Droplets } from "lucide-react";
 const services = [
   {
     icon: Home,
-    title: "Per la tua casa",
-    text: "Ti guido nella scelta della macchina caffè Lavazza in Black e delle capsule più adatte al tuo gusto, con formule trasparenti e un servizio di riordino semplice e puntuale.",
+    title: "Macchine caffè Lavazza per casa",
+    text: "Ti guido nella scelta della macchina caffè Lavazza in Black in comodato d'uso gratuito e delle capsule Lavazza in Black più adatte al tuo gusto, con riordino semplice e puntuale a domicilio in tutta Italia.",
   },
   {
     icon: Briefcase,
-    title: "Per il tuo ufficio",
-    text: "Soluzioni pensate per uffici, studi professionali e attività commerciali. Una pausa caffè di qualità per il tuo team e i tuoi clienti, con macchine in comodato d'uso gratuito e costi chiari.",
+    title: "Caffè Lavazza per ufficio e aziende",
+    text: "Soluzioni Nims Lavazza per uffici, studi professionali, partite IVA e attività commerciali: macchine caffè in comodato d'uso gratuito, capsule Lavazza in Black e costi chiari per offrire una pausa caffè di qualità al tuo team.",
   },
   {
     icon: Droplets,
-    title: "Acqua microfiltrata Star Tap",
-    text: "Sistemi di acqua microfiltrata Star Tap: liscia, fredda o frizzante direttamente dal rubinetto. Meno plastica, più qualità ogni giorno.",
+    title: "Depuratori acqua microfiltrata Star Tap",
+    text: "Depuratori acqua Star Tap: acqua microfiltrata liscia, fredda o frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per famiglie, uffici e aziende. Meno plastica, più qualità ogni giorno.",
   },
 ];
 
@@ -26,7 +26,7 @@ const ServiziSection = () => (
           Servizi
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          Soluzioni Lavazza per casa, ufficio e attività commerciali
+          Caffè Lavazza e depuratori acqua: soluzioni per casa, ufficio e aziende
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
