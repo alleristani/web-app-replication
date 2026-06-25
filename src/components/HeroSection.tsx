@@ -11,7 +11,7 @@ const HeroSection = () => {
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <img
         src={heroCoffee}
-        alt="Caffè espresso Lavazza in Black – consulente Nims Massafra Taranto"
+        alt="Macchina caffè Lavazza in Black e depuratore acqua Star Tap – Consulente Nims Lavazza Massafra Taranto"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
         fetchPriority="high"
@@ -24,10 +24,10 @@ const HeroSection = () => {
           Consulente Nims · Gruppo Lavazza
         </span>
         <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-6 animate-fade-up">
-          Il tuo caffè Lavazza perfetto,<br className="hidden md:block" /> a portata di mano
+          Macchine caffè Lavazza e depuratori acqua,<br className="hidden md:block" /> scelti su misura per te
         </h1>
         <p className="text-base md:text-lg text-primary-foreground/85 mb-4 animate-fade-up max-w-xl mx-auto leading-relaxed" style={{ animationDelay: "0.15s" }}>
-          Mi chiamo <strong>Alessio Ristani</strong>, consulente Nims Lavazza a Massafra (TA), e ti aiuto a scegliere la soluzione ideale per il caffè Lavazza in capsule e l'acqua microfiltrata Star Tap — a casa, in ufficio o nella tua attività. Servizio disponibile in tutta Italia.
+          Sono <strong>Alessio Ristani</strong>, consulente ufficiale <strong>Nims Lavazza</strong> a Massafra (Taranto). Ti aiuto a scegliere la <strong>macchina caffè Lavazza in Black in comodato d'uso gratuito</strong>, le capsule più adatte al tuo gusto e i <strong>depuratori acqua microfiltrata Star Tap</strong> (acquisto o noleggio) — per casa, ufficio, partita IVA o azienda, in tutta Italia.
         </p>
         <p className="text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           Contattami senza impegno: ti richiamo il prima possibile.

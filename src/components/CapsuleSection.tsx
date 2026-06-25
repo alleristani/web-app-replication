@@ -214,10 +214,10 @@ const CapsuleSection = () => (
           Le Capsule
         </span>
         <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
-          Capsule Lavazza in Black: 7 Miscele Esclusive per Ogni Gusto
+          Capsule caffè Lavazza in Black: miscele esclusive Nims per ogni gusto
         </h2>
         <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le capsule Lavazza in Black esclusive sono disponibili solo per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina — dal più delicato al più intenso.
+          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le <strong>capsule Lavazza in Black</strong> sono disponibili in esclusiva per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina caffè Lavazza — dal più delicato al più intenso, in versione monodose o bidose.
         </p>
       </div>
 
