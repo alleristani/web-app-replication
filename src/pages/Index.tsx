@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/HeroSection";
 import PromoElogySection from "@/components/PromoElogySection";
 import ChiSonoSection from "@/components/ChiSonoSection";
@@ -14,6 +15,20 @@ import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
   <main>
+    <Helmet>
+      <title>Macchine Lavazza e Depuratori Acqua | Alessio Ristani Nims</title>
+      <meta
+        name="description"
+        content="Macchine caffè Lavazza in comodato d'uso gratuito e depuratori acqua Star Tap. Consulente Nims Alessio Ristani: assistenza in tutta Italia."
+      />
+      <link rel="canonical" href="https://alessionims.it/" />
+      <meta property="og:title" content="Macchine Lavazza e Depuratori Acqua | Alessio Ristani Nims" />
+      <meta
+        property="og:description"
+        content="Macchine caffè Lavazza in comodato d'uso gratuito e depuratori acqua Star Tap. Consulente Nims Alessio Ristani."
+      />
+      <meta property="og:url" content="https://alessionims.it/" />
+    </Helmet>
     <HeroSection />
     <PromoElogySection />
     <ChiSonoSection />
