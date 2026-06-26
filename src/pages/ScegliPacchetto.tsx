@@ -243,11 +243,15 @@ const ScegliPacchetto = () => {
   return (
     <>
       <Helmet>
-        <title>Scegli il tuo pacchetto Lavazza in Black | Alessio Nims</title>
+        <title>Scegli il Tuo Pacchetto Lavazza in Black | Alessio Ristani Nims</title>
         <meta
           name="description"
-          content="Scegli il pacchetto Lavazza in Black più adatto a te: macchina Elogy Barista, Milk o Bluetooth con capsule incluse, garanzia e assistenza."
+          content="Scegli il pacchetto Lavazza in Black più adatto a te: Elogy Barista, Milk o Bluetooth con capsule, garanzia e assistenza inclusi."
         />
+        <link rel="canonical" href="https://alessionims.it/scegli-pacchetto" />
+        <meta property="og:title" content="Scegli il Tuo Pacchetto Lavazza in Black | Alessio Ristani Nims" />
+        <meta property="og:description" content="Macchine Lavazza Elogy Barista, Milk o Bluetooth con capsule, garanzia e assistenza. Trova la promo giusta per te." />
+        <meta property="og:url" content="https://alessionims.it/scegli-pacchetto" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
