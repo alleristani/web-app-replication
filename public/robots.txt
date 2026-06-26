@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /estrazione
+
 Sitemap: https://alessionims.it/sitemap.xml

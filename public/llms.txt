@@ -1,0 +1,15 @@
+# Alessio Ristani – Consulente Nims Lavazza
+
+> Macchine caffè Lavazza in Black in comodato d'uso gratuito, capsule Lavazza in Black e depuratori acqua microfiltrata Star Tap (acquisto o noleggio). Consulenza personalizzata per case, uffici, partite IVA e aziende a Massafra (Taranto) e in tutta Italia.
+
+## Pages
+
+- [Home](/): Servizi Nims Lavazza, macchine Elogy in comodato d'uso gratuito, capsule Lavazza in Black, depuratori Star Tap, recensioni e contatti.
+- [Scegli il tuo pacchetto](/scegli-pacchetto): Pacchetti Lavazza in Black per clienti privati con macchine Elogy Barista, Milk e Bluetooth, capsule incluse, garanzia e assistenza.
+- [Prezzo al mese](/prezzo-al-mese): Calcolo della rata mensile o del numero di mesi per le macchine Lavazza in Black (min € 30/mese, max 36 mesi).
+- [Calcola risparmio caffè](/calcola): Calcolo del costo reale del caffè quotidiano per confrontarlo con le capsule Lavazza in Black.
+
+## Optional
+
+- [Contatti](/#contatti): WhatsApp, email e form per richiedere una consulenza gratuita.
+- [FAQ](/#faq): Domande frequenti su comodato d'uso, modelli Lavazza in Black e depuratori Star Tap.

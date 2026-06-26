@@ -49,8 +49,12 @@ const Calcola = () => {
   return (
     <>
       <Helmet>
-        <title>Calcolo interno</title>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>Calcolo Risparmio Caffè | Alessio Ristani Nims</title>
+        <meta name="description" content="Calcola quanto spendi davvero al mese in caffè e scopri il risparmio con le capsule Lavazza in Black di Nims." />
+        <link rel="canonical" href="https://alessionims.it/calcola" />
+        <meta property="og:title" content="Calcolo Risparmio Caffè | Alessio Ristani Nims" />
+        <meta property="og:description" content="Calcola il costo reale del tuo caffè quotidiano e confrontalo con le capsule Lavazza in Black." />
+        <meta property="og:url" content="https://alessionims.it/calcola" />
       </Helmet>
 
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-16">

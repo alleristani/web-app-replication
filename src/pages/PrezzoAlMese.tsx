@@ -98,8 +98,12 @@ const PrezzoAlMese = () => {
   return (
     <>
       <Helmet>
-        <title>Prezzo al mese</title>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>Prezzo al Mese – Rate Macchine Lavazza | Alessio Ristani Nims</title>
+        <meta name="description" content="Calcola la rata mensile della tua macchina Lavazza in Black o il numero di mesi in base alla rata desiderata. Min € 30/mese, max 36 mesi." />
+        <link rel="canonical" href="https://alessionims.it/prezzo-al-mese" />
+        <meta property="og:title" content="Prezzo al Mese – Rate Macchine Lavazza | Alessio Ristani Nims" />
+        <meta property="og:description" content="Simula la rata mensile o i mesi necessari per la tua macchina Lavazza in Black." />
+        <meta property="og:url" content="https://alessionims.it/prezzo-al-mese" />
       </Helmet>
 
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-16">
