@@ -12,6 +12,7 @@ import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
 import startapEssential from "@/assets/startap-essential.webp";
+import startapEssence from "@/assets/star-tap-essence.webp";
 import startapPro from "@/assets/startap-pro.webp";
 
 interface ProductCard {
@@ -101,6 +102,14 @@ const waterProducts: ProductCard[] = [
     description: "Sistema filtrante sotto lavello con lampada UVC. Acqua microfiltrata dal rubinetto di casa, più pura e salubre ogni giorno.",
     bullets: ["Filtro multistrato 2500A", "Lampada UVC anti-batterica", "Compatto sotto lavello"],
     badge: "SOLO FILTRAZIONE",
+  },
+  {
+    name: "Star Tap Essence",
+    image: startapEssence,
+    alt: "Depuratore acqua Star Tap Essence con rubinetto led smart e UVC",
+    description: "Il nuovo standard per un’acqua più pura, sempre sotto controllo. Star Tap Essence unisce filtrazione avanzata e tecnologia UVC, con rubinetto di design dotato di led smart che segnala lo stato del filtro. Si installa sotto lavello: zero ingombro, massima qualità.",
+    bullets: ["Filtrazione avanzata + UVC", "Rubinetto led smart stato filtro", "Installazione sotto lavello"],
+    badge: "NOVITÀ",
   },
   {
     name: "Star Tap Pro",
