@@ -104,6 +104,14 @@ const waterProducts: ProductCard[] = [
     badge: "SOLO FILTRAZIONE",
   },
   {
+    name: "Star Tap Essence",
+    image: startapEssence.url,
+    alt: "Depuratore acqua Star Tap Essence con rubinetto led smart e UVC",
+    description: "Il nuovo standard per un’acqua più pura, sempre sotto controllo. Star Tap Essence unisce filtrazione avanzata e tecnologia UVC, con rubinetto di design dotato di led smart che segnala lo stato del filtro. Si installa sotto lavello: zero ingombro, massima qualità.",
+    bullets: ["Filtrazione avanzata + UVC", "Rubinetto led smart stato filtro", "Installazione sotto lavello"],
+    badge: "NOVITÀ",
+  },
+  {
     name: "Star Tap Pro",
     image: startapPro,
     alt: "Star Tap Pro frigogasatore per uffici acqua fredda e frizzante",
