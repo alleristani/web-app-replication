@@ -7,6 +7,7 @@ import { Play, Send, Check, X, ZoomIn, ShoppingCart, CalendarClock, Building2, H
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
 import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
 import lavazzaBarista from "@/assets/lavazza-barista.png";
+import lavazzaTabli from "@/assets/lavazza-tabli.png";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
@@ -23,9 +24,12 @@ interface ProductCard {
   videoUrl?: string;
 }
 
-const toEmbedUrl = (driveUrl: string) => {
-  const match = driveUrl.match(/\/d\/([^/]+)\//);
-  return match ? `https://drive.google.com/file/d/${match[1]}/preview` : driveUrl;
+const toEmbedUrl = (url: string) => {
+  const driveMatch = url.match(/\/d\/([^/]+)\//);
+  if (driveMatch) return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+  const youtubeMatch = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/embed\/)([^?&]+)/);
+  if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+  return url;
 };
 
 const coffeeProducts: ProductCard[] = [
@@ -53,6 +57,15 @@ const coffeeProducts: ProductCard[] = [
     bullets: ["Multibeverage", "Connettività Wi-Fi + Bluetooth", "Beccuccio bidose"],
     badge: "NOVITÀ",
     videoUrl: "https://drive.google.com/file/d/1O7Pfm0gi_iIPf4QM9_9Hz0RhRl_iB4W-/view?usp=sharing",
+  },
+  {
+    name: "Lavazza Tablì",
+    image: lavazzaTabli,
+    alt: "Macchina caffè Lavazza Tablì con tab 100% caffè pressato",
+    description: "La nuova frontiera del caffè firmata Lavazza. Tablì utilizza innovativi tab 100% caffè pressato, senza involucro, per un'esperienza sostenibile e ancora più autentica. Tecnologia e qualità si incontrano per un espresso ricco, pratico e dal gusto superiore.",
+    bullets: ["Sistema a tab 100% caffè", "Senza capsula", "Sostenibile e autentico"],
+    badge: "NOVITÀ",
+    videoUrl: "https://youtu.be/Jk7GVF-95_k",
   },
 ];
 
@@ -173,8 +186,8 @@ const MacchineSection = () => {
           {/* Caffè */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule: macchina caffè Lavazza in Black in comodato d'uso gratuito, con garanzia e assistenza incluse.</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
