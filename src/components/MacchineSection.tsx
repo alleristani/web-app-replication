@@ -8,6 +8,9 @@ import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
 import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
 import lavazzaBarista from "@/assets/lavazza-barista.png";
 import lavazzaTabli from "@/assets/lavazza-tabli.png";
+import tabAvvolgente from "@/assets/tab-avvolgente.png";
+import tabPersistente from "@/assets/tab-persistente.png";
+import tabDecaf from "@/assets/tab-decaf.png";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
@@ -201,6 +204,89 @@ const MacchineSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
                 <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
+              ))}
+            </div>
+          </div>
+
+          {/* Tab Tablì */}
+          <div className="mb-16 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-10">
+            <div className="text-center mb-8">
+              <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
+                Solo per Lavazza Tablì
+              </span>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Le miscele Tablì — Sistema a Tab</h3>
+              <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto">
+                Le nuove tab Lavazza rappresentano un'evoluzione nel mondo del caffè: <strong>100% caffè pressato, senza involucro</strong>. Tre miscele pensate per offrire esperienze diverse, dall'aromatico al più intenso, sempre con la qualità Lavazza.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Avvolgente",
+                  image: tabAvvolgente,
+                  alt: "Confezione Lavazza Tablì Avvolgente 100% Arabica intensità 10/13",
+                  intensity: "Intensità 10/13",
+                  short: "100% Arabica",
+                  description: "L'aromaticità caratteristica del 100% Arabica e l'equilibrio tra intensità e morbidezza. Un invito a lasciarsi trasportare da un gusto pieno e vellutato, dove le note di cacao e frutta secca si incontrano. Dedicata a chi desidera esplorare le sfumature di un espresso aromatico perfetto.",
+                  bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
+                },
+                {
+                  name: "Persistente",
+                  image: tabPersistente,
+                  alt: "Confezione Lavazza Tablì Persistente miscela Arabica e Robusta intensità 12/13",
+                  intensity: "Intensità 12/13",
+                  short: "Arabica + Robusta",
+                  description: "Dalla tostatura scura di Arabica e Robusta nasce un viaggio profondo nel gusto. Profilo forte e corposo, con note speziate e di caramello. La miscela ideale per chi ricerca un caffè intenso e aromi persistenti che accompagnano ogni sorso.",
+                  bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
+                },
+                {
+                  name: "Decaf",
+                  image: tabDecaf,
+                  alt: "Confezione Lavazza Tablì Decaf 100% Arabica decaffeinato intensità 7/13",
+                  intensity: "Intensità 7/13 · Decaffeinato",
+                  short: "100% Arabica Decaffeinato",
+                  description: "100% Arabica. Gusto pieno e armonioso, con note di nocciola e un leggero retrogusto di cioccolato. Il piacere di un buon espresso, da concederti quando vuoi.",
+                  bullets: ["Tostatura media", "Decaffeinato pressato in tab", "100% caffè, senza involucro"],
+                },
+              ].map((tab) => (
+                <div key={tab.name} className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+                  <button
+                    type="button"
+                    onClick={() => setZoomImage({ src: tab.image, alt: tab.alt })}
+                    className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+                    aria-label={`Ingrandisci immagine ${tab.name}`}
+                  >
+                    <img
+                      src={tab.image}
+                      alt={tab.alt}
+                      className="h-44 w-auto object-contain transition-transform group-hover:scale-105"
+                      loading="lazy"
+                      width={220}
+                      height={176}
+                    />
+                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+                      <ZoomIn className="w-4 h-4 text-foreground" />
+                    </span>
+                  </button>
+                  <div className="p-6 flex flex-col flex-1">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-primary mb-1">{tab.intensity}</span>
+                    <h4 className="text-lg font-display font-bold text-foreground">{tab.name}</h4>
+                    <span className="text-xs text-muted-foreground mb-3">{tab.short}</span>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{tab.description}</p>
+                    <ul className="space-y-1.5 mb-6">
+                      {tab.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-sm text-foreground">
+                          <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button variant="whatsapp" size="sm" className="w-full gap-2 mt-auto" onClick={scrollToContatti}>
+                      <Send className="w-4 h-4" /> Chiedi info su {tab.name}
+                    </Button>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
