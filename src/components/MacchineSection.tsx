@@ -60,7 +60,7 @@ const coffeeProducts: ProductCard[] = [
   },
   {
     name: "Lavazza Tablì",
-    image: lavazzaTabli.url,
+    image: lavazzaTabli,
     alt: "Macchina caffè Lavazza Tablì con tab 100% caffè pressato",
     description: "La nuova frontiera del caffè firmata Lavazza. Tablì utilizza innovativi tab 100% caffè pressato, senza involucro, per un'esperienza sostenibile e ancora più autentica. Tecnologia e qualità si incontrano per un espresso ricco, pratico e dal gusto superiore.",
     bullets: ["Sistema a tab 100% caffè", "Senza capsula", "Sostenibile e autentico"],
