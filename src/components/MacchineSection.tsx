@@ -186,8 +186,8 @@ const MacchineSection = () => {
           {/* Caffè */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule: macchina caffè Lavazza in Black in comodato d'uso gratuito, con garanzia e assistenza incluse.</p>
+              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
+              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {coffeeProducts.map((p) => (
