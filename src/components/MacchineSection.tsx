@@ -12,7 +12,7 @@ import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
 import startapEssential from "@/assets/startap-essential.webp";
-import startapEssence from "@/assets/star-tap-essence.webp.asset.json";
+import startapEssence from "@/assets/star-tap-essence.webp";
 import startapPro from "@/assets/startap-pro.webp";
 
 interface ProductCard {
