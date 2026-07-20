@@ -58,6 +58,15 @@ const coffeeProducts: ProductCard[] = [
     badge: "NOVITÀ",
     videoUrl: "https://drive.google.com/file/d/1O7Pfm0gi_iIPf4QM9_9Hz0RhRl_iB4W-/view?usp=sharing",
   },
+  {
+    name: "Lavazza Tablì",
+    image: lavazzaTabli.url,
+    alt: "Macchina caffè Lavazza Tablì con tab 100% caffè pressato",
+    description: "La nuova frontiera del caffè firmata Lavazza. Tablì utilizza innovativi tab 100% caffè pressato, senza involucro, per un'esperienza sostenibile e ancora più autentica. Tecnologia e qualità si incontrano per un espresso ricco, pratico e dal gusto superiore.",
+    bullets: ["Sistema a tab 100% caffè", "Senza capsula", "Sostenibile e autentico"],
+    badge: "NOVITÀ",
+    videoUrl: "https://youtu.be/Jk7GVF-95_k",
+  },
 ];
 
 const waterProducts: ProductCard[] = [
