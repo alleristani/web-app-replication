@@ -7,6 +7,7 @@ import { Play, Send, Check, X, ZoomIn, ShoppingCart, CalendarClock, Building2, H
 import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
 import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
 import lavazzaBarista from "@/assets/lavazza-barista.png";
+import lavazzaTabli from "@/assets/lavazza-tabli.png.asset.json";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
