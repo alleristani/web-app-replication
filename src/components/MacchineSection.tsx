@@ -24,9 +24,12 @@ interface ProductCard {
   videoUrl?: string;
 }
 
-const toEmbedUrl = (driveUrl: string) => {
-  const match = driveUrl.match(/\/d\/([^/]+)\//);
-  return match ? `https://drive.google.com/file/d/${match[1]}/preview` : driveUrl;
+const toEmbedUrl = (url: string) => {
+  const driveMatch = url.match(/\/d\/([^/]+)\//);
+  if (driveMatch) return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+  const youtubeMatch = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=|youtube\.com\/embed\/)([^?&]+)/);
+  if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+  return url;
 };
 
 const coffeeProducts: ProductCard[] = [
