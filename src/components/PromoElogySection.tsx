@@ -17,7 +17,7 @@ const PromoElogySection = () => {
       <div className="relative max-w-6xl mx-auto">
         {/* Top badge */}
         <div className="text-center mb-8">
-          <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-black uppercase tracking-[0.25em] px-6 py-3 rounded-full shadow-vibrant">
+          <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-black uppercase tracking-[0.25em] px-6 py-3 rounded-full shadow-soft">
             <Sparkles className="w-4 h-4" />
             Novità · Offerta Esclusiva NIMS
           </span>
@@ -35,24 +35,24 @@ const PromoElogySection = () => {
         </div>
 
         {/* Main visual card */}
-        <div className="grid md:grid-cols-2 gap-8 items-center bg-primary-foreground/[0.04] backdrop-blur-sm border border-primary-foreground/10 rounded-3xl p-6 md:p-10 mb-10">
+        <div className="grid md:grid-cols-2 gap-8 items-center bg-primary-foreground/[0.04] border border-primary-foreground/10 rounded-lg p-6 md:p-10 mb-10">
           {/* Image stack */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-2xl p-8 flex items-center justify-center min-h-[320px]">
+            <div className="relative bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-lg p-8 flex items-center justify-center min-h-[320px]">
               <img
                 src={promoMachine}
                 alt="Macchina caffè Lavazza in Black Elogy Bluetooth in comodato d'uso"
-                className="w-full max-w-xs h-auto object-contain drop-shadow-2xl"
+                className="w-full max-w-xs h-auto object-contain drop-shadow-soft"
                 loading="lazy"
               />
               {/* Price tag */}
-              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-32 md:w-40 md:h-40 bg-accent rounded-full flex flex-col items-center justify-center shadow-vibrant rotate-[-8deg] border-4 border-primary-foreground">
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-32 md:w-40 md:h-40 bg-accent rounded-full flex flex-col items-center justify-center shadow-soft rotate-[-8deg] border-4 border-primary-foreground">
                 <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-accent-foreground">Solo</span>
                 <span className="text-3xl md:text-5xl font-display font-black text-accent-foreground leading-none">€44<span className="text-lg md:text-2xl align-top">,90</span></span>
                 <span className="text-[9px] md:text-[10px] font-bold uppercase text-accent-foreground/80 mt-1">prezzo trial</span>
               </div>
             </div>
-            <div className="mt-4 bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-2xl p-4">
+            <div className="mt-4 bg-gradient-to-br from-primary-foreground/10 to-primary-foreground/5 rounded-lg p-4">
               <img
                 src={promoCapsules}
                 alt="136 capsule Lavazza in Black incluse nella prova"
@@ -79,7 +79,7 @@ const PromoElogySection = () => {
                 { icon: CheckCircle2, text: "Se ti è piaciuta, ne parliamo insieme e troviamo la formula giusta" },
                 { icon: Gift, text: "Se non fa per te, nessun impegno: ritiro io la macchina" },
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 bg-primary-foreground/5 rounded-xl p-3 border border-primary-foreground/10">
+                <li key={i} className="flex items-start gap-3 bg-primary-foreground/5 rounded-md p-3 border border-primary-foreground/10">
                   <div className="flex-shrink-0 w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center">
                     <item.icon className="w-4 h-4 text-accent" />
                   </div>
@@ -89,7 +89,7 @@ const PromoElogySection = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 w-full sm:flex-1 h-14 sm:h-12 text-base font-bold px-6 bg-accent text-accent-foreground hover:bg-accent/90 shadow-vibrant">
+              <Button variant="default" size="lg" onClick={scrollToForm} className="gap-2 w-full sm:flex-1 h-14 sm:h-12 text-base font-bold px-6 bg-accent text-accent-foreground hover:bg-accent/90 shadow-soft">
                 <Phone className="w-5 h-5 shrink-0" />
                 Prenota la prova
               </Button>

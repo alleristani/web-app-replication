@@ -174,7 +174,7 @@ const extraCapsules: CapsuleCard[] = [
 ];
 
 const CapsuleCardComponent = ({ capsule }: { capsule: CapsuleCard }) => (
-  <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+  <div className="relative bg-card rounded-lg shadow-soft border border-border overflow-hidden flex flex-col">
     {capsule.badge && (
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
         {capsule.badge}

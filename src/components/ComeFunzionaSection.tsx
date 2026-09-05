@@ -20,7 +20,7 @@ const ComeFunzionaSection = () => (
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {steps.map((s) => (
-          <div key={s.title} className="text-center bg-card rounded-2xl p-6 shadow-soft border border-border">
+          <div key={s.title} className="text-center bg-card rounded-lg p-6 shadow-soft border border-border">
             <span className="text-4xl font-display text-primary/15 font-black block mb-2">{s.num}</span>
             <div className="w-12 h-12 rounded-full bg-primary/8 flex items-center justify-center mx-auto mb-4">
               <s.icon className="w-5 h-5 text-primary" />

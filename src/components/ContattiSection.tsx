@@ -64,38 +64,38 @@ const ContattiSection = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-8 shadow-soft space-y-4 border border-border">
+        <form onSubmit={handleSubmit} className="bg-card rounded-lg p-6 md:p-8 shadow-soft space-y-4 border border-border">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Nome *</label>
-              <Input required name="nome" placeholder="Il tuo nome" className="h-12 rounded-xl" />
+              <Input required name="nome" placeholder="Il tuo nome" className="h-12 rounded-md" />
             </div>
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Cognome *</label>
-              <Input required name="cognome" placeholder="Il tuo cognome" className="h-12 rounded-xl" />
+              <Input required name="cognome" placeholder="Il tuo cognome" className="h-12 rounded-md" />
             </div>
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Numero di telefono *</label>
-            <Input required name="telefono" type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-xl" />
+            <Input required name="telefono" type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-md" />
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Indirizzo *</label>
-            <Input required name="indirizzo" placeholder="Via e numero civico" className="h-12 rounded-xl" />
+            <Input required name="indirizzo" placeholder="Via e numero civico" className="h-12 rounded-md" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Paese / Città *</label>
-              <Input required name="paese" placeholder="Es. Massafra" className="h-12 rounded-xl" />
+              <Input required name="paese" placeholder="Es. Massafra" className="h-12 rounded-md" />
             </div>
             <div>
               <label className="text-sm font-bold text-foreground mb-1.5 block">Provincia *</label>
-              <Input required name="provincia" placeholder="Es. TA" className="h-12 rounded-xl" />
+              <Input required name="provincia" placeholder="Es. TA" className="h-12 rounded-md" />
             </div>
           </div>
           <div>
             <label className="text-sm font-bold text-foreground mb-1.5 block">Note (facoltativo)</label>
-            <Textarea name="note" placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={3} className="rounded-xl" />
+            <Textarea name="note" placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={3} className="rounded-md" />
           </div>
           <p className="text-xs text-muted-foreground">
             I tuoi dati saranno utilizzati solo per ricontattarti. Nessuna comunicazione indesiderata.

@@ -31,7 +31,7 @@ const ServiziSection = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {services.map((s) => (
-          <div key={s.title} className="bg-card rounded-2xl p-8 shadow-soft text-center hover:shadow-vibrant transition-all duration-300 border border-border">
+          <div key={s.title} className="bg-card rounded-lg p-8 shadow-soft text-center hover:shadow-soft transition-all duration-300 border border-border">
             <div className="w-14 h-14 rounded-full bg-primary/8 flex items-center justify-center mx-auto mb-6">
               <s.icon className="w-6 h-6 text-primary" />
             </div>

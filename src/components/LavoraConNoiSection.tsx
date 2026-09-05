@@ -50,7 +50,7 @@ const LavoraConNoiSection = () => (
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="group bg-primary-foreground/[0.04] backdrop-blur-sm border border-primary-foreground/[0.08] rounded-2xl p-7 md:p-8 text-center space-y-4 transition-all duration-300 hover:bg-primary-foreground/[0.07] hover:border-primary-foreground/[0.15]"
+              className="group bg-primary-foreground/[0.04] border border-primary-foreground/[0.08] rounded-lg p-7 md:p-8 text-center space-y-4 transition-all duration-300 hover:bg-primary-foreground/[0.07] hover:border-primary-foreground/[0.15]"
             >
               <div className="mx-auto w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <b.icon className="w-6 h-6 text-accent" />
@@ -63,7 +63,7 @@ const LavoraConNoiSection = () => (
 
         {/* CTA */}
         <div className="text-center mb-16 md:mb-20">
-          <Button variant="whatsapp" size="lg" asChild className="gap-2.5 rounded-full text-base h-14 px-10 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+          <Button variant="whatsapp" size="lg" asChild className="gap-2.5 rounded-full text-base h-14 px-10 shadow-soft transition-all duration-300 hover:shadow-soft hover:scale-[1.02]">
             <a
               href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20a%20lavorare%20con%20il%20team%20Nims%20Lavazza"
               target="_blank"

@@ -20,7 +20,7 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
-        <span className="inline-block bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-6 animate-fade-up border border-primary-foreground/15">
+        <span className="inline-block bg-primary-foreground/10 text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-6 animate-fade-up border border-primary-foreground/15">
           Consulente Nims · Gruppo Lavazza
         </span>
         <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-6 animate-fade-up">

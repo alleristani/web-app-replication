@@ -73,7 +73,7 @@ const Calcola = () => {
           </div>
 
           {/* Form */}
-          <div className="bg-card rounded-2xl shadow-soft p-6 space-y-5">
+          <div className="bg-card rounded-lg shadow-soft p-6 space-y-5">
             <Field
               label="Caffè al giorno"
               placeholder="Es. 3"
@@ -103,7 +103,7 @@ const Calcola = () => {
 
           {/* Risultati */}
           {risultati && (
-            <div className="bg-card rounded-2xl shadow-soft p-6 space-y-4 animate-fade-up">
+            <div className="bg-card rounded-lg shadow-soft p-6 space-y-4 animate-fade-up">
               <h2 className="font-display text-lg text-foreground text-center">
                 Il tuo riepilogo
               </h2>
@@ -177,7 +177,7 @@ function ResultRow({
   value: string;
 }) {
   return (
-    <div className="flex items-center justify-between bg-secondary/50 rounded-xl px-4 py-3">
+    <div className="flex items-center justify-between bg-secondary/50 rounded-md px-4 py-3">
       <div className="flex items-center gap-3">
         {icon}
         <span className="text-sm text-foreground">{label}</span>

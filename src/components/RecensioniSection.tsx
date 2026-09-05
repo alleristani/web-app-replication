@@ -48,7 +48,7 @@ const RecensioniSection = () => (
         {reviews.map((r) => (
           <div
             key={r.author}
-            className="bg-card rounded-2xl p-6 flex flex-col justify-between shadow-soft border border-border hover:shadow-vibrant transition-shadow duration-300"
+            className="bg-card rounded-lg p-6 flex flex-col justify-between shadow-soft border border-border hover:shadow-soft transition-shadow duration-300"
           >
             <div>
               <div className="flex gap-1 mb-4">

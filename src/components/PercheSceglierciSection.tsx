@@ -20,7 +20,7 @@ const PercheSceglierciSection = () => (
       </div>
       <ul className="space-y-4">
         {benefits.map((b) => (
-          <li key={b} className="flex items-start gap-4 bg-primary-foreground/8 backdrop-blur-sm rounded-2xl p-5">
+          <li key={b} className="flex items-start gap-4 bg-primary-foreground/8 rounded-lg p-5">
             <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center flex-shrink-0 mt-0.5">
               <Check className="w-5 h-5 text-primary" />
             </div>

@@ -128,7 +128,7 @@ const PrezzoAlMese = () => {
 
             {/* TAB 1: importo -> rate */}
             <TabsContent value="importo" className="mt-4">
-              <div className="bg-card rounded-2xl shadow-soft p-6 space-y-5">
+              <div className="bg-card rounded-lg shadow-soft p-6 space-y-5">
                 <div className="space-y-1.5">
                   <Label className="text-foreground font-medium">Importo contratto (€)</Label>
                   <Input
@@ -148,7 +148,7 @@ const PrezzoAlMese = () => {
               </div>
 
               {rate && (
-                <div className="bg-card rounded-2xl shadow-soft p-6 space-y-4 mt-4 animate-fade-up">
+                <div className="bg-card rounded-lg shadow-soft p-6 space-y-4 mt-4 animate-fade-up">
                   <h2 className="font-display text-lg text-foreground text-center">
                     Opzioni di pagamento
                   </h2>
@@ -161,7 +161,7 @@ const PrezzoAlMese = () => {
                       {rate.map((r) => (
                         <div
                           key={r.mesi}
-                          className="flex items-center justify-between bg-secondary/50 rounded-xl px-4 py-3"
+                          className="flex items-center justify-between bg-secondary/50 rounded-md px-4 py-3"
                         >
                           <div className="flex items-center gap-3">
                             <CalendarRange className="w-5 h-5 text-primary" />
@@ -180,7 +180,7 @@ const PrezzoAlMese = () => {
 
             {/* TAB 2: mensile -> mesi */}
             <TabsContent value="mensile" className="mt-4">
-              <div className="bg-card rounded-2xl shadow-soft p-6 space-y-5">
+              <div className="bg-card rounded-lg shadow-soft p-6 space-y-5">
                 <div className="space-y-1.5">
                   <Label className="text-foreground font-medium">Importo contratto (€)</Label>
                   <Input
@@ -213,11 +213,11 @@ const PrezzoAlMese = () => {
               </div>
 
               {risInverso && (
-                <div className="bg-card rounded-2xl shadow-soft p-6 space-y-4 mt-4 animate-fade-up">
+                <div className="bg-card rounded-lg shadow-soft p-6 space-y-4 mt-4 animate-fade-up">
                   <h2 className="font-display text-lg text-foreground text-center">Risultato</h2>
                   {risInverso.ok ? (
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between bg-secondary/50 rounded-xl px-4 py-3">
+                      <div className="flex items-center justify-between bg-secondary/50 rounded-md px-4 py-3">
                         <div className="flex items-center gap-3">
                           <CalendarRange className="w-5 h-5 text-primary" />
                           <span className="text-sm text-foreground">Mesi necessari</span>
@@ -226,7 +226,7 @@ const PrezzoAlMese = () => {
                           {risInverso.mesi}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between bg-secondary/50 rounded-xl px-4 py-3">
+                      <div className="flex items-center justify-between bg-secondary/50 rounded-md px-4 py-3">
                         <div className="flex items-center gap-3">
                           <Euro className="w-5 h-5 text-primary" />
                           <span className="text-sm text-foreground">Mensile effettivo</span>
@@ -235,7 +235,7 @@ const PrezzoAlMese = () => {
                           € {fmt(risInverso.mensileEffettivo)}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between bg-secondary/50 rounded-xl px-4 py-3">
+                      <div className="flex items-center justify-between bg-secondary/50 rounded-md px-4 py-3">
                         <div className="flex items-center gap-3">
                           <Euro className="w-5 h-5 text-primary" />
                           <span className="text-sm text-foreground">Totale</span>

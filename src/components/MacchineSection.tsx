@@ -129,7 +129,7 @@ const scrollToContatti = () => {
 };
 
 const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: ProductCard; onPlayVideo: (url: string) => void; onZoomImage: (img: { src: string; alt: string }) => void }) => (
-  <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+  <div className="relative bg-card rounded-lg shadow-soft border border-border overflow-hidden flex flex-col">
     {product.badge && (
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
         {product.badge}
@@ -149,7 +149,7 @@ const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: 
         width={300}
         height={192}
       />
-      <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+      <span className="absolute bottom-2 right-2 bg-background/80 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
         <ZoomIn className="w-4 h-4 text-foreground" />
       </span>
     </button>
@@ -209,7 +209,7 @@ const MacchineSection = () => {
           </div>
 
           {/* Tab Tablì */}
-          <div className="mb-16 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-10">
+          <div className="mb-16 rounded-lg border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-10">
             <div className="text-center mb-8">
               <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
                 Solo per Lavazza Tablì
@@ -250,7 +250,7 @@ const MacchineSection = () => {
                   bullets: ["Tostatura media", "Decaffeinato pressato in tab", "100% caffè, senza involucro"],
                 },
               ].map((tab) => (
-                <div key={tab.name} className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+                <div key={tab.name} className="bg-card rounded-lg shadow-soft border border-border overflow-hidden flex flex-col">
                   <button
                     type="button"
                     onClick={() => setZoomImage({ src: tab.image, alt: tab.alt })}
@@ -265,7 +265,7 @@ const MacchineSection = () => {
                       width={220}
                       height={176}
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+                    <span className="absolute bottom-2 right-2 bg-background/80 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
                       <ZoomIn className="w-4 h-4 text-foreground" />
                     </span>
                   </button>
@@ -306,7 +306,7 @@ const MacchineSection = () => {
             </div>
 
             {/* Banner Acquisto / Noleggio */}
-            <div className="mb-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-8">
+            <div className="mb-8 rounded-lg border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-8">
               <div className="text-center mb-5">
                 <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
                   Due formule disponibili
@@ -319,7 +319,7 @@ const MacchineSection = () => {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
+                <div className="bg-card rounded-md p-5 border border-border flex gap-4">
                   <div className="shrink-0 w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
                     <ShoppingCart className="w-5 h-5 text-primary" />
                   </div>
@@ -328,7 +328,7 @@ const MacchineSection = () => {
                     <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong>un'unica soluzione</strong> oppure a <strong>rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
                   </div>
                 </div>
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
+                <div className="bg-card rounded-md p-5 border border-border flex gap-4">
                   <div className="shrink-0 w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center">
                     <CalendarClock className="w-5 h-5 text-accent-foreground" />
                   </div>
