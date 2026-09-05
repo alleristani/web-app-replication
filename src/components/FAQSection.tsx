@@ -25,32 +25,34 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <section className="section-padding bg-secondary" id="faq">
-    <div className="max-w-3xl mx-auto">
-      <div className="text-center mb-12">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          FAQ
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          Domande frequenti
-        </h2>
+  <section className="section-padding bg-background" id="faq">
+    <div className="container-page">
+      <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+        <div className="md:col-span-4">
+          <span className="eyebrow">FAQ</span>
+          <h2 className="mt-4 font-display text-3xl text-foreground md:text-[2.5rem]">
+            Domande frequenti
+          </h2>
+        </div>
+        <div className="md:col-span-7 md:col-start-6">
+          <Accordion type="single" collapsible className="border-t border-border">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="border-b border-border"
+              >
+                <AccordionTrigger className="py-5 text-left font-display text-base font-medium text-foreground hover:no-underline md:text-lg">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="measure pb-5 text-[15px] leading-relaxed text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
-      <Accordion type="single" collapsible className="space-y-3">
-        {faqs.map((faq, i) => (
-          <AccordionItem
-            key={i}
-            value={`faq-${i}`}
-            className="bg-card rounded-lg border border-border px-6 shadow-soft"
-          >
-            <AccordionTrigger className="text-left text-foreground font-display font-bold text-base hover:no-underline">
-              {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-              {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </div>
   </section>
 );
