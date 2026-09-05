@@ -1,48 +1,55 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle } from "lucide-react";
-import heroCoffee from "@/assets/hero-coffee.jpg";
+import { Phone, ArrowRight } from "lucide-react";
+import heroMachine from "@/assets/lavazza-bluetooth-hq.webp";
 
 const HeroSection = () => {
-  const scrollToForm = () => {
-    document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <img
-        src={heroCoffee}
-        alt="Macchina caffè Lavazza in Black e depuratore acqua Star Tap – Consulente Nims Lavazza Massafra Taranto"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        fetchPriority="high"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-hero-gradient" />
-      <div className="relative z-10 w-full max-w-3xl mx-auto section-padding text-center">
-        <span className="inline-block bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-6 animate-fade-up border border-primary-foreground/15">
-          Consulente Nims · Gruppo Lavazza
-        </span>
-        <h1 className="text-4xl md:text-6xl font-display font-black text-primary-foreground leading-tight mb-6 animate-fade-up">
-          Macchine caffè Lavazza e depuratori acqua,<br className="hidden md:block" /> scelti su misura per te
-        </h1>
-        <p className="text-base md:text-lg text-primary-foreground/85 mb-4 animate-fade-up max-w-xl mx-auto leading-relaxed" style={{ animationDelay: "0.15s" }}>
-          Sono <strong>Alessio Ristani</strong>, consulente ufficiale <strong>Nims Lavazza</strong> a Massafra (Taranto). Ti aiuto a scegliere la <strong>macchina caffè Lavazza in Black in comodato d'uso gratuito</strong>, le capsule più adatte al tuo gusto e i <strong>depuratori acqua microfiltrata Star Tap</strong> (acquisto o noleggio) — per casa, ufficio, partita IVA o azienda, in tutta Italia.
-        </p>
-        <p className="text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          Contattami senza impegno: ti richiamo il prima possibile.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.45s" }}>
-          <Button variant="hero" size="lg" onClick={scrollToForm} className="gap-2 h-14 px-8 text-base rounded-full">
-            <Phone className="w-5 h-5" />
-            Richiedi informazioni
-          </Button>
-          <Button variant="whatsapp" size="lg" asChild className="gap-2 h-14 px-8 text-base rounded-full">
-            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5" />
-              Scrivimi su WhatsApp
+    <section className="bg-cream border-b border-border pt-[68px]">
+      <div className="container-page grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center py-14 md:py-24">
+        <div>
+          <span className="eyebrow mb-5 block">Consulente Nims · Gruppo Lavazza</span>
+          <h1 className="text-3xl md:text-5xl lg:text-[3.4rem] font-display font-semibold text-foreground mb-5 measure">
+            Macchine caffè Lavazza e depuratori acqua, scelti su misura per te
+          </h1>
+          <p className="text-base md:text-lg text-muted-foreground measure mb-4">
+            Sono <strong className="text-foreground font-medium">Alessio Ristani</strong>, consulente ufficiale{" "}
+            <strong className="text-foreground font-medium">Nims Lavazza</strong> a Massafra (Taranto).
+            <span className="hidden md:inline">
+              {" "}Ti aiuto a scegliere la <strong className="text-foreground font-medium">macchina caffè Lavazza in Black in comodato d'uso gratuito</strong>, le capsule più adatte al tuo gusto e i{" "}
+              <strong className="text-foreground font-medium">depuratori acqua microfiltrata Star Tap</strong> (acquisto o noleggio) — per casa, ufficio, partita IVA o azienda, in tutta Italia.
+            </span>
+          </p>
+          <p className="text-sm md:text-base text-muted-foreground mb-8 measure">
+            Contattami senza impegno: ti richiamo il prima possibile.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button size="lg" onClick={() => scrollTo("contatti")} className="gap-2">
+              <Phone className="w-4 h-4" />
+              Richiedi informazioni
+            </Button>
+            <a
+              href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Scrivimi su WhatsApp <ArrowRight className="w-4 h-4" />
             </a>
-          </Button>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center">
+          <img
+            src={heroMachine}
+            alt="Macchina caffè Lavazza in Black Elogy Bluetooth, disponibile in comodato d'uso gratuito con il consulente Nims Alessio Ristani"
+            className="w-full max-w-[340px] h-auto object-contain"
+            loading="eager"
+            fetchPriority="high"
+            width={365}
+            height={419}
+          />
         </div>
       </div>
     </section>

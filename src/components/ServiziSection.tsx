@@ -19,24 +19,22 @@ const services = [
 ];
 
 const ServiziSection = () => (
-  <section className="section-padding bg-secondary" id="servizi">
-    <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-14">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          Servizi
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
+  <section className="section-padding bg-cream" id="servizi">
+    <div className="container-page">
+      <div className="mb-10 md:mb-14">
+        <span className="eyebrow mb-3 block">Servizi</span>
+        <h2 className="text-2xl md:text-4xl font-display text-foreground measure">
           Caffè Lavazza e depuratori acqua: soluzioni per casa, ufficio e aziende
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {services.map((s) => (
-          <div key={s.title} className="bg-card rounded-2xl p-8 shadow-soft text-center hover:shadow-vibrant transition-all duration-300 border border-border">
-            <div className="w-14 h-14 rounded-full bg-primary/8 flex items-center justify-center mx-auto mb-6">
-              <s.icon className="w-6 h-6 text-primary" />
+          <div key={s.title} className="bg-card rounded-lg p-7 border border-border h-full flex flex-col">
+            <div className="flex items-center gap-2.5 mb-3">
+              <s.icon className="w-[18px] h-[18px] text-primary shrink-0" strokeWidth={1.6} />
+              <h3 className="text-lg font-display text-foreground">{s.title}</h3>
             </div>
-            <h3 className="text-lg font-display text-foreground mb-3">{s.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{s.text}</p>
+            <p className="text-muted-foreground text-sm">{s.text}</p>
           </div>
         ))}
       </div>

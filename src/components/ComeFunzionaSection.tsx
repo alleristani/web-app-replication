@@ -9,24 +9,22 @@ const steps = [
 
 const ComeFunzionaSection = () => (
   <section className="section-padding bg-background" id="come-funziona">
-    <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-14">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          Come funziona
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
+    <div className="container-page">
+      <div className="mb-10 md:mb-14">
+        <span className="eyebrow mb-3 block">Come funziona</span>
+        <h2 className="text-2xl md:text-4xl font-display text-foreground measure">
           Un percorso semplice e trasparente
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {steps.map((s) => (
-          <div key={s.title} className="text-center bg-card rounded-2xl p-6 shadow-soft border border-border">
-            <span className="text-4xl font-display text-primary/15 font-black block mb-2">{s.num}</span>
-            <div className="w-12 h-12 rounded-full bg-primary/8 flex items-center justify-center mx-auto mb-4">
-              <s.icon className="w-5 h-5 text-primary" />
+          <div key={s.title} className="border-t border-border pt-5 h-full flex flex-col">
+            <span className="text-xs font-medium tracking-[0.14em] text-muted-foreground block mb-3">{s.num}</span>
+            <div className="flex items-center gap-2.5 mb-2">
+              <s.icon className="w-[18px] h-[18px] text-primary shrink-0" strokeWidth={1.6} />
+              <h3 className="text-base font-display text-foreground">{s.title}</h3>
             </div>
-            <h3 className="text-base font-display text-foreground mb-2">{s.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{s.text}</p>
+            <p className="text-muted-foreground text-sm">{s.text}</p>
           </div>
         ))}
       </div>
