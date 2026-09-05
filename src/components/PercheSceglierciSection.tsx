@@ -9,25 +9,23 @@ const benefits = [
 
 const PercheSceglierciSection = () => (
   <section className="section-padding bg-primary" id="perche">
-    <div className="max-w-3xl mx-auto">
-      <div className="text-center mb-12">
-        <span className="inline-block bg-primary-foreground/15 text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          I vantaggi
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-primary-foreground">
-          Perché affidarti a un consulente dedicato
-        </h2>
+    <div className="container-page">
+      <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+        <div className="md:col-span-5">
+          <span className="eyebrow text-accent">I vantaggi</span>
+          <h2 className="mt-4 font-display text-3xl text-primary-foreground md:text-[2.5rem]">
+            Perché affidarti a un consulente dedicato
+          </h2>
+        </div>
+        <ul className="md:col-span-6 md:col-start-7">
+          {benefits.map((b) => (
+            <li key={b} className="flex items-start gap-4 border-b border-primary-foreground/12 py-5 first:pt-0 last:border-b-0">
+              <Check className="mt-1 h-[18px] w-[18px] shrink-0 text-accent" strokeWidth={1.5} />
+              <span className="text-[15px] leading-relaxed text-primary-foreground/85 md:text-base">{b}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="space-y-4">
-        {benefits.map((b) => (
-          <li key={b} className="flex items-start gap-4 bg-primary-foreground/8 rounded-lg p-5">
-            <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center flex-shrink-0 mt-0.5">
-              <Check className="w-5 h-5 text-primary" />
-            </div>
-            <span className="text-primary-foreground text-sm md:text-base font-medium">{b}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 );
