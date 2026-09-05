@@ -14,10 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Work Sans', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Lato', 'sans-serif'],
+        display: ['Raleway', 'sans-serif'],
       },
-
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
