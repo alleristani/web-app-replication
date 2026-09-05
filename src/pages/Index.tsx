@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+import SiteHeader from "@/components/SiteHeader";
+import FloatingActions from "@/components/FloatingActions";
 import HeroSection from "@/components/HeroSection";
 import PromoElogySection from "@/components/PromoElogySection";
 import ChiSonoSection from "@/components/ChiSonoSection";
@@ -14,7 +16,7 @@ import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
-  <main>
+  <>
     <Helmet>
       <title>Macchine Lavazza e Depuratori Acqua | Alessio Ristani Nims</title>
       <meta
@@ -29,20 +31,24 @@ const Index = () => (
       />
       <meta property="og:url" content="https://alessionims.it/" />
     </Helmet>
-    <HeroSection />
-    <PromoElogySection />
-    <ChiSonoSection />
-    <ServiziSection />
-    <MacchineSection />
-    <CapsuleSection />
-    <ComeFunzionaSection />
-    <PercheSceglierciSection />
-    <RecensioniSection />
-    <LavoraConNoiSection />
-    <ContattiSection />
-    <FAQSection />
+    <SiteHeader />
+    <main>
+      <HeroSection />
+      <PromoElogySection />
+      <ChiSonoSection />
+      <ServiziSection />
+      <MacchineSection />
+      <CapsuleSection />
+      <ComeFunzionaSection />
+      <PercheSceglierciSection />
+      <RecensioniSection />
+      <LavoraConNoiSection />
+      <ContattiSection />
+      <FAQSection />
+    </main>
     <FooterSection />
-  </main>
+    <FloatingActions />
+  </>
 );
 
 export default Index;
