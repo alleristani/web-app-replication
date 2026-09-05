@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play, Send, Check, X, ZoomIn, ShoppingCart, CalendarClock, Building2, Home } from "lucide-react";
+import IntensityMeter from "@/components/IntensityMeter";
 
-import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
-import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
-import lavazzaBarista from "@/assets/lavazza-barista.png";
-import lavazzaTabli from "@/assets/lavazza-tabli.png";
-import tabAvvolgente from "@/assets/tab-avvolgente.png";
-import tabPersistente from "@/assets/tab-persistente.png";
-import tabDecaf from "@/assets/tab-decaf.png";
+import lavazzaBluetooth from "@/assets/lavazza-bluetooth-hq.webp";
+import lavazzaMilk from "@/assets/lavazza-milk-hq.webp";
+import lavazzaBarista from "@/assets/lavazza-barista-hq.webp";
+import lavazzaTabli from "@/assets/lavazza-tabli.webp";
+import tabAvvolgente from "@/assets/tab-avvolgente.webp";
+import tabPersistente from "@/assets/tab-persistente.webp";
+import tabDecaf from "@/assets/tab-decaf.webp";
 import startapEvolution from "@/assets/startap-evolution.webp";
 import startapExtra from "@/assets/startap-extra.webp";
 import startapExtraSl from "@/assets/startap-extra-sl.webp";
@@ -129,54 +129,89 @@ const scrollToContatti = () => {
 };
 
 const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: ProductCard; onPlayVideo: (url: string) => void; onZoomImage: (img: { src: string; alt: string }) => void }) => (
-  <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
-    {product.badge && (
-      <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
-        {product.badge}
-      </Badge>
-    )}
+  <article className="relative bg-card rounded-lg border border-border overflow-hidden flex flex-col h-full">
     <button
       type="button"
       onClick={() => onZoomImage({ src: product.image, alt: product.alt })}
-      className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+      className="group product-media relative cursor-zoom-in"
       aria-label={`Ingrandisci immagine ${product.name}`}
     >
       <img
         src={product.image}
         alt={product.alt}
-        className="h-48 w-auto object-contain transition-transform group-hover:scale-105"
+        className="max-h-full w-auto object-contain transition-transform duration-150 group-hover:scale-[1.03]"
         loading="lazy"
         width={300}
-        height={192}
+        height={225}
       />
-      <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+      <span className="absolute bottom-2 right-2 rounded bg-background/85 p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
         <ZoomIn className="w-4 h-4 text-foreground" />
       </span>
     </button>
     <div className="p-6 flex flex-col flex-1">
-      <h4 className="text-lg font-display font-bold text-foreground mb-2">{product.name}</h4>
-      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{product.description}</p>
+      {product.badge && (
+        <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-primary mb-2">{product.badge}</span>
+      )}
+      <h4 className="text-lg font-display text-foreground mb-2">{product.name}</h4>
+      <p className="text-muted-foreground text-sm mb-4 measure">{product.description}</p>
       <ul className="space-y-1.5 mb-6">
         {product.bullets.map((b) => (
           <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-            <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
+            <Check className="w-4 h-4 text-primary mt-1 shrink-0" strokeWidth={1.8} />
             <span>{b}</span>
           </li>
         ))}
       </ul>
-      <div className="mt-auto flex flex-col gap-2">
-        <Button variant="whatsapp" size="sm" className="w-full gap-2" onClick={scrollToContatti}>
+      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-3">
+        <Button size="sm" className="gap-2" onClick={scrollToContatti}>
           <Send className="w-4 h-4" /> Richiedi info su questo prodotto
         </Button>
         {product.videoUrl && (
-          <Button variant="outline" size="sm" className="w-full gap-2" onClick={() => onPlayVideo(product.videoUrl!)}>
-            <Play className="w-4 h-4" /> Guarda il video ufficiale
-          </Button>
+          <button
+            type="button"
+            onClick={() => onPlayVideo(product.videoUrl!)}
+            className="inline-flex items-center gap-1.5 text-sm text-primary underline-offset-4 hover:underline py-2"
+          >
+            <Play className="w-4 h-4" strokeWidth={1.8} /> Guarda il video ufficiale
+          </button>
         )}
       </div>
     </div>
-  </div>
+  </article>
 );
+
+const tabliBlends = [
+  {
+    name: "Avvolgente",
+    image: tabAvvolgente,
+    alt: "Confezione Lavazza Tablì Avvolgente 100% Arabica intensità 10/13",
+    intensity: 10,
+    total: 13,
+    short: "100% Arabica",
+    description: "L'aromaticità caratteristica del 100% Arabica e l'equilibrio tra intensità e morbidezza. Un invito a lasciarsi trasportare da un gusto pieno e vellutato, dove le note di cacao e frutta secca si incontrano. Dedicata a chi desidera esplorare le sfumature di un espresso aromatico perfetto.",
+    bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
+  },
+  {
+    name: "Persistente",
+    image: tabPersistente,
+    alt: "Confezione Lavazza Tablì Persistente miscela Arabica e Robusta intensità 12/13",
+    intensity: 12,
+    total: 13,
+    short: "Arabica + Robusta",
+    description: "Dalla tostatura scura di Arabica e Robusta nasce un viaggio profondo nel gusto. Profilo forte e corposo, con note speziate e di caramello. La miscela ideale per chi ricerca un caffè intenso e aromi persistenti che accompagnano ogni sorso.",
+    bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
+  },
+  {
+    name: "Decaf",
+    image: tabDecaf,
+    alt: "Confezione Lavazza Tablì Decaf 100% Arabica decaffeinato intensità 7/13",
+    intensity: 7,
+    total: 13,
+    short: "100% Arabica Decaffeinato",
+    description: "100% Arabica. Gusto pieno e armonioso, con note di nocciola e un leggero retrogusto di cioccolato. Il piacere di un buon espresso, da concederti quando vuoi.",
+    bullets: ["Tostatura media", "Decaffeinato pressato in tab", "100% caffè, senza involucro"],
+  },
+];
 
 const MacchineSection = () => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -185,23 +220,21 @@ const MacchineSection = () => {
   return (
     <>
       <section className="section-padding bg-background" id="macchine">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-              Le Macchine
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display text-foreground">
+        <div className="container-page">
+          <div className="mb-10 md:mb-14">
+            <span className="eyebrow mb-3 block">Le Macchine</span>
+            <h2 className="text-2xl md:text-4xl font-display text-foreground measure">
               Macchine caffè Lavazza in Black in comodato d'uso gratuito e depuratori acqua Star Tap
             </h2>
           </div>
 
           {/* Caffè */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
+            <div className="mb-8">
+              <h3 className="text-xl md:text-2xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
+              <p className="text-muted-foreground text-sm measure">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {coffeeProducts.map((p) => (
                 <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
@@ -209,153 +242,109 @@ const MacchineSection = () => {
           </div>
 
           {/* Tab Tablì */}
-          <div className="mb-16 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-10">
-            <div className="text-center mb-8">
-              <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
-                Solo per Lavazza Tablì
-              </span>
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Le miscele Tablì — Sistema a Tab</h3>
-              <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto">
-                Le nuove tab Lavazza rappresentano un'evoluzione nel mondo del caffè: <strong>100% caffè pressato, senza involucro</strong>. Tre miscele pensate per offrire esperienze diverse, dall'aromatico al più intenso, sempre con la qualità Lavazza.
+          <div className="mb-16 border-t border-border pt-12">
+            <div className="mb-8">
+              <span className="eyebrow mb-3 block">Solo per Lavazza Tablì</span>
+              <h3 className="text-xl md:text-2xl font-display text-foreground mb-2">Le miscele Tablì — Sistema a Tab</h3>
+              <p className="text-muted-foreground text-sm measure">
+                Le nuove tab Lavazza rappresentano un'evoluzione nel mondo del caffè: <strong className="text-foreground font-medium">100% caffè pressato, senza involucro</strong>. Tre miscele pensate per offrire esperienze diverse, dall'aromatico al più intenso, sempre con la qualità Lavazza.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "Avvolgente",
-                  image: tabAvvolgente,
-                  alt: "Confezione Lavazza Tablì Avvolgente 100% Arabica intensità 10/13",
-                  intensity: "Intensità 10/13",
-                  short: "100% Arabica",
-                  description: "L'aromaticità caratteristica del 100% Arabica e l'equilibrio tra intensità e morbidezza. Un invito a lasciarsi trasportare da un gusto pieno e vellutato, dove le note di cacao e frutta secca si incontrano. Dedicata a chi desidera esplorare le sfumature di un espresso aromatico perfetto.",
-                  bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
-                },
-                {
-                  name: "Persistente",
-                  image: tabPersistente,
-                  alt: "Confezione Lavazza Tablì Persistente miscela Arabica e Robusta intensità 12/13",
-                  intensity: "Intensità 12/13",
-                  short: "Arabica + Robusta",
-                  description: "Dalla tostatura scura di Arabica e Robusta nasce un viaggio profondo nel gusto. Profilo forte e corposo, con note speziate e di caramello. La miscela ideale per chi ricerca un caffè intenso e aromi persistenti che accompagnano ogni sorso.",
-                  bullets: ["Tostatura scura", "Tab 100% caffè, senza involucro", "Disponibile monodose / bidose"],
-                },
-                {
-                  name: "Decaf",
-                  image: tabDecaf,
-                  alt: "Confezione Lavazza Tablì Decaf 100% Arabica decaffeinato intensità 7/13",
-                  intensity: "Intensità 7/13 · Decaffeinato",
-                  short: "100% Arabica Decaffeinato",
-                  description: "100% Arabica. Gusto pieno e armonioso, con note di nocciola e un leggero retrogusto di cioccolato. Il piacere di un buon espresso, da concederti quando vuoi.",
-                  bullets: ["Tostatura media", "Decaffeinato pressato in tab", "100% caffè, senza involucro"],
-                },
-              ].map((tab) => (
-                <div key={tab.name} className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+              {tabliBlends.map((tab) => (
+                <article key={tab.name} className="bg-card rounded-lg border border-border overflow-hidden flex flex-col h-full">
                   <button
                     type="button"
                     onClick={() => setZoomImage({ src: tab.image, alt: tab.alt })}
-                    className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+                    className="group product-media relative cursor-zoom-in"
                     aria-label={`Ingrandisci immagine ${tab.name}`}
                   >
                     <img
                       src={tab.image}
                       alt={tab.alt}
-                      className="h-44 w-auto object-contain transition-transform group-hover:scale-105"
+                      className="max-h-full w-auto object-contain transition-transform duration-150 group-hover:scale-[1.03]"
                       loading="lazy"
-                      width={220}
-                      height={176}
+                      width={260}
+                      height={195}
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+                    <span className="absolute bottom-2 right-2 rounded bg-background/85 p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                       <ZoomIn className="w-4 h-4 text-foreground" />
                     </span>
                   </button>
                   <div className="p-6 flex flex-col flex-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-primary mb-1">{tab.intensity}</span>
-                    <h4 className="text-lg font-display font-bold text-foreground">{tab.name}</h4>
-                    <span className="text-xs text-muted-foreground mb-3">{tab.short}</span>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{tab.description}</p>
+                    <IntensityMeter value={tab.intensity} total={tab.total} className="mb-2" />
+                    <h4 className="text-lg font-display text-foreground">{tab.name}</h4>
+                    <span className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">{tab.short}</span>
+                    <p className="text-muted-foreground text-sm mt-3 mb-4">{tab.description}</p>
                     <ul className="space-y-1.5 mb-6">
                       {tab.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-                          <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
+                          <Check className="w-4 h-4 text-primary mt-1 shrink-0" strokeWidth={1.8} />
                           <span>{b}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button variant="whatsapp" size="sm" className="w-full gap-2 mt-auto" onClick={scrollToContatti}>
+                    <Button size="sm" className="gap-2 mt-auto w-full sm:w-auto" onClick={scrollToContatti}>
                       <Send className="w-4 h-4" /> Chiedi info su {tab.name}
                     </Button>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
 
-          {/* Separatore */}
-          <div className="flex items-center gap-4 mb-16">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata Star Tap</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
           {/* Acqua */}
-          <div>
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Depuratori acqua microfiltrata Star Tap</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Depuratori acqua Star Tap: acqua microfiltrata fredda, liscia e frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per casa, ufficio e aziende.</p>
+          <div id="acqua" className="border-t border-border pt-12">
+            <div className="mb-8">
+              <span className="eyebrow mb-3 block">Acqua Microfiltrata Star Tap</span>
+              <h3 className="text-xl md:text-2xl font-display text-foreground mb-2">Depuratori acqua microfiltrata Star Tap</h3>
+              <p className="text-muted-foreground text-sm measure">Depuratori acqua Star Tap: acqua microfiltrata fredda, liscia e frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per casa, ufficio e aziende.</p>
             </div>
 
             {/* Banner Acquisto / Noleggio */}
-            <div className="mb-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-8">
-              <div className="text-center mb-5">
-                <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
-                  Due formule disponibili
-                </span>
-                <h4 className="text-xl md:text-2xl font-display text-foreground">
-                  Acquisto o Noleggio (Rent) — scegli tu
-                </h4>
-                <p className="text-muted-foreground text-sm mt-2">
-                  Tutti i depuratori Star Tap sono disponibili sia in <strong>acquisto</strong> che in formula <strong>noleggio mensile</strong>.
+            <div className="mb-10 rounded-lg border border-border bg-cream p-6 md:p-8">
+              <div className="mb-6">
+                <span className="eyebrow mb-2 block">Due formule disponibili</span>
+                <h4 className="text-lg md:text-xl font-display text-foreground">Acquisto o Noleggio (Rent) — scegli tu</h4>
+                <p className="text-muted-foreground text-sm mt-2 measure">
+                  Tutti i depuratori Star Tap sono disponibili sia in <strong className="text-foreground font-medium">acquisto</strong> che in formula <strong className="text-foreground font-medium">noleggio mensile</strong>.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
-                    <ShoppingCart className="w-5 h-5 text-primary" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="bg-card rounded-lg p-5 border border-border">
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <ShoppingCart className="w-[18px] h-[18px] text-primary shrink-0" strokeWidth={1.6} />
+                    <span className="font-display text-base text-foreground">Acquisto</span>
                   </div>
-                  <div>
-                    <div className="font-display font-bold text-foreground mb-1">Acquisto</div>
-                    <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong>un'unica soluzione</strong> oppure a <strong>rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong className="text-foreground font-medium">un'unica soluzione</strong> oppure a <strong className="text-foreground font-medium">rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
                 </div>
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center">
-                    <CalendarClock className="w-5 h-5 text-accent-foreground" />
+                <div className="bg-card rounded-lg p-5 border border-border">
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <CalendarClock className="w-[18px] h-[18px] text-primary shrink-0" strokeWidth={1.6} />
+                    <span className="font-display text-base text-foreground">Noleggio (Rent)</span>
                   </div>
-                  <div>
-                    <div className="font-display font-bold text-foreground mb-1">Noleggio (Rent)</div>
-                    <p className="text-sm text-muted-foreground">Canone mensile fisso, assistenza e manutenzione incluse. Zero pensieri.</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">Canone mensile fisso, assistenza e manutenzione incluse. Zero pensieri.</p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
-                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
-                  <Home className="w-4 h-4 text-primary shrink-0" />
-                  <span>Per <strong>famiglie e privati</strong></span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                <div className="flex items-center gap-2 text-sm text-foreground">
+                  <Home className="w-4 h-4 text-primary shrink-0" strokeWidth={1.6} />
+                  <span>Per <strong className="font-medium">famiglie e privati</strong></span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
-                  <Building2 className="w-4 h-4 text-primary shrink-0" />
-                  <span>Per <strong>Partite IVA, uffici e aziende</strong> (deducibile)</span>
+                <div className="flex items-center gap-2 text-sm text-foreground">
+                  <Building2 className="w-4 h-4 text-primary shrink-0" strokeWidth={1.6} />
+                  <span>Per <strong className="font-medium">Partite IVA, uffici e aziende</strong> (deducibile)</span>
                 </div>
               </div>
-              <div className="text-center mt-5">
-                <Button variant="whatsapp" size="sm" className="gap-2" onClick={scrollToContatti}>
+              <div className="mt-6">
+                <Button size="sm" className="gap-2" onClick={scrollToContatti}>
                   <Send className="w-4 h-4" /> Richiedi un preventivo personalizzato
                 </Button>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {waterProducts.map((p) => (
                 <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
@@ -369,18 +358,14 @@ const MacchineSection = () => {
         <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-none">
           <button
             onClick={() => setZoomImage(null)}
-            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            className="absolute top-2 right-2 z-50 rounded-full bg-foreground/70 p-2 text-background hover:bg-foreground transition-colors duration-150"
             aria-label="Chiudi immagine"
           >
             <X className="w-5 h-5" />
           </button>
           {zoomImage && (
-            <div className="flex items-center justify-center bg-secondary/30 p-6 md:p-10">
-              <img
-                src={zoomImage.src}
-                alt={zoomImage.alt}
-                className="max-h-[80vh] w-auto object-contain"
-              />
+            <div className="flex items-center justify-center bg-cream p-6 md:p-10">
+              <img src={zoomImage.src} alt={zoomImage.alt} className="max-h-[80vh] w-auto object-contain" />
             </div>
           )}
         </DialogContent>
@@ -388,10 +373,10 @@ const MacchineSection = () => {
 
       {/* Video Modal */}
       <Dialog open={!!videoUrl} onOpenChange={(open) => !open && setVideoUrl(null)}>
-        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-black border-none">
+        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-ink border-none">
           <button
             onClick={() => setVideoUrl(null)}
-            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            className="absolute top-2 right-2 z-50 rounded-full bg-foreground/70 p-2 text-background hover:bg-foreground transition-colors duration-150"
             aria-label="Chiudi video"
           >
             <X className="w-5 h-5" />

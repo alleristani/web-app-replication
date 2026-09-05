@@ -34,37 +34,31 @@ const reviews = [
 ];
 
 const RecensioniSection = () => (
-  <section className="section-padding bg-secondary" id="recensioni">
-    <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-14">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          Testimonianze
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
+  <section className="section-padding bg-background" id="recensioni">
+    <div className="container-page">
+      <div className="mb-10 md:mb-14">
+        <span className="eyebrow mb-3 block">Testimonianze</span>
+        <h2 className="text-2xl md:text-4xl font-display text-foreground measure">
           Recensioni Clienti: Cosa Dicono di Nims Lavazza
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviews.map((r) => (
-          <div
+          <figure
             key={r.author}
-            className="bg-card rounded-2xl p-6 flex flex-col justify-between shadow-soft border border-border hover:shadow-vibrant transition-shadow duration-300"
+            className="bg-card rounded-lg p-6 border border-border flex flex-col h-full"
           >
-            <div>
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-foreground/80 text-sm leading-relaxed mb-4 italic">
-                "{r.text}"
-              </p>
+            <div className="flex gap-0.5 mb-4" aria-label="Valutazione 5 stelle su 5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+              ))}
             </div>
-            <div className="pt-3 border-t border-border">
-              <span className="text-foreground font-bold text-sm">{r.author}</span>
-              <span className="text-muted-foreground text-xs ml-2">· {r.category}</span>
-            </div>
-          </div>
+            <blockquote className="text-foreground/85 text-sm mb-5 flex-1">"{r.text}"</blockquote>
+            <figcaption className="pt-4 border-t border-border text-sm">
+              <span className="text-foreground font-medium">{r.author}</span>
+              <span className="text-muted-foreground"> · {r.category}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>

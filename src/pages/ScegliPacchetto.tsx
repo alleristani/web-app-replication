@@ -22,9 +22,9 @@ import {
   Leaf,
 } from "lucide-react";
 
-import lavazzaBluetooth from "@/assets/lavazza-bluetooth.png";
-import lavazzaMilk from "@/assets/lavazza-milk-new.jpeg";
-import lavazzaBarista from "@/assets/lavazza-barista.png";
+import lavazzaBluetooth from "@/assets/lavazza-bluetooth-hq.webp";
+import lavazzaMilk from "@/assets/lavazza-milk-hq.webp";
+import lavazzaBarista from "@/assets/lavazza-barista-hq.webp";
 
 type CoffeeKey = "deciso" | "bilanciato" | "corposo" | "intense" | "misto";
 

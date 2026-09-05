@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import IntensityMeter, { parseIntensity, badgeExtra } from "@/components/IntensityMeter";
 
 interface CapsuleCard {
   name: string;
@@ -173,88 +173,81 @@ const extraCapsules: CapsuleCard[] = [
   },
 ];
 
-const CapsuleCardComponent = ({ capsule }: { capsule: CapsuleCard }) => (
-  <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
-    {capsule.badge && (
-      <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
-        {capsule.badge}
-      </Badge>
-    )}
-    <div className="flex items-center justify-center p-6 bg-secondary/30">
-      <img
-        src={capsule.image}
-        alt={capsule.alt}
-        className="h-48 w-auto object-contain"
-        loading="lazy"
-        width={300}
-        height={192}
-      />
-    </div>
-    <div className="p-6 flex flex-col flex-1">
-      <h4 className="text-lg font-display font-bold text-foreground mb-2">{capsule.name}</h4>
-      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{capsule.description}</p>
-      <p className="text-xs text-muted-foreground mb-4 italic">{capsule.info}</p>
-      <div className="mt-auto">
-        <Button variant="whatsapp" size="sm" className="w-full gap-2" asChild>
-          <a href={capsule.whatsappLink} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="w-4 h-4" /> {capsule.buttonLabel}
-          </a>
-        </Button>
+const CapsuleCardComponent = ({ capsule }: { capsule: CapsuleCard }) => {
+  const intensity = parseIntensity(capsule.badge);
+  const extra = badgeExtra(capsule.badge);
+
+  return (
+    <article className="bg-card rounded-lg border border-border overflow-hidden flex flex-col h-full">
+      <div className="product-media">
+        <img
+          src={capsule.image}
+          alt={capsule.alt}
+          className="max-h-full w-auto object-contain"
+          loading="lazy"
+          width={300}
+          height={225}
+        />
       </div>
-    </div>
-  </div>
-);
+      <div className="p-5 flex flex-col flex-1">
+        {intensity && <IntensityMeter value={intensity.value} total={intensity.total} className="mb-2" />}
+        <h4 className="text-base font-display text-foreground">{capsule.name}</h4>
+        {extra && (
+          <span className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground mb-2 block">{extra}</span>
+        )}
+        <p className="text-muted-foreground text-sm mt-2 mb-3">{capsule.description}</p>
+        <p className="text-xs text-muted-foreground mb-5">{capsule.info}</p>
+        <div className="mt-auto">
+          <Button size="sm" className="gap-2 w-full sm:w-auto" asChild>
+            <a href={capsule.whatsappLink} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="w-4 h-4" /> {capsule.buttonLabel}
+            </a>
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 const CapsuleSection = () => (
   <section className="section-padding bg-background" id="capsule">
-    <div className="max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          Le Capsule
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
+    <div className="container-page">
+      <div className="mb-10 md:mb-14">
+        <span className="eyebrow mb-3 block">Le Capsule</span>
+        <h2 className="text-2xl md:text-4xl font-display text-foreground mb-4 measure">
           Capsule caffè Lavazza in Black: miscele esclusive Nims per ogni gusto
         </h2>
-        <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le <strong>capsule Lavazza in Black</strong> sono disponibili in esclusiva per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina caffè Lavazza — dal più delicato al più intenso, in versione monodose o bidose.
+        <p className="text-muted-foreground text-sm md:text-base measure">
+          Frutto di oltre 125 anni di esperienza Lavazza nell'arte della miscelazione, le <strong className="text-foreground font-medium">capsule Lavazza in Black</strong> sono disponibili in esclusiva per i clienti Nims. Pratiche, di alta qualità e pelabili per uno smaltimento semplice. Ti aiuto a scegliere la miscela giusta per il tuo gusto e per la tua macchina caffè Lavazza — dal più delicato al più intenso, in versione monodose o bidose.
         </p>
       </div>
 
-      {/* Sottosezione Caffè */}
       <div className="mb-16">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Capsule Caffè</h3>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+        <div className="mb-8">
+          <h3 className="text-xl md:text-2xl font-display text-foreground mb-2">Capsule Caffè</h3>
+          <p className="text-muted-foreground text-sm measure">
             Sette miscele per trovare il tuo espresso perfetto. Ogni capsula è confezionata in atmosfera protettiva per preservare freschezza e aroma. Disponibili in versione monodose e bidose (x2).
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {coffeCapsules.map((c) => (
             <CapsuleCardComponent key={c.name} capsule={c} />
           ))}
         </div>
-        <p className="text-xs text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
+        <p className="text-xs text-muted-foreground mt-6 measure">
           Tutte le capsule sono pelabili per facilitare la separazione dei materiali e uno smaltimento corretto. Disponibili anche in formato bidose per preparare due caffè in un solo gesto.
         </p>
       </div>
 
-      {/* Separatore */}
-      <div className="flex items-center gap-4 mb-16">
-        <div className="flex-1 h-px bg-border" />
-        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Extra Caffè</span>
-        <div className="flex-1 h-px bg-border" />
-      </div>
-
-      {/* Sottosezione Extra */}
-      <div>
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Extra Caffè e bevande calde</h3>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+      <div className="border-t border-border pt-12">
+        <div className="mb-8">
+          <span className="eyebrow mb-3 block">Extra Caffè</span>
+          <h3 className="text-xl md:text-2xl font-display text-foreground mb-2">Extra Caffè e bevande calde</h3>
+          <p className="text-muted-foreground text-sm measure">
             Non solo espresso. Con le capsule Lavazza in Black puoi preparare anche bevande alternative calde: orzo, ginseng, tè al limone, camomilla, cioccolata e tanto altro. Perfette per famiglie, uffici e attività che vogliono offrire qualcosa in più a ogni ora del giorno.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {extraCapsules.map((c) => (
             <CapsuleCardComponent key={c.name} capsule={c} />
           ))}

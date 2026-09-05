@@ -2,13 +2,14 @@ import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, MessageCircle, MapPin, Send } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const ContattiSection = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ const ContattiSection = () => {
         title: "Richiesta inviata!",
         description: "Ti ricontatterò il prima possibile. Grazie!",
       });
+      setSent(true);
       form.reset();
     } catch (err) {
       console.error(err);
@@ -49,79 +51,96 @@ const ContattiSection = () => {
     }
   };
 
+  const fieldClass = "h-12 rounded-md border-border bg-card focus-visible:ring-primary";
+
   return (
     <section className="section-padding bg-background" id="contatti">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-            Contatti
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display text-foreground mb-4">
+      <div className="container-page grid lg:grid-cols-[340px_1fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <span className="eyebrow mb-3 block">Contatti</span>
+          <h2 className="text-2xl md:text-4xl font-display text-foreground mb-4">
             Contattami: Consulenza Gratuita Nims Lavazza
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-sm md:text-base measure mb-6">
             Compila il modulo e ti ricontatto entro la giornata lavorativa. Servizio disponibile in tutta Italia.
           </p>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="tel:+393491063216" className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors duration-150 py-1">
+                <Phone className="w-4 h-4 text-primary" strokeWidth={1.6} /> 349 106 3216
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza%20per%20il%20caffe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors duration-150 py-1"
+              >
+                <MessageCircle className="w-4 h-4 text-primary" strokeWidth={1.6} /> Scrivimi su WhatsApp
+              </a>
+            </li>
+            <li className="inline-flex items-center gap-2 text-muted-foreground py-1">
+              <MapPin className="w-4 h-4 text-primary" strokeWidth={1.6} /> Massafra (TA) – Tutta Italia
+            </li>
+          </ul>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-8 shadow-soft space-y-4 border border-border">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="bg-card rounded-lg p-6 md:p-8 border border-border space-y-5">
+          {sent && (
+            <div
+              role="status"
+              className="flex items-start gap-2.5 rounded-md border border-fresh/30 bg-fresh/[0.07] p-4 text-sm text-foreground"
+            >
+              <CheckCircle2 className="w-[18px] h-[18px] text-fresh shrink-0 mt-0.5" strokeWidth={1.8} />
+              <span>Grazie, ti ricontatto entro la giornata lavorativa.</span>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <label className="text-sm font-bold text-foreground mb-1.5 block">Nome *</label>
-              <Input required name="nome" placeholder="Il tuo nome" className="h-12 rounded-xl" />
+              <label htmlFor="nome" className="text-sm font-medium text-foreground mb-1.5 block">Nome *</label>
+              <Input id="nome" required name="nome" placeholder="Il tuo nome" className={fieldClass} />
             </div>
             <div>
-              <label className="text-sm font-bold text-foreground mb-1.5 block">Cognome *</label>
-              <Input required name="cognome" placeholder="Il tuo cognome" className="h-12 rounded-xl" />
+              <label htmlFor="cognome" className="text-sm font-medium text-foreground mb-1.5 block">Cognome</label>
+              <Input id="cognome" name="cognome" placeholder="Il tuo cognome" className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="telefono" className="text-sm font-medium text-foreground mb-1.5 block">Numero di telefono *</label>
+              <Input id="telefono" required name="telefono" type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="indirizzo" className="text-sm font-medium text-foreground mb-1.5 block">Indirizzo</label>
+              <Input id="indirizzo" name="indirizzo" placeholder="Via e numero civico" className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="paese" className="text-sm font-medium text-foreground mb-1.5 block">Paese / Città</label>
+              <Input id="paese" name="paese" placeholder="Es. Massafra" className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="provincia" className="text-sm font-medium text-foreground mb-1.5 block">Provincia</label>
+              <Input id="provincia" name="provincia" placeholder="Es. TA" className={fieldClass} />
             </div>
           </div>
+
           <div>
-            <label className="text-sm font-bold text-foreground mb-1.5 block">Numero di telefono *</label>
-            <Input required name="telefono" type="tel" inputMode="numeric" placeholder="Es. 349 1234567" className="h-12 rounded-xl" />
+            <label htmlFor="note" className="text-sm font-medium text-foreground mb-1.5 block">Note</label>
+            <Textarea id="note" name="note" placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={4} className="rounded-md border-border bg-card focus-visible:ring-primary" />
           </div>
-          <div>
-            <label className="text-sm font-bold text-foreground mb-1.5 block">Indirizzo *</label>
-            <Input required name="indirizzo" placeholder="Via e numero civico" className="h-12 rounded-xl" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="text-sm font-bold text-foreground mb-1.5 block">Paese / Città *</label>
-              <Input required name="paese" placeholder="Es. Massafra" className="h-12 rounded-xl" />
-            </div>
-            <div>
-              <label className="text-sm font-bold text-foreground mb-1.5 block">Provincia *</label>
-              <Input required name="provincia" placeholder="Es. TA" className="h-12 rounded-xl" />
-            </div>
-          </div>
-          <div>
-            <label className="text-sm font-bold text-foreground mb-1.5 block">Note (facoltativo)</label>
-            <Textarea name="note" placeholder="Raccontami brevemente per cosa ti serve il caffè: casa, ufficio, attività…" rows={3} className="rounded-xl" />
-          </div>
+
           <p className="text-xs text-muted-foreground">
             I tuoi dati saranno utilizzati solo per ricontattarti. Nessuna comunicazione indesiderata.
           </p>
-          <Button type="submit" size="lg" className="w-full h-14 text-base gap-2 rounded-full" disabled={loading}>
-            <Send className="w-5 h-5" />
-            {loading ? "Invio in corso..." : "Invia richiesta e fatti richiamare"}
-          </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            Di solito rispondo entro la giornata lavorativa.
-          </p>
-        </form>
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
-          <a href="tel:+393491063216" className="flex items-center gap-2 text-primary font-bold hover:underline">
-            <Phone className="w-4 h-4" /> 349 106 3216
-          </a>
-          <Button variant="whatsapp" size="sm" asChild className="gap-2 rounded-full">
-            <a href="https://wa.me/393491063216?text=Ciao%20Alessio%2C%20sono%20interessato%20alle%20soluzioni%20Nims%20Lavazza%20per%20il%20caffe" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-4 h-4" /> Scrivimi su WhatsApp
-            </a>
-          </Button>
-          <span className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="w-4 h-4" /> Massafra (TA) – Tutta Italia
-          </span>
-        </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button type="submit" size="lg" className="gap-2" disabled={loading}>
+              <Send className="w-4 h-4" />
+              {loading ? "Invio in corso..." : "Invia richiesta e fatti richiamare"}
+            </Button>
+            <span className="text-xs text-muted-foreground">Di solito rispondo entro la giornata lavorativa.</span>
+          </div>
+        </form>
       </div>
     </section>
   );
