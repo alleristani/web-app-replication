@@ -25,27 +25,19 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <section className="section-padding bg-secondary" id="faq">
-    <div className="max-w-3xl mx-auto">
-      <div className="text-center mb-12">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          FAQ
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
-          Domande frequenti
-        </h2>
+  <section className="section-padding bg-cream" id="faq">
+    <div className="container-page grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-16">
+      <div>
+        <span className="eyebrow mb-3 block">FAQ</span>
+        <h2 className="text-2xl md:text-4xl font-display text-foreground">Domande frequenti</h2>
       </div>
-      <Accordion type="single" collapsible className="space-y-3">
+      <Accordion type="single" collapsible className="border-t border-border">
         {faqs.map((faq, i) => (
-          <AccordionItem
-            key={i}
-            value={`faq-${i}`}
-            className="bg-card rounded-2xl border border-border px-6 shadow-soft"
-          >
-            <AccordionTrigger className="text-left text-foreground font-display font-bold text-base hover:no-underline">
+          <AccordionItem key={i} value={`faq-${i}`} className="border-b border-border">
+            <AccordionTrigger className="text-left text-foreground font-display text-base md:text-lg py-5 hover:no-underline">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+            <AccordionContent className="text-muted-foreground text-sm measure pb-5">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
