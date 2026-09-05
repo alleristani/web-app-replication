@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play, Send, Check, X, ZoomIn, ShoppingCart, CalendarClock, Building2, Home } from "lucide-react";
 
@@ -35,6 +34,31 @@ const toEmbedUrl = (url: string) => {
   if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
   return url;
 };
+
+/* Indicatore intensità: pallini coerenti in tutto il sito */
+export const IntensityDots = ({ label }: { label: string }) => {
+  const match = label.match(/(\d+)\s*\/\s*(\d+)/);
+  if (!match) return null;
+  const value = Number(match[1]);
+  const total = Number(match[2]);
+  return (
+    <span className="flex items-center gap-[3px]" aria-hidden="true">
+      {Array.from({ length: total }).map((_, i) => (
+        <span
+          key={i}
+          className={`h-[5px] w-[5px] rounded-full ${i < value ? "bg-accent" : "bg-border"}`}
+        />
+      ))}
+    </span>
+  );
+};
+
+/* Etichetta unica riusata per badge prodotto */
+const ProductBadge = ({ children }: { children: React.ReactNode }) => (
+  <span className="absolute left-4 top-4 z-10 rounded-md border border-border bg-card px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">
+    {children}
+  </span>
+);
 
 const coffeeProducts: ProductCard[] = [
   {
@@ -129,53 +153,49 @@ const scrollToContatti = () => {
 };
 
 const ProductCardComponent = ({ product, onPlayVideo, onZoomImage }: { product: ProductCard; onPlayVideo: (url: string) => void; onZoomImage: (img: { src: string; alt: string }) => void }) => (
-  <div className="relative bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
-    {product.badge && (
-      <Badge className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider">
-        {product.badge}
-      </Badge>
-    )}
+  <article className="relative flex flex-col overflow-hidden rounded-lg border border-border bg-card">
+    {product.badge && <ProductBadge>{product.badge}</ProductBadge>}
     <button
       type="button"
       onClick={() => onZoomImage({ src: product.image, alt: product.alt })}
-      className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+      className="group relative flex aspect-[4/3] w-full items-center justify-center bg-secondary p-8 transition-colors duration-150 hover:bg-muted"
       aria-label={`Ingrandisci immagine ${product.name}`}
     >
       <img
         src={product.image}
         alt={product.alt}
-        className="h-48 w-auto object-contain transition-transform group-hover:scale-105"
+        className="h-full w-auto max-w-full object-contain"
         loading="lazy"
         width={300}
-        height={192}
+        height={225}
       />
-      <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
-        <ZoomIn className="w-4 h-4 text-foreground" />
+      <span className="absolute bottom-3 right-3 rounded-md border border-border bg-card p-1.5 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+        <ZoomIn className="h-4 w-4 text-foreground" strokeWidth={1.5} />
       </span>
     </button>
-    <div className="p-6 flex flex-col flex-1">
-      <h4 className="text-lg font-display font-bold text-foreground mb-2">{product.name}</h4>
-      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{product.description}</p>
-      <ul className="space-y-1.5 mb-6">
+    <div className="flex flex-1 flex-col p-6">
+      <h4 className="font-display text-lg text-foreground">{product.name}</h4>
+      <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground">{product.description}</p>
+      <ul className="mt-5 space-y-2 border-t border-border pt-5">
         {product.bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-            <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
+          <li key={b} className="flex items-start gap-2.5 text-sm text-foreground">
+            <Check className="mt-[3px] h-4 w-4 shrink-0 text-accent" strokeWidth={1.5} />
             <span>{b}</span>
           </li>
         ))}
       </ul>
-      <div className="mt-auto flex flex-col gap-2">
-        <Button variant="whatsapp" size="sm" className="w-full gap-2" onClick={scrollToContatti}>
-          <Send className="w-4 h-4" /> Richiedi info su questo prodotto
+      <div className="mt-auto flex flex-col gap-2 pt-6">
+        <Button variant="whatsapp" className="w-full gap-2" onClick={scrollToContatti}>
+          <Send className="h-4 w-4" /> Richiedi info su questo prodotto
         </Button>
         {product.videoUrl && (
-          <Button variant="outline" size="sm" className="w-full gap-2" onClick={() => onPlayVideo(product.videoUrl!)}>
-            <Play className="w-4 h-4" /> Guarda il video ufficiale
+          <Button variant="outline" className="w-full gap-2" onClick={() => onPlayVideo(product.videoUrl!)}>
+            <Play className="h-4 w-4" /> Guarda il video ufficiale
           </Button>
         )}
       </div>
     </div>
-  </div>
+  </article>
 );
 
 const MacchineSection = () => {
@@ -185,23 +205,21 @@ const MacchineSection = () => {
   return (
     <>
       <section className="section-padding bg-background" id="macchine">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-              Le Macchine
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display text-foreground">
+        <div className="container-page">
+          <div className="max-w-3xl">
+            <span className="eyebrow">Le Macchine</span>
+            <h2 className="mt-4 font-display text-3xl text-foreground md:text-[2.5rem]">
               Macchine caffè Lavazza in Black in comodato d'uso gratuito e depuratori acqua Star Tap
             </h2>
           </div>
 
           {/* Caffè */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
+          <div className="mt-16">
+            <div className="max-w-3xl">
+              <h3 className="font-display text-2xl text-foreground md:text-3xl">Macchine caffè Lavazza in capsule e sistema Tablì</h3>
+              <p className="measure mt-3 text-[15px] leading-relaxed text-muted-foreground md:text-base">Il meglio del caffè Lavazza in capsule e il nuovo sistema a tab 100% caffè: macchine caffè Lavazza in Black in comodato d'uso gratuito e Lavazza Tablì, con garanzia e assistenza incluse.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {coffeeProducts.map((p) => (
                 <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
@@ -209,18 +227,16 @@ const MacchineSection = () => {
           </div>
 
           {/* Tab Tablì */}
-          <div className="mb-16 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-10">
-            <div className="text-center mb-8">
-              <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
-                Solo per Lavazza Tablì
-              </span>
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Le miscele Tablì — Sistema a Tab</h3>
-              <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto">
+          <div className="mt-16 rounded-lg border border-border bg-secondary p-6 md:p-10">
+            <div className="max-w-3xl">
+              <span className="eyebrow">Solo per Lavazza Tablì</span>
+              <h3 className="mt-4 font-display text-2xl text-foreground md:text-3xl">Le miscele Tablì — Sistema a Tab</h3>
+              <p className="measure mt-3 text-[15px] leading-relaxed text-muted-foreground md:text-base">
                 Le nuove tab Lavazza rappresentano un'evoluzione nel mondo del caffè: <strong>100% caffè pressato, senza involucro</strong>. Tre miscele pensate per offrire esperienze diverse, dall'aromatico al più intenso, sempre con la qualità Lavazza.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   name: "Avvolgente",
@@ -250,112 +266,109 @@ const MacchineSection = () => {
                   bullets: ["Tostatura media", "Decaffeinato pressato in tab", "100% caffè, senza involucro"],
                 },
               ].map((tab) => (
-                <div key={tab.name} className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden flex flex-col">
+                <article key={tab.name} className="flex flex-col overflow-hidden rounded-lg border border-border bg-card">
                   <button
                     type="button"
                     onClick={() => setZoomImage({ src: tab.image, alt: tab.alt })}
-                    className="group relative flex items-center justify-center p-6 bg-secondary/30 cursor-zoom-in transition hover:bg-secondary/50"
+                    className="group relative flex aspect-[4/3] w-full items-center justify-center bg-secondary p-8 transition-colors duration-150 hover:bg-muted"
                     aria-label={`Ingrandisci immagine ${tab.name}`}
                   >
                     <img
                       src={tab.image}
                       alt={tab.alt}
-                      className="h-44 w-auto object-contain transition-transform group-hover:scale-105"
+                      className="h-full w-auto max-w-full object-contain"
                       loading="lazy"
                       width={220}
-                      height={176}
+                      height={165}
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
-                      <ZoomIn className="w-4 h-4 text-foreground" />
+                    <span className="absolute bottom-3 right-3 rounded-md border border-border bg-card p-1.5 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+                      <ZoomIn className="h-4 w-4 text-foreground" strokeWidth={1.5} />
                     </span>
                   </button>
-                  <div className="p-6 flex flex-col flex-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-primary mb-1">{tab.intensity}</span>
-                    <h4 className="text-lg font-display font-bold text-foreground">{tab.name}</h4>
-                    <span className="text-xs text-muted-foreground mb-3">{tab.short}</span>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{tab.description}</p>
-                    <ul className="space-y-1.5 mb-6">
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="flex flex-wrap items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                      <IntensityDots label={tab.intensity} />
+                      {tab.intensity}
+                    </span>
+                    <h4 className="mt-2 font-display text-lg text-foreground">{tab.name}</h4>
+                    <span className="mt-1 text-sm text-muted-foreground">{tab.short}</span>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{tab.description}</p>
+                    <ul className="mt-5 space-y-2 border-t border-border pt-5">
                       {tab.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-sm text-foreground">
-                          <Check className="w-4 h-4 text-fresh mt-0.5 shrink-0" />
+                        <li key={b} className="flex items-start gap-2.5 text-sm text-foreground">
+                          <Check className="mt-[3px] h-4 w-4 shrink-0 text-accent" strokeWidth={1.5} />
                           <span>{b}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button variant="whatsapp" size="sm" className="w-full gap-2 mt-auto" onClick={scrollToContatti}>
-                      <Send className="w-4 h-4" /> Chiedi info su {tab.name}
+                    <Button variant="whatsapp" className="mt-auto w-full gap-2 pt-0 [margin-top:auto]" onClick={scrollToContatti}>
+                      <Send className="h-4 w-4" /> Chiedi info su {tab.name}
                     </Button>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
 
           {/* Separatore */}
-          <div className="flex items-center gap-4 mb-16">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Acqua Microfiltrata Star Tap</span>
-            <div className="flex-1 h-px bg-border" />
+          <div className="mt-16 flex items-center gap-5">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Acqua Microfiltrata Star Tap</span>
+            <div className="h-px flex-1 bg-border" />
           </div>
 
           {/* Acqua */}
-          <div>
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-display text-foreground mb-2">Depuratori acqua microfiltrata Star Tap</h3>
-              <p className="text-muted-foreground text-sm md:text-base">Depuratori acqua Star Tap: acqua microfiltrata fredda, liscia e frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per casa, ufficio e aziende.</p>
+          <div className="mt-16">
+            <div className="max-w-3xl">
+              <h3 className="font-display text-2xl text-foreground md:text-3xl">Depuratori acqua microfiltrata Star Tap</h3>
+              <p className="measure mt-3 text-[15px] leading-relaxed text-muted-foreground md:text-base">Depuratori acqua Star Tap: acqua microfiltrata fredda, liscia e frizzante direttamente dal rubinetto. Disponibili in acquisto o noleggio mensile per casa, ufficio e aziende.</p>
             </div>
 
             {/* Banner Acquisto / Noleggio */}
-            <div className="mb-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-6 md:p-8">
-              <div className="text-center mb-5">
-                <span className="inline-block bg-accent/15 text-accent-foreground text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
-                  Due formule disponibili
-                </span>
-                <h4 className="text-xl md:text-2xl font-display text-foreground">
+            <div className="mt-10 rounded-lg border border-border bg-secondary p-6 md:p-8">
+              <div className="max-w-3xl">
+                <span className="eyebrow">Due formule disponibili</span>
+                <h4 className="mt-4 font-display text-xl text-foreground md:text-2xl">
                   Acquisto o Noleggio (Rent) — scegli tu
                 </h4>
-                <p className="text-muted-foreground text-sm mt-2">
+                <p className="measure mt-2 text-[15px] text-muted-foreground">
                   Tutti i depuratori Star Tap sono disponibili sia in <strong>acquisto</strong> che in formula <strong>noleggio mensile</strong>.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
-                    <ShoppingCart className="w-5 h-5 text-primary" />
-                  </div>
+              <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="flex gap-4 rounded-md border border-border bg-card p-5">
+                  <ShoppingCart className="mt-0.5 h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} />
                   <div>
-                    <div className="font-display font-bold text-foreground mb-1">Acquisto</div>
-                    <p className="text-sm text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong>un'unica soluzione</strong> oppure a <strong>rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
+                    <div className="font-display text-base text-foreground">Acquisto</div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">Il depuratore è tuo da subito. Pagamento in <strong>un'unica soluzione</strong> oppure a <strong>rate mensili senza interessi</strong>. Garanzia e assistenza tecnica sempre incluse.</p>
                   </div>
                 </div>
-                <div className="bg-card rounded-xl p-5 border border-border flex gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center">
-                    <CalendarClock className="w-5 h-5 text-accent-foreground" />
-                  </div>
+                <div className="flex gap-4 rounded-md border border-border bg-card p-5">
+                  <CalendarClock className="mt-0.5 h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} />
                   <div>
-                    <div className="font-display font-bold text-foreground mb-1">Noleggio (Rent)</div>
-                    <p className="text-sm text-muted-foreground">Canone mensile fisso, assistenza e manutenzione incluse. Zero pensieri.</p>
+                    <div className="font-display text-base text-foreground">Noleggio (Rent)</div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">Canone mensile fisso, assistenza e manutenzione incluse. Zero pensieri.</p>
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
-                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
-                  <Home className="w-4 h-4 text-primary shrink-0" />
+              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="flex items-center gap-3 rounded-md border border-border bg-card px-5 py-4 text-sm text-foreground">
+                  <Home className="h-4 w-4 shrink-0 text-muted-foreground" strokeWidth={1.5} />
                   <span>Per <strong>famiglie e privati</strong></span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-foreground bg-secondary/40 rounded-lg px-4 py-3">
-                  <Building2 className="w-4 h-4 text-primary shrink-0" />
+                <div className="flex items-center gap-3 rounded-md border border-border bg-card px-5 py-4 text-sm text-foreground">
+                  <Building2 className="h-4 w-4 shrink-0 text-muted-foreground" strokeWidth={1.5} />
                   <span>Per <strong>Partite IVA, uffici e aziende</strong> (deducibile)</span>
                 </div>
               </div>
-              <div className="text-center mt-5">
-                <Button variant="whatsapp" size="sm" className="gap-2" onClick={scrollToContatti}>
-                  <Send className="w-4 h-4" /> Richiedi un preventivo personalizzato
+              <div className="mt-6">
+                <Button variant="whatsapp" className="w-full gap-2 sm:w-auto" onClick={scrollToContatti}>
+                  <Send className="h-4 w-4" /> Richiedi un preventivo personalizzato
                 </Button>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {waterProducts.map((p) => (
                 <ProductCardComponent key={p.name} product={p} onPlayVideo={(url) => setVideoUrl(toEmbedUrl(url))} onZoomImage={setZoomImage} />
               ))}
@@ -366,16 +379,16 @@ const MacchineSection = () => {
 
       {/* Image Zoom Modal */}
       <Dialog open={!!zoomImage} onOpenChange={(open) => !open && setZoomImage(null)}>
-        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-none">
+        <DialogContent className="max-w-3xl overflow-hidden border border-border bg-background p-0">
           <button
             onClick={() => setZoomImage(null)}
-            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            className="absolute right-3 top-3 z-50 rounded-md border border-border bg-card p-2 text-foreground transition-colors duration-150 hover:bg-secondary"
             aria-label="Chiudi immagine"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" strokeWidth={1.5} />
           </button>
           {zoomImage && (
-            <div className="flex items-center justify-center bg-secondary/30 p-6 md:p-10">
+            <div className="flex items-center justify-center bg-secondary p-6 md:p-12">
               <img
                 src={zoomImage.src}
                 alt={zoomImage.alt}
@@ -388,19 +401,19 @@ const MacchineSection = () => {
 
       {/* Video Modal */}
       <Dialog open={!!videoUrl} onOpenChange={(open) => !open && setVideoUrl(null)}>
-        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-black border-none">
+        <DialogContent className="max-w-3xl overflow-hidden border-none bg-black p-0">
           <button
             onClick={() => setVideoUrl(null)}
-            className="absolute top-2 right-2 z-50 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 transition"
+            className="absolute right-3 top-3 z-50 rounded-md bg-black/70 p-2 text-white transition-colors duration-150 hover:bg-black"
             aria-label="Chiudi video"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" strokeWidth={1.5} />
           </button>
           {videoUrl && (
             <div className="aspect-video w-full">
               <iframe
                 src={videoUrl}
-                className="w-full h-full"
+                className="h-full w-full"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 title="Video prodotto"

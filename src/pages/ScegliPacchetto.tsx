@@ -279,7 +279,7 @@ const ScegliPacchetto = () => {
             </div>
 
             {/* Avviso stima consumo */}
-            <div className="mt-6 md:mt-8 max-w-3xl mx-auto bg-card border border-border rounded-2xl p-4 md:p-5 flex items-start gap-3 shadow-soft">
+            <div className="mt-6 md:mt-8 max-w-3xl mx-auto bg-card border border-border rounded-lg p-4 md:p-5 flex items-start gap-3 shadow-soft">
               <div className="shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full bg-accent/15 flex items-center justify-center">
                 <Info className="w-4 h-4 md:w-5 md:h-5 text-accent-foreground" />
               </div>
@@ -308,7 +308,7 @@ const ScegliPacchetto = () => {
               return (
                 <div
                   key={k}
-                  className="bg-card rounded-2xl border border-border overflow-hidden shadow-soft flex flex-col"
+                  className="bg-card rounded-lg border border-border overflow-hidden shadow-soft flex flex-col"
                 >
                   <button
                     type="button"
@@ -322,7 +322,7 @@ const ScegliPacchetto = () => {
                       className="h-32 md:h-40 w-auto mx-auto object-contain transition-transform group-hover:scale-105"
                       loading="lazy"
                     />
-                    <span className="absolute bottom-2 right-2 bg-background/80 backdrop-blur rounded-full p-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
+                    <span className="absolute bottom-2 right-2 bg-background/80 rounded-full p-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
                       <ZoomIn className="w-4 h-4 text-foreground" />
                     </span>
                   </button>
@@ -352,19 +352,19 @@ const ScegliPacchetto = () => {
 
           {/* Garanzia / Assistenza */}
           <div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-            <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-card border border-border rounded-md px-4 py-3">
               <ShieldCheck className="w-5 h-5 text-fresh shrink-0" />
               <span className="text-xs md:text-sm text-foreground">
                 <strong>Garanzia</strong> inclusa per tutta la durata del contratto
               </span>
             </div>
-            <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-card border border-border rounded-md px-4 py-3">
               <Wrench className="w-5 h-5 text-fresh shrink-0" />
               <span className="text-xs md:text-sm text-foreground">
                 <strong>Assistenza tecnica</strong> sempre compresa
               </span>
             </div>
-            <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-card border border-border rounded-md px-4 py-3">
               <Package className="w-5 h-5 text-fresh shrink-0" />
               <span className="text-xs md:text-sm text-foreground">
                 <strong>Consegna gratuita</strong> di macchina e capsule
@@ -374,7 +374,7 @@ const ScegliPacchetto = () => {
         </section>
 
         {/* FILTRI - sticky su mobile */}
-        <section className="max-w-6xl mx-auto px-4 sticky top-0 z-20 bg-background/95 backdrop-blur py-3 md:static md:py-0 md:bg-transparent md:backdrop-blur-none">
+        <section className="max-w-6xl mx-auto px-4 sticky top-0 z-20 bg-background/95 py-3 md:static md:py-0 md:bg-transparent md:backdrop-blur-none">
           <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 md:mb-3">
             Filtra per macchina
           </p>
@@ -402,7 +402,7 @@ const ScegliPacchetto = () => {
               return (
                 <div
                   key={p.id}
-                  className="relative bg-card rounded-2xl border border-border shadow-soft overflow-hidden flex flex-col"
+                  className="relative bg-card rounded-lg border border-border shadow-soft overflow-hidden flex flex-col"
                 >
                   {p.evidenza && (
                     <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground text-[10px] font-black uppercase tracking-wider shadow-md">
@@ -456,7 +456,7 @@ const ScegliPacchetto = () => {
                     </div>
 
                     {/* Prezzi */}
-                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-3 md:p-4 mb-4 border border-border">
+                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-md p-3 md:p-4 mb-4 border border-border">
                       <div className="flex items-baseline gap-1 mb-1.5">
                         <span className="font-display font-black text-2xl md:text-3xl text-foreground">
                           € {fmt(p.mensile)}
@@ -522,7 +522,7 @@ const ScegliPacchetto = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {/* Aziende / Partita IVA */}
-            <div className="bg-card rounded-2xl border border-border shadow-soft p-5 md:p-6 flex flex-col">
+            <div className="bg-card rounded-lg border border-border shadow-soft p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <Briefcase className="w-5 h-5 text-primary" />
@@ -547,7 +547,7 @@ const ScegliPacchetto = () => {
             </div>
 
             {/* Swap capsule */}
-            <div className="bg-card rounded-2xl border border-border shadow-soft p-5 md:p-6 flex flex-col">
+            <div className="bg-card rounded-lg border border-border shadow-soft p-5 md:p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-fresh/10 flex items-center justify-center shrink-0">
                   <Leaf className="w-5 h-5 text-fresh" />
@@ -571,7 +571,7 @@ const ScegliPacchetto = () => {
             </div>
 
             {/* Monodose vs Bidose */}
-            <div className="md:col-span-2 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl border border-border shadow-soft p-5 md:p-6">
+            <div className="md:col-span-2 bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg border border-border shadow-soft p-5 md:p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
                   <Coffee className="w-5 h-5 text-accent-foreground" />
