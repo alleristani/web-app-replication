@@ -20,23 +20,19 @@ const services = [
 
 const ServiziSection = () => (
   <section className="section-padding bg-secondary" id="servizi">
-    <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-14">
-        <span className="inline-block bg-primary/8 text-primary text-xs font-bold uppercase tracking-[0.2em] px-5 py-2 rounded-full mb-5">
-          Servizi
-        </span>
-        <h2 className="text-3xl md:text-5xl font-display text-foreground">
+    <div className="container-page">
+      <div className="max-w-3xl">
+        <span className="eyebrow">Servizi</span>
+        <h2 className="mt-4 font-display text-3xl text-foreground md:text-[2.5rem]">
           Caffè Lavazza e depuratori acqua: soluzioni per casa, ufficio e aziende
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
         {services.map((s) => (
-          <div key={s.title} className="bg-card rounded-lg p-8 shadow-soft text-center hover:shadow-soft transition-all duration-300 border border-border">
-            <div className="w-14 h-14 rounded-full bg-primary/8 flex items-center justify-center mx-auto mb-6">
-              <s.icon className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-lg font-display text-foreground mb-3">{s.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{s.text}</p>
+          <div key={s.title} className="flex flex-col rounded-lg border border-border bg-card p-7">
+            <s.icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
+            <h3 className="mt-5 font-display text-xl text-foreground">{s.title}</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{s.text}</p>
           </div>
         ))}
       </div>
